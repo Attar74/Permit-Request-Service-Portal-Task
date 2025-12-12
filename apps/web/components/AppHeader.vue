@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-md"
+    class="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md supports-[backdrop-filter]:bg-card/80 shadow-md border-b border-border"
   >
     <nav
       class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8"
@@ -57,7 +57,7 @@
         <button
           v-if="!isMobileMenuOpen"
           @click="isMobileMenuOpen = true"
-          class="md:hidden h-9 w-9 rounded-md border bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+          class="md:hidden h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           type="button"
           :aria-label="t('Open menu')"
         >
@@ -66,7 +66,7 @@
         <button
           v-else
           @click="isMobileMenuOpen = false"
-          class="md:hidden h-9 w-9 rounded-md border bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+          class="md:hidden h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           type="button"
           :aria-label="t('Close menu')"
         >
@@ -79,7 +79,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-9 w-9 rounded-md border bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
+          class="h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -103,7 +103,7 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-9 px-3 rounded-md border bg-background hover:bg-accent hover:text-accent-foreground text-sm font-medium transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 shadow-sm hover:shadow-md"
+            class="h-9 px-3 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-medium transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 shadow-sm hover:shadow-md"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
@@ -194,7 +194,7 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md"
+        class="md:hidden border-t border-border bg-card/95 backdrop-blur-md"
       >
         <div class="container mx-auto px-4 py-4 space-y-2">
           <NuxtLink
