@@ -4,24 +4,24 @@
       <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
         Apply for a Permit
       </h1>
-      <p class="text-muted-foreground mt-2 text-sm sm:text-base">
+      <p class="text-gray-600 mt-2 text-sm sm:text-base">
         Fill out the form below to submit your permit application
       </p>
     </div>
 
-    <div
-      class="rounded-md border border-border bg-card text-card-foreground shadow-md"
-    >
+    <div class="rounded-[0.875rem] border border-gray-200 bg-white text-gray-900 shadow-md">
       <div class="p-6 sm:p-8 lg:p-10">
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <!-- Applicant Name Field -->
           <div class="space-y-2">
             <label
               for="applicantName"
-              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
             >
               <span>Applicant Name</span>
-              <span class="text-destructive font-bold" aria-label="required">*</span>
+              <span class="text-red-600 font-bold" aria-label="required"
+                >*</span
+              >
             </label>
             <input
               id="applicantName"
@@ -30,17 +30,17 @@
               :disabled="isSubmitting"
               placeholder="Enter your full name"
               :class="[
-                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
-                'text-sm font-medium text-foreground',
-                'ring-offset-background placeholder:text-muted-foreground/60',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                'focus-visible:border-ring focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
+                'text-sm font-medium text-gray-900',
+                'ring-offset-white placeholder:text-gray-400',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+                'focus-visible:border-blue-500 focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
                 'transition-all duration-200',
-                'hover:border-input/80',
+                'hover:border-gray-400',
                 errors.applicantName
-                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
-                  : 'border-input',
+                  ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
+                  : '',
               ]"
             />
             <Transition
@@ -53,7 +53,7 @@
             >
               <p
                 v-if="errors.applicantName"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -66,10 +66,12 @@
           <div class="space-y-2">
             <label
               for="applicantEmail"
-              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
             >
               <span>Email Address</span>
-              <span class="text-destructive font-bold" aria-label="required">*</span>
+              <span class="text-red-600 font-bold" aria-label="required"
+                >*</span
+              >
             </label>
             <input
               id="applicantEmail"
@@ -101,7 +103,7 @@
             >
               <p
                 v-if="errors.applicantEmail"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -114,10 +116,12 @@
           <div class="space-y-2">
             <label
               for="permitType"
-              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
             >
               <span>Permit Type</span>
-              <span class="text-destructive font-bold" aria-label="required">*</span>
+              <span class="text-red-600 font-bold" aria-label="required"
+                >*</span
+              >
             </label>
             <input
               id="permitType"
@@ -149,7 +153,7 @@
             >
               <p
                 v-if="errors.permitType"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -169,7 +173,7 @@
           >
             <div
               v-if="submitError"
-              class="rounded-md bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive font-medium flex items-start gap-2"
+              class="rounded-[0.875rem] bg-red-50 border border-red-200 p-4 text-sm text-red-600 font-medium flex items-start gap-2"
             >
               <Icon
                 name="lucide:alert-triangle"
@@ -181,12 +185,12 @@
 
           <!-- Form Actions -->
           <div
-            class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-border/50"
+            class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-gray-200"
           >
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/95 shadow-md hover:shadow-lg active:shadow-sm"
+              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-[0.875rem] text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-teal-700 text-white hover:bg-teal-800 active:bg-teal-900 shadow-md hover:shadow-lg active:shadow-sm"
             >
               <span v-if="isSubmitting" class="flex items-center gap-2">
                 <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />

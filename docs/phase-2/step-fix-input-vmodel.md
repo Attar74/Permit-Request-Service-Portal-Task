@@ -81,6 +81,7 @@ const proxyValue = computed({
    - Gives us full control over which attributes are applied
 
 2. **Computed Proxy**
+
    ```typescript
    const proxyValue = computed({
      get: () => props.modelValue ?? '',
@@ -89,6 +90,7 @@ const proxyValue = computed({
      },
    });
    ```
+
    - Creates a reactive proxy that bridges prop reading and event emitting
 
 3. **Attribute Handling**
@@ -112,6 +114,7 @@ After this fix, the `Input` component can be used with `v-model` anywhere in the
 ### No Prop Mutation Warnings
 
 The computed proxy pattern ensures:
+
 - No Vue warnings about mutating props
 - Proper one-way data flow (props down, events up)
 - Full reactivity support
@@ -141,4 +144,3 @@ To verify the fix works:
 - [Vue 3 Props Documentation](https://vuejs.org/guide/components/props.html)
 - [Vue 3 v-model Documentation](https://vuejs.org/guide/components/v-model.html)
 - [Vue 3 Computed Properties](https://vuejs.org/guide/essentials/computed.html)
-

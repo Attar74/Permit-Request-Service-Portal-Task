@@ -64,6 +64,7 @@ Performed a comprehensive audit of Tailwind CSS configuration to ensure proper s
 ### CSS Variables Mapping
 
 All Tailwind color tokens map to CSS variables defined in `main.css`:
+
 - `border` → `hsl(var(--border))`
 - `input` → `hsl(var(--input))`
 - `ring` → `hsl(var(--ring))`
@@ -76,10 +77,12 @@ All Tailwind color tokens map to CSS variables defined in `main.css`:
 To verify Tailwind is working correctly:
 
 1. **Check if Tailwind classes are being generated**:
+
    ```bash
    cd apps/web
    npm run dev
    ```
+
    - Open browser DevTools
    - Inspect any element with Tailwind classes
    - Verify classes are applied (not showing as unknown)
@@ -104,4 +107,3 @@ To verify Tailwind is working correctly:
 - `apps/web/postcss.config.js` - PostCSS configuration
 - `apps/web/assets/css/main.css` - Global CSS with Tailwind directives
 - `apps/web/nuxt.config.ts` - Nuxt configuration with Tailwind module
-

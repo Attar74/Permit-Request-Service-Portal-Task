@@ -41,23 +41,27 @@ Enhanced form spacing, label hierarchy, error message placement, and mobile resp
 ## Spacing Rhythm
 
 ### Vertical Spacing
+
 - **Form fields**: `space-y-6` (24px between fields)
 - **Field groups**: `space-y-2` (8px between label and input)
 - **Error messages**: `mt-1.5` (6px from input)
 - **Form actions**: `pt-4` (16px from last field)
 
 ### Horizontal Spacing
+
 - **Form container**: Responsive padding (24px → 32px → 40px)
 - **Labels**: `gap-1.5` (6px between text and asterisk)
 
 ## Mobile Responsiveness
 
 ### Form Container
+
 - **Mobile**: `p-6` (24px padding)
 - **Tablet**: `p-8` (32px padding)
 - **Desktop**: `p-10` (40px padding)
 
 ### Form Actions
+
 - **Mobile**: `flex-col-reverse` (button first, better thumb reach)
 - **Desktop**: `flex-row` (horizontal layout)
 
@@ -78,12 +82,14 @@ Enhanced form spacing, label hierarchy, error message placement, and mobile resp
 ## Visual Hierarchy
 
 ### Form Structure
+
 1. **Title Section**: Clear heading and description
 2. **Form Card**: Elevated with shadow
 3. **Form Fields**: Consistent spacing and styling
 4. **Form Actions**: Separated with border, clear CTA
 
 ### Field Structure
+
 1. **Label**: Semibold, clear hierarchy
 2. **Input**: Consistent styling, clear focus states
 3. **Error**: Red, clear, accessible
@@ -91,6 +97,7 @@ Enhanced form spacing, label hierarchy, error message placement, and mobile resp
 ## Design System Alignment
 
 All spacing uses:
+
 - ✅ Design system spacing scale (Tailwind defaults)
 - ✅ Consistent rhythm throughout
 - ✅ Responsive breakpoints
@@ -99,6 +106,7 @@ All spacing uses:
 ## RTL Compatibility
 
 All form enhancements are RTL-compatible:
+
 - ✅ No hardcoded directional classes
 - ✅ Flexbox handles layout automatically
 - ✅ Spacing works in both directions
@@ -119,4 +127,3 @@ All form enhancements are RTL-compatible:
 ## Related Files
 
 - `apps/web/app/pages/apply.vue` - All form enhancements
-

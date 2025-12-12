@@ -13,12 +13,9 @@
   "dependencies": {
     "@vueuse/core": "^14.1.0",
     "@vueuse/nuxt": "^14.1.0",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-vue-next": "^0.561.0",
-    "nuxt": "^4.0.0",
-    "shadcn-vue": "^2.4.3",
-    "tailwind-merge": "^3.4.0"
+    "@nuxt/icon": "^2.1.0",
+    "@iconify-json/lucide": "^1.2.80",
+    "nuxt": "^4.0.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

@@ -38,6 +38,7 @@ Aligned all input fields to use design system tokens consistently, ensuring prop
 ## Input States
 
 ### Normal State
+
 ```css
 border-input
 bg-background
@@ -46,6 +47,7 @@ hover:border-input/80
 ```
 
 ### Focus State
+
 ```css
 focus-visible:ring-2 focus-visible:ring-ring
 focus-visible:ring-offset-2
@@ -54,6 +56,7 @@ focus-visible:shadow-sm
 ```
 
 ### Error State
+
 ```css
 border-destructive
 focus-visible:ring-destructive
@@ -61,6 +64,7 @@ focus-visible:border-destructive
 ```
 
 ### Disabled State
+
 ```css
 disabled:opacity-50
 disabled:bg-muted/50
@@ -77,6 +81,7 @@ disabled:cursor-not-allowed
 ## RTL Compatibility
 
 All input classes are RTL-compatible:
+
 - ✅ No hardcoded directional classes
 - ✅ Padding (`px-4`) works in both directions
 - ✅ Border radius works in both directions
@@ -104,4 +109,3 @@ All input classes are RTL-compatible:
 ## Related Files
 
 - `apps/web/app/pages/apply.vue` - All three input fields aligned
-

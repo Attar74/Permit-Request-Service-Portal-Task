@@ -44,6 +44,7 @@ Scanned all components for invalid, non-applied, or incorrectly configured Tailw
 ## Class Validation Summary
 
 ### Custom Color Tokens (All Valid)
+
 - ✅ `border` → `hsl(var(--border))`
 - ✅ `input` → `hsl(var(--input))`
 - ✅ `ring` → `hsl(var(--ring))`
@@ -52,6 +53,7 @@ Scanned all components for invalid, non-applied, or incorrectly configured Tailw
 - ✅ All semantic colors (primary, secondary, destructive, muted, accent, card, popover)
 
 ### Standard Tailwind Classes (All Valid)
+
 - ✅ Spacing utilities (`p-4`, `px-4`, `gap-2`, etc.)
 - ✅ Typography (`text-sm`, `font-semibold`, etc.)
 - ✅ Layout (`flex`, `grid`, `container`, etc.)
@@ -60,6 +62,7 @@ Scanned all components for invalid, non-applied, or incorrectly configured Tailw
 - ✅ Transitions (`transition-colors`, `transition-all`, etc.)
 
 ### Opacity Modifiers (All Valid)
+
 - ✅ `bg-primary/10` - 10% opacity
 - ✅ `bg-green-500/20` - 20% opacity
 - ✅ `bg-background/95` - 95% opacity
@@ -68,6 +71,7 @@ Scanned all components for invalid, non-applied, or incorrectly configured Tailw
 ## Verification
 
 All classes are now:
+
 1. ✅ Using design system tokens (no hardcoded colors)
 2. ✅ Using standard Tailwind sizes (no arbitrary values where standard exists)
 3. ✅ Properly configured in `tailwind.config.js`
@@ -83,4 +87,3 @@ All classes are now:
 
 - `apps/web/tailwind.config.js` - Added `ringOffsetColor` configuration
 - `apps/web/components/AppHeader.vue` - Fixed arbitrary font size and hardcoded color
-

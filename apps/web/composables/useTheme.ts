@@ -1,32 +1,63 @@
 export const useTheme = () => {
-  const theme = useState<'light' | 'dark'>('theme', () => 'light');
+  // Initialize from localStorage
+  const getInitialTheme = (): 'light' | 'dark' => {
+    if (process.client) {
+      const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (saved) return saved;
+
+      // Check system preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    }
+    return 'light';
+  };
+
+  const theme = useState<'light' | 'dark'>('theme', () => getInitialTheme());
+
+  const applyTheme = (newTheme: 'light' | 'dark') => {
+    if (process.client) {
+      const html = document.documentElement;
+      if (newTheme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    }
+  };
 
   const setTheme = (newTheme: 'light' | 'dark') => {
     theme.value = newTheme;
     if (process.client) {
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
       localStorage.setItem('theme', newTheme);
+      applyTheme(newTheme);
     }
   };
 
   const toggleTheme = () => {
-    setTheme(theme.value === 'light' ? 'dark' : 'light');
+    const newTheme = theme.value === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
   };
 
+  // Apply theme on client-side
   if (process.client) {
+    // Apply immediately
+    applyTheme(theme.value);
+
+    // Watch for changes and sync
+    watch(theme, (newTheme) => {
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Sync on mount
     onMounted(() => {
-      // Check localStorage for saved theme
-      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-      if (savedTheme) {
-        setTheme(savedTheme);
+      const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (saved && saved !== theme.value) {
+        theme.value = saved;
+        applyTheme(saved);
       } else {
-        // Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(prefersDark ? 'dark' : 'light');
+        applyTheme(theme.value);
       }
     });
   }
@@ -38,4 +69,3 @@ export const useTheme = () => {
     isDark: computed(() => theme.value === 'dark'),
   };
 };
-

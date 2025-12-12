@@ -9,12 +9,14 @@ Verified and ensured button components use design system tokens correctly, maint
 ### ✅ Primary Button (Submit)
 
 **Design Tokens Used:**
+
 - `bg-primary` → `hsl(var(--primary))` (Saudi Green)
 - `text-primary-foreground` → `hsl(var(--primary-foreground))` (White)
 - `focus-visible:ring-ring` → `hsl(var(--ring))` (Saudi Green)
 - `ring-offset-background` → Uses `ringOffsetColor.background` token
 
 **States:**
+
 - **Default**: `bg-primary text-primary-foreground shadow-md`
 - **Hover**: `hover:bg-primary/90 hover:shadow-lg`
 - **Active**: `active:bg-primary/95 active:shadow-sm`
@@ -28,17 +30,21 @@ The cancel button was removed by the user, so only the primary submit button rem
 ## Design System Alignment
 
 ### Border Radius
+
 - **Consistent**: `rounded-md` (uses design system `--radius`)
 
 ### Height
+
 - **Consistent**: `h-11` (44px) - matches input height
 
 ### Typography
+
 - **Font Size**: `text-sm` (0.875rem)
 - **Font Weight**: `font-semibold` (600)
 - **Font Family**: Inherits from design system
 
 ### Shadows
+
 - **Default**: `shadow-md` (medium elevation)
 - **Hover**: `shadow-lg` (increased elevation)
 - **Active**: `shadow-sm` (reduced elevation - pressed effect)
@@ -53,6 +59,7 @@ The cancel button was removed by the user, so only the primary submit button rem
 ## RTL Compatibility
 
 All button classes are RTL-compatible:
+
 - ✅ No hardcoded directional classes
 - ✅ Flexbox handles alignment automatically
 - ✅ Shadows work in both directions
@@ -60,6 +67,7 @@ All button classes are RTL-compatible:
 ## Visual Hierarchy
 
 ### Primary Button States
+
 1. **Default**: Saudi Green background, white text, medium shadow
 2. **Hover**: Lighter green (90%), larger shadow (elevation increase)
 3. **Active**: Darker green (95%), smaller shadow (pressed effect)
@@ -76,6 +84,7 @@ All button classes are RTL-compatible:
 ## Loading State
 
 The submit button maintains its loading state:
+
 - Spinner icon with animation
 - "Submitting..." text
 - All disabled styles applied
@@ -89,4 +98,3 @@ The submit button maintains its loading state:
 ## Related Files
 
 - `apps/web/app/pages/apply.vue` - Submit button verified and aligned
-

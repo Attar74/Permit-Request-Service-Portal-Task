@@ -7,29 +7,34 @@ Enhanced Tailwind configuration with container settings, improved shadow tokens,
 ## Enhancements Made
 
 ### 1. **Container Configuration**
-   - **Added**: Responsive container with center alignment
-   - **Padding**: Responsive padding scale (1rem → 3rem)
-   - **Screens**: Custom breakpoints up to 1400px for better large screen support
-   - **Impact**: Consistent spacing and max-widths across the application
+
+- **Added**: Responsive container with center alignment
+- **Padding**: Responsive padding scale (1rem → 3rem)
+- **Screens**: Custom breakpoints up to 1400px for better large screen support
+- **Impact**: Consistent spacing and max-widths across the application
 
 ### 2. **Box Shadow Tokens**
-   - **Added**: Complete shadow scale (sm, DEFAULT, md, lg, xl, 2xl, inner)
-   - **Purpose**: Provides depth hierarchy for cards, buttons, and elevated elements
-   - **Impact**: Consistent shadow usage throughout the UI
+
+- **Added**: Complete shadow scale (sm, DEFAULT, md, lg, xl, 2xl, inner)
+- **Purpose**: Provides depth hierarchy for cards, buttons, and elevated elements
+- **Impact**: Consistent shadow usage throughout the UI
 
 ### 3. **Border Radius Scale**
-   - **Added**: `xl` variant (`calc(var(--radius) + 4px)`)
-   - **Purpose**: More flexibility for larger rounded elements
-   - **Impact**: Better visual variety while maintaining design system consistency
+
+- **Added**: `xl` variant (`calc(var(--radius) + 4px)`)
+- **Purpose**: More flexibility for larger rounded elements
+- **Impact**: Better visual variety while maintaining design system consistency
 
 ### 4. **Font Size Scale**
-   - **Added**: Explicit fontSize configuration with line heights
-   - **Purpose**: Ensures consistent typography rhythm
-   - **Impact**: Better readability and visual hierarchy
+
+- **Added**: Explicit fontSize configuration with line heights
+- **Purpose**: Ensures consistent typography rhythm
+- **Impact**: Better readability and visual hierarchy
 
 ## Configuration Details
 
 ### Container Settings
+
 ```js
 container: {
   center: true,
@@ -51,6 +56,7 @@ container: {
 ```
 
 ### Shadow Scale
+
 - `sm`: Subtle elevation (1px)
 - `DEFAULT`: Standard elevation (3px)
 - `md`: Medium elevation (6px)
@@ -60,13 +66,16 @@ container: {
 - `inner`: Inset shadow for pressed states
 
 ### Border Radius Scale
+
 - `sm`: `calc(var(--radius) - 4px)` - Small elements
 - `md`: `calc(var(--radius) - 2px)` - Medium elements
 - `lg`: `var(--radius)` - Default (0.75rem)
 - `xl`: `calc(var(--radius) + 4px)` - Large elements
 
 ### Font Size Scale
+
 All sizes include explicit line heights for better readability:
+
 - `xs`: 0.75rem / 1rem
 - `sm`: 0.875rem / 1.25rem
 - `base`: 1rem / 1.5rem
@@ -79,6 +88,7 @@ All sizes include explicit line heights for better readability:
 ## Content Paths Verification
 
 ✅ All paths correctly configured:
+
 - `./components/**/*.{js,vue,ts}`
 - `./app/**/*.{js,vue,ts}`
 - `./app.vue`
@@ -89,6 +99,7 @@ All sizes include explicit line heights for better readability:
 ## Design System Alignment
 
 All enhancements maintain:
+
 - ✅ Saudi National Design System color tokens
 - ✅ CSS variable-based theming
 - ✅ Dark mode compatibility
@@ -102,4 +113,3 @@ All enhancements maintain:
 ## Related Files
 
 - `apps/web/tailwind.config.js` - Enhanced configuration
-
