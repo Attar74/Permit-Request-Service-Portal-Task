@@ -194,7 +194,7 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-[0.875rem] text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 active:bg-gray-900 dark:active:bg-gray-300 shadow-md hover:shadow-lg active:shadow-sm"
+              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-[0.875rem] text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-black dark:bg-black/20 text-white dark:text-white hover:bg-black/80 dark:hover:bg-black/20 active:bg-black/90 dark:active:bg-black/20 shadow-md hover:shadow-lg active:shadow-sm"
             >
               <span v-if="isSubmitting" class="flex items-center gap-2">
                 <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />

@@ -5,6 +5,7 @@ This document provides copy-paste commands to verify all requirements are met.
 ## Prerequisites
 
 Ensure you have:
+
 - Node.js v20.x or later
 - Docker and Docker Compose
 - npm v10.x or later
@@ -82,13 +83,14 @@ npm run dev
 ## Step 7: Verify Home Page Lists All Permits
 
 1. Open browser: `http://localhost:3000`
-2. **Expected**: 
+2. **Expected**:
    - Page title: "Permit Request Service Portal"
    - List of permit applications (if seeded)
    - Status badges with colors (Pending=yellow, Approved=green, Rejected=red)
    - Applications displayed in table (desktop) or cards (mobile)
 
 **Verify API Gateway Pattern**:
+
 ```bash
 # Check browser Network tab when loading home page
 # Should see request to: http://localhost:3000/api/permits
@@ -103,12 +105,13 @@ npm run dev
    - Email Address: "test@example.com"
    - Permit Type: "Test Permit"
 3. Click "Submit Application"
-4. **Expected**: 
+4. **Expected**:
    - Redirects to home page (`/`)
    - New application appears in the list
    - Status shows as "Pending" (yellow badge)
 
 **Verify API Gateway Pattern**:
+
 ```bash
 # Check browser Network tab when submitting
 # Should see POST request to: http://localhost:3000/api/permits
@@ -164,6 +167,7 @@ npm run dev
 ## Step 12: Verify API Gateway Pattern (Server Routes)
 
 **Check Server Routes Exist**:
+
 ```bash
 # Verify GET route exists
 ls -la apps/web/server/api/permits.get.ts
@@ -173,6 +177,7 @@ ls -la apps/web/server/api/permits.post.ts
 ```
 
 **Verify No Direct Backend Calls from Frontend**:
+
 ```bash
 # Search for direct backend URLs in frontend code
 grep -r "localhost:3001" apps/web/app/ apps/web/components/
@@ -181,6 +186,7 @@ grep -r "localhost:3001" apps/web/app/ apps/web/components/
 ```
 
 **Verify Server Routes Call Backend**:
+
 ```bash
 # Check GET route calls backend
 grep "fetch" apps/web/server/api/permits.get.ts
@@ -194,6 +200,7 @@ grep "fetch" apps/web/server/api/permits.post.ts
 ## Step 13: Verify Data Model
 
 **Check Entity**:
+
 ```bash
 # Verify all required fields exist
 grep -E "applicantName|applicantEmail|permitType|applicationStatus|submittedAt" \
@@ -201,6 +208,7 @@ grep -E "applicantName|applicantEmail|permitType|applicationStatus|submittedAt" 
 ```
 
 **Check Validation**:
+
 ```bash
 # Verify email validation
 grep "@IsEmail" apps/api/src/permits/dto/create-permit-application.dto.ts
@@ -210,6 +218,7 @@ grep "@IsNotEmpty" apps/api/src/permits/dto/create-permit-application.dto.ts
 ```
 
 **Check Status Enum**:
+
 ```bash
 # Verify enum values
 grep -A 3 "ApplicationStatus" apps/api/src/permits/entities/permit-application.entity.ts
@@ -220,18 +229,21 @@ grep -A 3 "ApplicationStatus" apps/api/src/permits/entities/permit-application.e
 ## Step 14: Verify Tech Stack
 
 **Check Nuxt Version**:
+
 ```bash
 grep '"nuxt"' apps/web/package.json
 # Should show: "nuxt": "^4.0.0"
 ```
 
 **Check NestJS**:
+
 ```bash
 grep "@nestjs" apps/api/package.json | head -5
 # Should show multiple @nestjs packages
 ```
 
 **Check PostgreSQL**:
+
 ```bash
 grep "postgres" docker/docker-compose.yml
 # Should show: image: postgres:16-alpine
@@ -240,12 +252,14 @@ grep "postgres" docker/docker-compose.yml
 ## Step 15: Verify Deliverables
 
 **Check README**:
+
 ```bash
 # Verify setup steps exist
 grep -A 10 "Quick Start" README.md
 ```
 
 **Check Presentation Notes**:
+
 ```bash
 # Verify presentation notes exist
 head -5 docs/PRESENTATION_NOTES.md
@@ -253,6 +267,7 @@ head -5 docs/PRESENTATION_NOTES.md
 ```
 
 **Check Monorepo Structure**:
+
 ```bash
 ls -d apps/* docs/ docker/
 # Should show: apps/api, apps/web, docs/, docker/
@@ -301,6 +316,7 @@ Save as `verify.sh`, make executable (`chmod +x verify.sh`), and run: `./verify.
 ## Troubleshooting
 
 ### Database Connection Issues
+
 ```bash
 # Check if PostgreSQL is running
 docker ps | grep postgres
@@ -313,6 +329,7 @@ docker compose -f docker/docker-compose.yml restart
 ```
 
 ### Port Already in Use
+
 ```bash
 # Check what's using port 3000
 lsof -i :3000
@@ -325,6 +342,7 @@ kill -9 <PID>
 ```
 
 ### Module Not Found
+
 ```bash
 # Reinstall dependencies
 cd apps/api && rm -rf node_modules && npm install
@@ -344,7 +362,6 @@ After completing all verification steps, you should have:
 ✅ RTL support works (layout flips)  
 ✅ Responsive design works (mobile/tablet/desktop)  
 ✅ All API calls go through Nuxt server routes  
-✅ All data model fields are present and validated  
+✅ All data model fields are present and validated
 
 If all checks pass, the application meets all requirements from the Task PDF.
-
