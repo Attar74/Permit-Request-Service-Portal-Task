@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { PermitApplication } from './permits/entities/permit-application.entity';
 import { PermitsModule } from './permits/permits.module';
 
@@ -31,7 +29,5 @@ import { PermitsModule } from './permits/permits.module';
     // Permits module
     PermitsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

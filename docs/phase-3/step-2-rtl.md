@@ -17,6 +17,7 @@ Enhanced RTL (Right-to-Left) support throughout the application. Implemented aut
 ### Test RTL Support
 
 1. Start development server:
+
    ```bash
    cd apps/web
    npm run dev
@@ -92,6 +93,7 @@ setRTL(true);
 ### Document Direction
 
 The composable automatically sets:
+
 - `dir` attribute on `<html>` element
 - `lang` attribute for proper language declaration
 - Updates when locale changes
@@ -111,7 +113,8 @@ The composable automatically sets:
 
 ### Component Adjustments
 
-All shadcn-vue components are RTL-aware:
+All components are RTL-aware:
+
 - Buttons: Icon positioning adjusts
 - Forms: Label and input alignment
 - Tables: Column alignment
@@ -122,11 +125,13 @@ All shadcn-vue components are RTL-aware:
 ### Manual Testing
 
 1. **Browser Console**:
+
    ```javascript
    document.documentElement.setAttribute('dir', 'rtl');
    ```
 
 2. **Locale Change**:
+
    ```typescript
    // In component
    const { setLocale } = useRTL();
@@ -175,9 +180,12 @@ All shadcn-vue components are RTL-aware:
 To load Arabic fonts, add to `app.vue` or layout:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 ## Future Enhancements
@@ -216,4 +224,3 @@ No new environment variables added in this step.
 git add apps/web/composables/useRTL.ts apps/web/assets/css/main.css
 git commit -m "phase(3): step(3.2) - RTL support"
 ```
-

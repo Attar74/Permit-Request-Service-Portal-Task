@@ -6,7 +6,7 @@ A full-stack application for managing permit requests, built with Nuxt 4, NestJS
 
 This project follows a monorepo structure with clear separation of concerns:
 
-- **apps/web**: Nuxt 4 frontend application with shadcn-vue components
+- **apps/web**: Nuxt 4 frontend application with Tailwind CSS
 - **apps/api**: NestJS backend API with TypeORM
 - **docs/**: Comprehensive documentation for each phase
 - **docker/**: Docker configuration for PostgreSQL
@@ -202,18 +202,12 @@ curl -X POST http://localhost:3001/permits \
 │       ├── app/
 │       │   ├── layouts/     # Layout components
 │       │   └── pages/       # Page components
-│       ├── components/
-│       │   └── ui/          # shadcn-vue components
+│       ├── components/       # Vue components
 │       ├── server/
 │       │   └── api/         # Nuxt Server Routes (API Gateway)
 │       ├── types/           # TypeScript types
 │       └── package.json
 ├── docs/                    # Documentation
-│   ├── phase-0/             # Planning & setup
-│   ├── phase-1/             # Database & backend
-│   ├── phase-2/             # Nuxt web app
-│   ├── phase-3/             # Design system & RTL
-│   └── phase-4/             # Quality & delivery
 ├── docker/
 │   └── docker-compose.yml   # PostgreSQL configuration
 ├── .env.example             # Environment variables template
@@ -224,15 +218,20 @@ curl -X POST http://localhost:3001/permits \
 
 This application follows the **Saudi National Design System (SDGA)** guidelines:
 
-- **Components**: shadcn-vue component library
-- **Styling**: Tailwind CSS with custom design tokens
-- **RTL Support**: Full right-to-left support for Arabic
+- **Components**: Native HTML elements styled with Tailwind CSS
+- **Styling**: Tailwind CSS with explicit utility classes
+- **Icons**: @nuxt/icon with Lucide icon set
+- **RTL Support**: Full right-to-left support for Arabic with localization
+- **Dark Mode**: Full dark mode support with theme persistence
 - **Responsive**: Mobile-first responsive design
 - **Accessibility**: WCAG AA compliant
 
 ### Key Features
 
-- ✅ Modern UI with shadcn-vue components
+- ✅ Modern UI with pure Tailwind CSS
+- ✅ Drawer navigation component
+- ✅ Dark mode with theme persistence
+- ✅ Localization (English/Arabic)
 - ✅ RTL (Right-to-Left) support for Arabic
 - ✅ Responsive design (mobile, tablet, desktop)
 - ✅ Type-safe API with TypeScript
@@ -316,15 +315,13 @@ docker exec -it permit-service-postgres psql -U postgres -d permit_service
 
 ## 📚 Documentation
 
-Comprehensive documentation is available in the `docs/` directory:
+Comprehensive documentation is available in the `docs/` directory, including:
 
-- **Phase 0**: Planning & Repository Setup
-- **Phase 1**: Database & Backend
-- **Phase 2**: Nuxt 4 Web App
-- **Phase 3**: Design System + RTL + Responsiveness
-- **Phase 4**: Quality, DX, and Delivery
-
-Each phase has detailed step-by-step documentation explaining what was done, why it was done, and how to use it.
+- Architecture overview
+- Phase-by-phase implementation details
+- Requirements checklist
+- Verification steps
+- Presentation notes
 
 ## 🔄 API Gateway Pattern
 
@@ -423,11 +420,11 @@ Examples:
 - `phase(0): step(0.1) - Create monorepo structure and baseline docs`
 - `phase(1): step(1.4) - Implement Backend API endpoints`
 
-See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for details.
+See `docs/CONTRIBUTING.md` for details.
 
 ## 🏛️ Technology Stack
 
-- **Frontend**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, shadcn-vue
+- **Frontend**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, @nuxt/icon
 - **Backend**: NestJS, TypeScript, TypeORM
 - **Database**: PostgreSQL 16
 - **Design System**: Saudi National Design System (SDGA)
@@ -448,5 +445,3 @@ See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for details.
 - [NestJS](https://nestjs.com/)
 
 ---
-
-For detailed implementation documentation, see the `docs/` directory.

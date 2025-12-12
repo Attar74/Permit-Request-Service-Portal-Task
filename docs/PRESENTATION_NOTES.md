@@ -15,16 +15,19 @@
 
 ### Technology Stack
 
-- **Frontend**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, shadcn-vue
+- **Frontend**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS
 - **Backend**: NestJS, TypeORM, PostgreSQL
 - **Design**: Saudi National Design System (SDGA) compliant
 - **Infrastructure**: Docker, Docker Compose
+- **Icons**: @nuxt/icon with Lucide icons
 
 ### Key Features
 
-- ✅ Modern UI with shadcn-vue components
-- ✅ Full RTL support for Arabic
+- ✅ Modern UI with pure Tailwind CSS
+- ✅ Full RTL support for Arabic with localization
+- ✅ Dark mode support
 - ✅ Responsive design (mobile-first)
+- ✅ Drawer navigation component
 - ✅ Type-safe end-to-end
 - ✅ API Gateway pattern
 - ✅ Comprehensive documentation
@@ -138,18 +141,19 @@ Frontend → Nuxt Server Route → NestJS Backend → PostgreSQL
 
 **Integration**:
 
-- **Components**: shadcn-vue component library
-- **Styling**: Tailwind CSS with custom design tokens
+- **Components**: Native HTML elements styled with Tailwind CSS
+- **Styling**: Tailwind CSS with explicit utility classes
 - **Colors**: Saudi Green/Blue primary color
 - **Typography**: Inter (LTR), Cairo/Tajawal (RTL)
 - **Spacing**: Consistent spacing scale
+- **Icons**: Lucide icon set via @nuxt/icon
 
-**Why shadcn-vue**:
+**Design Approach**:
 
-- **Quality**: High-quality, accessible components
-- **Customizable**: Easy to customize with Tailwind
+- **Pure Tailwind**: Direct utility classes for maximum control
+- **Accessible**: WCAG AA compliant components
 - **Type-safe**: Full TypeScript support
-- **Modern**: Latest best practices
+- **Modern**: Latest best practices with explicit styling
 
 ### RTL Support
 
@@ -326,7 +330,7 @@ Questions welcome!
 
 ### Tech Stack
 
-- Frontend: Nuxt 4, Vue 3, TypeScript, Tailwind, shadcn-vue
+- Frontend: Nuxt 4, Vue 3, TypeScript, Tailwind CSS
 - Backend: NestJS, TypeORM, PostgreSQL
 - Design: Saudi National Design System
 

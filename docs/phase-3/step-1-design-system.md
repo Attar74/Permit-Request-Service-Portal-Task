@@ -1,16 +1,16 @@
-# Phase 3 - Step 3.1: Integrate Saudi National Design System with shadcn/ui
+# Phase 3 - Step 3.1: Integrate Saudi National Design System with Tailwind CSS
 
 ## What Was Done
 
-Integrated shadcn-vue (Vue port of shadcn/ui) component library with Tailwind CSS, configured design tokens based on Saudi National Design System (SDGA) guidelines, and updated all pages to use the new component system.
+Integrated Tailwind CSS with explicit utility classes, configured design system based on Saudi National Design System (SDGA) guidelines, and implemented all UI components using native HTML elements styled with Tailwind CSS.
 
 ## Why It Was Done
 
-- **shadcn/ui**: High-quality, accessible, customizable component library
+- **Pure Tailwind CSS**: Direct utility classes for maximum control and clarity
 - **Design System Alignment**: Matches Saudi National Design System (SDGA) from Figma
 - **Consistency**: Unified design language across the application
-- **Accessibility**: Built-in accessibility features
-- **Customization**: Easy to customize with Tailwind CSS
+- **Accessibility**: WCAG AA compliant components
+- **Maintainability**: Explicit classes are easier to understand and modify
 - **Type Safety**: Full TypeScript support
 
 ## Commands to Run
@@ -36,164 +36,179 @@ npm run dev
 1. **apps/web/nuxt.config.ts**
    - Added `@nuxtjs/tailwindcss` module
    - Added `@vueuse/nuxt` module
+   - Added `@nuxt/icon` module for icon support
    - Added CSS import: `~/assets/css/main.css`
 
 2. **apps/web/tailwind.config.js**
-   - Configured Tailwind CSS with Saudi Design System colors
-   - Extended theme with custom colors, fonts, and border radius
+   - Configured Tailwind CSS with explicit utility classes
    - Content paths for component scanning
+   - Safelist for commonly used classes
 
 3. **apps/web/assets/css/main.css**
-   - Tailwind directives
-   - CSS variables for design tokens (colors, spacing, fonts)
-   - Saudi National Design System color palette
+   - Tailwind directives (`@tailwind base`, `@tailwind components`, `@tailwind utilities`)
    - RTL support base styles
    - Light and dark theme support
+   - Font smoothing and selection styles
 
-4. **apps/web/lib/utils.ts**
-   - `cn()` utility function for merging Tailwind classes
-   - Uses `clsx` and `tailwind-merge`
+### Components Created
 
-### shadcn-vue Components Created
+4. **apps/web/components/AppHeader.vue**
+   - Header component with logo, theme toggle, and language switcher
+   - Mobile drawer toggle button
+   - Full-width sticky header
+   - Dark mode support
 
-5. **apps/web/components/ui/button.vue**
-   - Button component with variants (default, destructive, outline, secondary, ghost, link)
-   - Size variants (default, sm, lg, icon)
-   - Full accessibility support
+5. **apps/web/components/AppDrawer.vue**
+   - Sidebar drawer navigation component
+   - Toggleable width (icon-only when closed, icon+text when open)
+   - Responsive behavior (hidden on mobile, visible on desktop)
+   - RTL-aware positioning and animations
+   - Navigation buttons with active state
 
-6. **apps/web/components/ui/card.vue**
-   - Card container component
-   - CardHeader, CardTitle, CardContent sub-components
+6. **apps/web/components/PermitApplicationsList.vue**
+   - List and grid view toggle
+   - Status badges with color coding
+   - Responsive table and card layouts
+   - Localized text using `useTranslations`
+   - Persistent view mode preference
 
-7. **apps/web/components/ui/input.vue**
-   - Input component with focus states
-   - Disabled states
-   - Placeholder styling
+### Composables
 
-8. **apps/web/components/ui/label.vue**
-   - Label component for form fields
-   - Accessibility support
+7. **apps/web/composables/useRTL.ts**
+   - RTL detection and management
+   - Locale switching (English/Arabic)
+   - Document direction management
+   - SSR-safe state management
 
-9. **apps/web/components/ui/badge.vue**
-   - Badge component with variants
-   - Status-specific variants (pending, approved, rejected)
-   - Color-coded status badges
+8. **apps/web/composables/useTheme.ts**
+   - Dark mode toggle
+   - Theme persistence in localStorage
+   - System preference detection
+   - SSR-safe state management
 
-10. **apps/web/components/ui/table.vue**
-    - Table components (Table, TableHeader, TableBody, TableRow, TableHead, TableCell)
-    - Responsive table wrapper
-    - Hover states
+9. **apps/web/composables/useTranslations.ts**
+   - Centralized translation system
+   - English and Arabic translations
+   - Type-safe translation keys
+   - Locale-aware translations
 
 ### Updated Pages
 
-11. **apps/web/app/layouts/default.vue**
-    - Updated to use Tailwind CSS classes
-    - Responsive navigation
-    - Container-based layout
-    - RTL support integration
+10. **apps/web/app/layouts/default.vue**
+    - Integrated AppHeader and AppDrawer
+    - Dynamic margin adjustment for drawer
+    - RTL-aware layout
+    - Dark mode support
 
-12. **apps/web/app/pages/index.vue**
-    - Migrated to shadcn-vue components
-    - Uses Card, Table, Badge components
-    - Improved loading and error states
-    - Better visual hierarchy
+11. **apps/web/app/pages/index.vue**
+    - Uses PermitApplicationsList component
+    - Localized page title and description
+    - Dark mode support
 
-13. **apps/web/app/pages/apply.vue**
-    - Migrated to shadcn-vue components
-    - Uses Card, Input, Label, Button components
-    - Improved form layout and spacing
-    - Better error display
+12. **apps/web/app/pages/apply.vue**
+    - Native HTML form elements styled with Tailwind
+    - Client-side validation
+    - Error display with localized messages
+    - Dark mode support
+    - Responsive layout
 
-### RTL Support
+## Design System Implementation
 
-14. **apps/web/composables/useRTL.ts**
-    - RTL detection composable
-    - Locale-based RTL switching
-    - Document direction management
+### Colors
 
-15. **apps/web/app.vue**
-    - Root component with RTL support
-    - Layout wrapper
+Using explicit Tailwind color utilities:
 
-## Design System Tokens
-
-### Colors (Saudi National Design System)
-
-Based on SDGA guidelines and shadcn/ui color system:
-
-- **Primary**: Saudi Green/Blue (`221.2 83.2% 53.3%`)
-- **Secondary**: Neutral grays
-- **Destructive**: Red for errors
-- **Muted**: Subtle backgrounds
-- **Accent**: Interactive elements
+- **Primary**: `bg-teal-700`, `text-teal-700` (Saudi Green)
+- **Background**: `bg-white`, `bg-gray-50` (light), `bg-gray-900`, `bg-gray-800` (dark)
+- **Text**: `text-gray-900`, `text-gray-600` (light), `text-gray-100`, `text-gray-400` (dark)
+- **Borders**: `border-gray-200`, `border-gray-300` (light), `border-gray-700` (dark)
 - **Status Colors**:
-  - Pending: Yellow
-  - Approved: Green
-  - Rejected: Red
+  - Pending: `bg-yellow-500/10`, `text-yellow-700`, `border-yellow-500/30`
+  - Approved: `bg-green-500/10`, `text-green-700`, `border-green-500/30`
+  - Rejected: `bg-red-500/10`, `text-red-700`, `border-red-500/30`
 
 ### Typography
 
-- **Sans Font**: Inter, Segoe UI, Tahoma (LTR)
-- **Arabic Font**: Cairo, Tajawal (RTL)
-- Font feature settings for better rendering
+- **Fonts**: System fonts (Inter, Segoe UI for LTR; Cairo, Tajawal for RTL)
+- **Sizes**: Responsive text sizes (`text-sm`, `text-base`, `text-lg`, `text-xl`, etc.)
+- **Weights**: `font-medium`, `font-semibold`, `font-bold`
 
-### Spacing & Layout
+### Spacing
 
-- Consistent spacing scale
+- Consistent spacing scale using Tailwind defaults
+- Responsive padding and margins
 - Container-based layouts
-- Responsive breakpoints
 
-## Component Usage Examples
+### Border Radius
+
+- Consistent rounded corners: `rounded-[0.875rem]`, `rounded-[1rem]`
+- Button radius: `rounded-[0.875rem]`
+- Card radius: `rounded-[1rem]`
+
+### Shadows
+
+- Subtle shadows: `shadow-sm`, `shadow-md`, `shadow-lg`
+- Hover elevation: `hover:shadow-lg`
+- Active state: `active:shadow-sm`
+
+## Component Examples
 
 ### Button
 
 ```vue
-<Button>Default</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="destructive">Delete</Button>
-<Button size="sm">Small</Button>
+<button
+  class="bg-black dark:bg-black/20 text-white dark:text-white hover:bg-black/80 dark:hover:bg-black/20 rounded-[0.875rem] shadow-md hover:shadow-lg"
+>
+  Submit
+</button>
+```
+
+### Input
+
+```vue
+<input
+  type="text"
+  class="w-full h-11 px-4 py-2.5 rounded-[0.875rem] border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+/>
 ```
 
 ### Card
 
 ```vue
-<Card>
-  <CardHeader>
-    <CardTitle>Title</CardTitle>
-  </CardHeader>
-  <CardContent>Content</CardContent>
-</Card>
-```
-
-### Badge
-
-```vue
-<Badge variant="pending">Pending</Badge>
-<Badge variant="approved">Approved</Badge>
-<Badge variant="rejected">Rejected</Badge>
-```
-
-### Input & Label
-
-```vue
-<div class="space-y-2">
-  <Label for="email">Email</Label>
-  <Input id="email" type="email" placeholder="Enter email" />
+<div
+  class="bg-white dark:bg-gray-800 rounded-[1rem] border border-gray-200 dark:border-gray-700 shadow-md p-6"
+>
+  <!-- Card content -->
 </div>
 ```
 
-## Responsive Design
+## Features
 
-All components are responsive by default:
+### Dark Mode
 
-- **Mobile**: Full-width, stacked layouts
-- **Tablet**: Adjusted spacing and layout
-- **Desktop**: Optimal use of space
+- Automatic system preference detection
+- Manual toggle via theme switcher
+- Persistent preference in localStorage
+- Smooth transitions between themes
+
+### Localization
+
+- English and Arabic support
+- Centralized translation system
+- Locale-aware date formatting
+- RTL-aware layout adjustments
+
+### Responsive Design
+
+- Mobile-first approach
+- Breakpoints: `sm:`, `md:`, `lg:`, `xl:`
+- Adaptive layouts for all screen sizes
+- Touch-friendly interactive elements
 
 ## Accessibility Features
 
 - **Keyboard Navigation**: All interactive elements are keyboard accessible
-- **Focus States**: Clear focus indicators
+- **Focus States**: Clear focus indicators with `focus-visible:ring-2 focus-visible:ring-blue-500`
 - **ARIA Labels**: Proper labeling for screen readers
 - **Color Contrast**: WCAG AA compliant colors
 - **Semantic HTML**: Proper HTML structure
@@ -207,28 +222,33 @@ No new environment variables added in this step.
 ### Visual Testing
 
 1. Start development server:
+
    ```bash
    cd apps/web
    npm run dev
    ```
 
 2. Visit pages:
-   - `http://localhost:3000` - Home page with table
+   - `http://localhost:3000` - Home page with applications list
    - `http://localhost:3000/apply` - Apply form
 
 3. Verify:
    - Components render correctly
    - Colors match design system
+   - Dark mode works
+   - RTL layout works
+   - Localization works
    - Spacing is consistent
    - Typography is readable
 
-### Component Testing
+### Feature Testing
 
-Test each component variant:
-- Button: All variants and sizes
-- Badge: All status variants
-- Input: Focus, disabled, error states
-- Card: Different content layouts
+- Toggle dark mode
+- Switch language (English/Arabic)
+- Toggle drawer open/closed
+- Test responsive layouts
+- Test form validation
+- Test navigation
 
 ## Next Steps
 
@@ -237,14 +257,13 @@ Test each component variant:
 
 ## References
 
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
 - [Saudi National Design System (SDGA)](https://www.figma.com/@sdga)
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
+- [Nuxt Icon Documentation](https://nuxt.com/modules/icon)
 
 ## Commit
 
 ```bash
 git add apps/web/
-git commit -m "phase(3): step(3.1) - Integrate Saudi National Design System with shadcn/ui"
+git commit -m "phase(3): step(3.1) - Integrate Saudi National Design System with Tailwind CSS"
 ```
-

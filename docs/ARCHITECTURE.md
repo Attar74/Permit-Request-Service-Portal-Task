@@ -41,21 +41,25 @@ This document explains the overall architecture of the Permit Request Service Po
 The Nuxt Server Routes act as an **API Gateway** between the frontend and backend. This pattern provides several benefits:
 
 ### 1. **Security**
+
 - Backend API URLs are never exposed to the client
 - Sensitive configuration (API keys, internal URLs) stays on the server
 - Prevents direct client access to backend endpoints
 
 ### 2. **Centralized API Management**
+
 - Single point of entry for all API calls
 - Consistent error handling and response formatting
 - Request/response transformation in one place
 
 ### 3. **Flexibility**
+
 - Easy to switch backend implementations without frontend changes
 - Can add caching, rate limiting, or authentication at the gateway level
 - Enables API versioning strategies
 
 ### 4. **Development Experience**
+
 - Frontend developers work with a consistent API interface
 - Backend can evolve independently
 - Easier to mock or stub during development
@@ -63,17 +67,22 @@ The Nuxt Server Routes act as an **API Gateway** between the frontend and backen
 ## Technology Stack
 
 ### Frontend: Nuxt 4
+
 - **Framework**: Nuxt 4 (latest) with `app/` directory structure
 - **Design System**: Saudi National Design System (Platforms Code)
-- **Features**: RTL support, responsive design, SSR/SSG
+- **Styling**: Tailwind CSS with explicit utility classes
+- **Icons**: @nuxt/icon with Lucide icon set
+- **Features**: RTL support, dark mode, localization, responsive design, SSR/SSG
 
 ### Backend: NestJS
+
 - **Framework**: NestJS (TypeScript)
 - **Database ORM**: TypeORM or Prisma (to be determined)
 - **Validation**: class-validator, class-transformer
 - **API Style**: RESTful
 
 ### Database: PostgreSQL
+
 - **Version**: Latest stable
 - **Connection**: Via Docker Compose for local development
 - **Migrations**: Managed by TypeORM/Prisma
@@ -131,9 +140,11 @@ The Nuxt Server Routes act as an **API Gateway** between the frontend and backen
 ## Environment Variables
 
 ### Frontend (Nuxt)
+
 - `API_BASE_URL`: Backend API base URL (e.g., `http://localhost:3001`)
 
 ### Backend (NestJS)
+
 - `DATABASE_HOST`: PostgreSQL host
 - `DATABASE_PORT`: PostgreSQL port
 - `DATABASE_USER`: Database user
@@ -146,4 +157,3 @@ The Nuxt Server Routes act as an **API Gateway** between the frontend and backen
 - No direct database connections from frontend
 - Environment variables are server-side only
 - Input validation at both frontend (UX) and backend (security) levels
-

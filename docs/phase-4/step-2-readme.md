@@ -76,7 +76,7 @@ No additional commands needed. The README is documentation only.
 ### 6. Design System
 
 - Saudi National Design System compliance
-- Component library (shadcn-vue)
+- Pure Tailwind CSS with native HTML elements
 - RTL support
 - Responsive design
 - Accessibility
@@ -174,4 +174,3 @@ To verify the README is complete:
 git add README.md
 git commit -m "phase(4): step(4.2) - Final README with end-to-end setup"
 ```
-
