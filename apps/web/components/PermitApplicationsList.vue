@@ -158,7 +158,7 @@
               >
                 <td class="p-6 align-middle">
                   <span class="font-mono text-xs font-semibold text-muted-foreground">
-                    #{{ application.id.substring(0, 8) }}
+                    #{{ String(application.id).substring(0, 8) }}
                   </span>
                 </td>
                 <td class="p-6 align-middle">
@@ -224,7 +224,7 @@
               <h3
                 class="text-lg font-bold leading-tight tracking-tight text-foreground mb-1.5"
               >
-                Application #{{ application.id.substring(0, 8) }}
+                Application #{{ String(application.id).substring(0, 8) }}
               </h3>
               <p class="text-xs text-muted-foreground font-medium flex items-center gap-1.5">
                 <Icon name="lucide:calendar" class="h-3.5 w-3.5" />
