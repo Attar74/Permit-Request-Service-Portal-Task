@@ -10,7 +10,7 @@
     </div>
 
     <div
-      class="rounded-lg border-2 border-border bg-card text-card-foreground shadow-lg"
+      class="rounded-md border border-border bg-card text-card-foreground shadow-md"
     >
       <div class="p-8 sm:p-10">
         <form @submit.prevent="handleSubmit" class="space-y-6">

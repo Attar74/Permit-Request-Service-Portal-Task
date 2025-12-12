@@ -129,7 +129,7 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-popover shadow-lg z-50 overflow-hidden"
+              class="absolute right-0 mt-2 w-48 rounded-md border border-border bg-popover shadow-lg z-50 overflow-hidden"
             >
               <div class="py-1">
                 <button
