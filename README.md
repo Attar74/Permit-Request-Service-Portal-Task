@@ -444,7 +444,6 @@ See [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for details.
 ## 🙏 Acknowledgments
 
 - [Saudi National Design System (SDGA)](https://www.figma.com/@sdga)
-- [shadcn/ui](https://ui.shadcn.com/)
 - [Nuxt](https://nuxt.com/)
 - [NestJS](https://nestjs.com/)
 
