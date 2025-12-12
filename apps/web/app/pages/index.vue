@@ -1,13 +1,19 @@
 <template>
   <div>
     <div class="mb-8">
-      <h1 class="text-3xl font-bold tracking-tight">Permit Request Service Portal</h1>
-      <p class="text-muted-foreground mt-2">View all permit applications below</p>
+      <h1 class="text-3xl font-bold tracking-tight">
+        Permit Request Service Portal
+      </h1>
+      <p class="text-muted-foreground mt-2">
+        View all permit applications below
+      </p>
     </div>
 
     <Card v-if="pending">
       <CardContent class="py-8">
-        <div class="text-center text-muted-foreground">Loading applications...</div>
+        <div class="text-center text-muted-foreground">
+          Loading applications...
+        </div>
       </CardContent>
     </Card>
 
@@ -52,7 +58,9 @@
                 <TableCell>{{ application.applicantEmail }}</TableCell>
                 <TableCell>{{ application.permitType }}</TableCell>
                 <TableCell>
-                  <Badge :variant="getStatusVariant(application.applicationStatus)">
+                  <Badge
+                    :variant="getStatusVariant(application.applicationStatus)"
+                  >
                     {{ application.applicationStatus }}
                   </Badge>
                 </TableCell>
@@ -69,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import type { PermitApplication, ApplicationStatus } from '~/types/permit';
+import type { ApplicationStatus, PermitApplication } from '~/types/permit';
 
 const { data, pending, error } =
   await useFetch<PermitApplication[]>('/api/permits');

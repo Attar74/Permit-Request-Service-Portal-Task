@@ -1,8 +1,8 @@
 <template>
   <div class="max-w-2xl mx-auto">
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold tracking-tight">Apply for a Permit</h1>
-      <p class="text-muted-foreground mt-2">
+    <div class="mb-6 sm:mb-8">
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Apply for a Permit</h1>
+      <p class="text-muted-foreground mt-2 text-sm sm:text-base">
         Fill out the form below to submit your permit application
       </p>
     </div>
@@ -69,7 +69,11 @@
           </div>
 
           <div class="flex items-center gap-4">
-            <Button type="submit" :disabled="isSubmitting" class="w-full sm:w-auto">
+            <Button
+              type="submit"
+              :disabled="isSubmitting"
+              class="w-full sm:w-auto"
+            >
               <span v-if="isSubmitting">Submitting...</span>
               <span v-else>Submit Application</span>
             </Button>

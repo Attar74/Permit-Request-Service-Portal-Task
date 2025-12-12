@@ -1,7 +1,9 @@
 <template>
   <div :dir="dir" class="min-h-screen bg-background">
     <header class="border-b">
-      <nav class="container mx-auto flex items-center justify-between px-4 py-4">
+      <nav
+        class="container mx-auto flex items-center justify-between px-4 py-4"
+      >
         <NuxtLink to="/" class="text-xl font-bold text-foreground">
           Permit Request Portal
         </NuxtLink>
