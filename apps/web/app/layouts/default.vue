@@ -32,7 +32,7 @@ import ToastContainer from '../../components/ToastContainer.vue';
 import { useRTL } from '../../composables/useRTL';
 
 const { dir, isRTL } = useRTL();
-const drawerOpen = ref(false); // Closed by default on mobile, will be true on desktop
+const drawerOpen = ref(true); // Open by default
 
 const drawerRef = ref<InstanceType<typeof AppDrawer> | null>(null);
 
@@ -43,9 +43,6 @@ const toggleDrawer = () => {
 // Listen for drawer toggle events from header
 onMounted(() => {
   if (typeof window !== 'undefined') {
-    // Set initial state: open on desktop, closed on mobile
-    drawerOpen.value = window.innerWidth >= 768;
-
     window.addEventListener('toggle-drawer', toggleDrawer);
   }
 });
