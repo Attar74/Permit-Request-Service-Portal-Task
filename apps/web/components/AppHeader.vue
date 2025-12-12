@@ -1,25 +1,32 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md supports-[backdrop-filter]:bg-card/80 shadow-md border-b border-border"
+    class="sticky top-0 z-50 w-full border-b border-border/40 bg-card/98 backdrop-blur-xl supports-[backdrop-filter]:bg-card/95 shadow-sm"
   >
     <nav
-      class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8"
+      class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8"
     >
       <!-- Logo/Brand -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
         <NuxtLink
           to="/"
-          class="flex items-center gap-3 text-xl font-bold text-foreground transition-all hover:opacity-80 active:scale-95 group"
+          class="flex items-center gap-3 text-foreground transition-all hover:opacity-90 active:scale-[0.98] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md"
         >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/15"
+          >
+            <Icon name="lucide:file-check-2" class="h-6 w-6" />
+          </div>
           <div class="flex flex-col">
             <span
-              class="hidden sm:inline-block text-base font-bold leading-tight"
+              class="hidden sm:inline-block text-lg font-bold leading-tight text-foreground"
             >
               Permit Request Portal
             </span>
-            <span class="sm:hidden text-base font-bold">Portal</span>
+            <span class="sm:hidden text-base font-bold text-foreground"
+              >Portal</span
+            >
             <span
-              class="hidden sm:inline-block text-xs font-normal text-muted-foreground leading-tight"
+              class="hidden sm:inline-block text-xs font-normal text-muted-foreground leading-tight mt-0.5"
             >
               خدمة طلبات التصاريح
             </span>
@@ -28,36 +35,42 @@
       </div>
 
       <!-- Navigation Links (Desktop) -->
-      <div class="hidden md:flex items-center gap-1">
+      <div class="hidden md:flex items-center gap-2">
         <NuxtLink
           to="/"
-          class="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md group"
-          active-class="!text-primary !bg-primary/10 font-semibold"
+          class="relative px-5 py-2.5 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          active-class="!text-primary !bg-primary/10"
         >
-          <span class="relative z-10">{{ t('Home') }}</span>
+          <span class="relative z-10 flex items-center gap-2">
+            <Icon name="lucide:home" class="h-4 w-4" />
+            {{ t('Home') }}
+          </span>
           <span
-            class="absolute inset-0 rounded-md bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+            class="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           ></span>
         </NuxtLink>
         <NuxtLink
           to="/apply"
-          class="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md group"
-          active-class="!text-primary !bg-primary/10 font-semibold"
+          class="relative px-5 py-2.5 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          active-class="!text-primary !bg-primary/10"
         >
-          <span class="relative z-10">{{ t('Apply') }}</span>
+          <span class="relative z-10 flex items-center gap-2">
+            <Icon name="lucide:file-plus" class="h-4 w-4" />
+            {{ t('Apply') }}
+          </span>
           <span
-            class="absolute inset-0 rounded-md bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"
+            class="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
           ></span>
         </NuxtLink>
       </div>
 
       <!-- Right Side Actions -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-3">
         <!-- Mobile Menu Button -->
         <button
           v-if="!isMobileMenuOpen"
           @click="isMobileMenuOpen = true"
-          class="md:hidden h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+          class="md:hidden h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Open menu')"
         >
@@ -66,7 +79,7 @@
         <button
           v-else
           @click="isMobileMenuOpen = false"
-          class="md:hidden h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+          class="md:hidden h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Close menu')"
         >
@@ -74,12 +87,12 @@
         </button>
 
         <!-- Divider (Desktop) -->
-        <div class="h-6 w-px bg-border mx-1 hidden md:block"></div>
+        <div class="h-8 w-px bg-border/60 mx-1 hidden md:block"></div>
 
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-9 w-9 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md"
+          class="h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -103,13 +116,12 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-9 px-3 rounded-md border border-border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-medium transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 shadow-sm hover:shadow-md"
+            class="h-10 px-4 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
           >
-            <span v-if="locale === 'en'">🇬🇧</span>
-            <span v-else>🇸🇦</span>
+            <span class="text-lg leading-none">{{ locale === 'en' ? '🇬🇧' : '🇸🇦' }}</span>
             <Icon
               name="lucide:chevron-down"
               class="h-4 w-4 transition-transform duration-200"
@@ -129,12 +141,12 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-48 rounded-md border border-border bg-popover shadow-lg z-50 overflow-hidden"
+              class="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-popover shadow-xl z-50 overflow-hidden backdrop-blur-sm"
             >
-              <div class="py-1">
+              <div class="py-1.5">
                 <button
                   @click="setLocale('en')"
-                  class="w-full px-4 py-2.5 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground"
+                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                   :class="
                     locale === 'en'
                       ? 'bg-accent text-accent-foreground'
@@ -142,22 +154,23 @@
                   "
                   type="button"
                 >
-                  <span class="text-lg">🇬🇧</span>
-                  <div class="flex flex-col">
-                    <span class="font-semibold">English</span>
-                    <span class="text-xs text-muted-foreground"
+                  <span class="text-xl leading-none">🇬🇧</span>
+                  <div class="flex flex-col flex-1">
+                    <span class="font-semibold text-sm">English</span>
+                    <span class="text-xs text-muted-foreground mt-0.5"
                       >الإنجليزية</span
                     >
                   </div>
                   <Icon
                     v-if="locale === 'en'"
                     name="lucide:check"
-                    class="h-4 w-4 ml-auto text-primary"
+                    class="h-4 w-4 ml-auto text-primary flex-shrink-0"
                   />
                 </button>
+                <div class="h-px bg-border my-1"></div>
                 <button
                   @click="setLocale('ar')"
-                  class="w-full px-4 py-2.5 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground"
+                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                   :class="
                     locale === 'ar'
                       ? 'bg-accent text-accent-foreground'
@@ -165,15 +178,17 @@
                   "
                   type="button"
                 >
-                  <span class="text-lg">🇸🇦</span>
-                  <div class="flex flex-col">
-                    <span class="font-semibold">العربية</span>
-                    <span class="text-xs text-muted-foreground">Arabic</span>
+                  <span class="text-xl leading-none">🇸🇦</span>
+                  <div class="flex flex-col flex-1">
+                    <span class="font-semibold text-sm">العربية</span>
+                    <span class="text-xs text-muted-foreground mt-0.5"
+                      >Arabic</span
+                    >
                   </div>
                   <Icon
                     v-if="locale === 'ar'"
                     name="lucide:check"
-                    class="h-4 w-4 ml-auto text-primary"
+                    class="h-4 w-4 ml-auto text-primary flex-shrink-0"
                   />
                 </button>
               </div>
@@ -194,24 +209,30 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden border-t border-border bg-card/95 backdrop-blur-md"
+        class="md:hidden border-t border-border/40 bg-card/98 backdrop-blur-xl"
       >
-        <div class="container mx-auto px-4 py-4 space-y-2">
+        <div class="container mx-auto px-4 py-4 space-y-1.5">
           <NuxtLink
             to="/"
             @click="isMobileMenuOpen = false"
-            class="block px-4 py-3 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md"
-            active-class="!text-primary !bg-primary/10 font-semibold"
+            class="block px-4 py-3 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            active-class="!text-primary !bg-primary/10"
           >
-            {{ t('Home') }}
+            <span class="flex items-center gap-2">
+              <Icon name="lucide:home" class="h-4 w-4" />
+              {{ t('Home') }}
+            </span>
           </NuxtLink>
           <NuxtLink
             to="/apply"
             @click="isMobileMenuOpen = false"
-            class="block px-4 py-3 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md"
-            active-class="!text-primary !bg-primary/10 font-semibold"
+            class="block px-4 py-3 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            active-class="!text-primary !bg-primary/10"
           >
-            {{ t('Apply') }}
+            <span class="flex items-center gap-2">
+              <Icon name="lucide:file-plus" class="h-4 w-4" />
+              {{ t('Apply') }}
+            </span>
           </NuxtLink>
         </div>
       </div>
