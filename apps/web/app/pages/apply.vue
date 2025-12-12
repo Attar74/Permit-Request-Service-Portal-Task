@@ -12,16 +12,16 @@
     <div
       class="rounded-md border border-border bg-card text-card-foreground shadow-md"
     >
-      <div class="p-8 sm:p-10">
+      <div class="p-6 sm:p-8 lg:p-10">
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <!-- Applicant Name Field -->
-          <div class="space-y-2.5">
+          <div class="space-y-2">
             <label
               for="applicantName"
-              class="text-sm font-semibold text-foreground flex items-center gap-1"
+              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
             >
-              Applicant Name
-              <span class="text-destructive font-bold">*</span>
+              <span>Applicant Name</span>
+              <span class="text-destructive font-bold" aria-label="required">*</span>
             </label>
             <input
               id="applicantName"
@@ -53,7 +53,8 @@
             >
               <p
                 v-if="errors.applicantName"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
                 {{ errors.applicantName }}
@@ -62,13 +63,13 @@
           </div>
 
           <!-- Email Address Field -->
-          <div class="space-y-2.5">
+          <div class="space-y-2">
             <label
               for="applicantEmail"
-              class="text-sm font-semibold text-foreground flex items-center gap-1"
+              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
             >
-              Email Address
-              <span class="text-destructive font-bold">*</span>
+              <span>Email Address</span>
+              <span class="text-destructive font-bold" aria-label="required">*</span>
             </label>
             <input
               id="applicantEmail"
@@ -100,7 +101,8 @@
             >
               <p
                 v-if="errors.applicantEmail"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
                 {{ errors.applicantEmail }}
@@ -109,13 +111,13 @@
           </div>
 
           <!-- Permit Type Field -->
-          <div class="space-y-2.5">
+          <div class="space-y-2">
             <label
               for="permitType"
-              class="text-sm font-semibold text-foreground flex items-center gap-1"
+              class="text-sm font-semibold text-foreground flex items-center gap-1.5"
             >
-              Permit Type
-              <span class="text-destructive font-bold">*</span>
+              <span>Permit Type</span>
+              <span class="text-destructive font-bold" aria-label="required">*</span>
             </label>
             <input
               id="permitType"
@@ -147,7 +149,8 @@
             >
               <p
                 v-if="errors.permitType"
-                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1.5"
+                role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
                 {{ errors.permitType }}
@@ -178,7 +181,7 @@
 
           <!-- Form Actions -->
           <div
-            class="flex flex-col justify-end sm:flex-row items-stretch sm:items-center gap-3 pt-2"
+            class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-border/50"
           >
             <button
               type="submit"
