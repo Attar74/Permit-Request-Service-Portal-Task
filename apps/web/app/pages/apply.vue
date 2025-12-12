@@ -30,7 +30,8 @@
               :disabled="isSubmitting"
               placeholder="Enter your full name"
               :class="[
-                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
+                'text-sm font-medium text-foreground',
                 'ring-offset-background placeholder:text-muted-foreground/60',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
                 'focus-visible:border-ring focus-visible:shadow-sm',
@@ -76,7 +77,8 @@
               :disabled="isSubmitting"
               placeholder="Enter your email address"
               :class="[
-                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
+                'text-sm font-medium text-foreground',
                 'ring-offset-background placeholder:text-muted-foreground/60',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
                 'focus-visible:border-ring focus-visible:shadow-sm',
@@ -122,7 +124,8 @@
               :disabled="isSubmitting"
               placeholder="e.g., Construction Permit, Business License"
               :class="[
-                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
+                'text-sm font-medium text-foreground',
                 'ring-offset-background placeholder:text-muted-foreground/60',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
                 'focus-visible:border-ring focus-visible:shadow-sm',
@@ -175,7 +178,7 @@
 
           <!-- Form Actions -->
           <div
-            class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
+            class="flex flex-col justify-end sm:flex-row items-stretch sm:items-center gap-3 pt-2"
           >
             <button
               type="submit"
@@ -188,12 +191,6 @@
               </span>
               <span v-else>Submit Application</span>
             </button>
-            <NuxtLink
-              to="/"
-              class="w-full sm:w-auto h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent active:bg-accent/80 active:scale-[0.98]"
-            >
-              Cancel
-            </NuxtLink>
           </div>
         </form>
       </div>
