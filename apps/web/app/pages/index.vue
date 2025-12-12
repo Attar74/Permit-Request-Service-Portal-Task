@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-bold tracking-tight">
         Permit Request Service Portal
       </h1>
-      <p class="text-gray-600 mt-2">
+      <p class="text-gray-600 dark:text-gray-400 mt-2">
         View all permit applications below
       </p>
     </div>

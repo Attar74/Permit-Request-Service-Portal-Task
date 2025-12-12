@@ -4,19 +4,21 @@
       <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
         Apply for a Permit
       </h1>
-      <p class="text-gray-600 mt-2 text-sm sm:text-base">
+      <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">
         Fill out the form below to submit your permit application
       </p>
     </div>
 
-    <div class="rounded-[0.875rem] border border-gray-200 bg-white text-gray-900 shadow-md">
+    <div
+      class="rounded-[0.875rem] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md"
+    >
       <div class="p-6 sm:p-8 lg:p-10">
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <!-- Applicant Name Field -->
           <div class="space-y-2">
             <label
               for="applicantName"
-              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
               <span>Applicant Name</span>
               <span class="text-red-600 font-bold" aria-label="required"
@@ -30,14 +32,14 @@
               :disabled="isSubmitting"
               placeholder="Enter your full name"
               :class="[
-                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
-                'text-sm font-medium text-gray-900',
-                'ring-offset-white placeholder:text-gray-400',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
+                'text-sm font-medium text-gray-900 dark:text-gray-100',
+                'ring-offset-white dark:ring-offset-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
                 'focus-visible:border-blue-500 focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-700',
                 'transition-all duration-200',
-                'hover:border-gray-400',
+                'hover:border-gray-400 dark:hover:border-gray-500',
                 errors.applicantName
                   ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
                   : '',
@@ -53,7 +55,7 @@
             >
               <p
                 v-if="errors.applicantName"
-                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 dark:text-red-400 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -66,7 +68,7 @@
           <div class="space-y-2">
             <label
               for="applicantEmail"
-              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
               <span>Email Address</span>
               <span class="text-red-600 font-bold" aria-label="required"
@@ -80,14 +82,14 @@
               :disabled="isSubmitting"
               placeholder="Enter your email address"
               :class="[
-                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
-                'text-sm font-medium text-gray-900',
-                'ring-offset-white placeholder:text-gray-400',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
+                'text-sm font-medium text-gray-900 dark:text-gray-100',
+                'ring-offset-white dark:ring-offset-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
                 'focus-visible:border-blue-500 focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-700',
                 'transition-all duration-200',
-                'hover:border-gray-400',
+                'hover:border-gray-400 dark:hover:border-gray-500',
                 errors.applicantEmail
                   ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
                   : '',
@@ -103,7 +105,7 @@
             >
               <p
                 v-if="errors.applicantEmail"
-                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 dark:text-red-400 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -116,7 +118,7 @@
           <div class="space-y-2">
             <label
               for="permitType"
-              class="text-sm font-semibold text-gray-900 flex items-center gap-1.5"
+              class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
               <span>Permit Type</span>
               <span class="text-red-600 font-bold" aria-label="required"
@@ -130,14 +132,14 @@
               :disabled="isSubmitting"
               placeholder="e.g., Construction Permit, Business License"
               :class="[
-                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
-                'text-sm font-medium text-gray-900',
-                'ring-offset-white placeholder:text-gray-400',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
+                'text-sm font-medium text-gray-900 dark:text-gray-100',
+                'ring-offset-white dark:ring-offset-gray-800 placeholder:text-gray-400 dark:placeholder:text-gray-500',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
                 'focus-visible:border-blue-500 focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-700',
                 'transition-all duration-200',
-                'hover:border-gray-400',
+                'hover:border-gray-400 dark:hover:border-gray-500',
                 errors.permitType
                   ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
                   : '',
@@ -153,7 +155,7 @@
             >
               <p
                 v-if="errors.permitType"
-                class="text-sm text-red-600 font-medium flex items-center gap-1.5 mt-1.5"
+                class="text-sm text-red-600 dark:text-red-400 font-medium flex items-center gap-1.5 mt-1.5"
                 role="alert"
               >
                 <Icon name="lucide:alert-circle" class="h-4 w-4" />
@@ -173,7 +175,7 @@
           >
             <div
               v-if="submitError"
-              class="rounded-[0.875rem] bg-red-50 border border-red-200 p-4 text-sm text-red-600 font-medium flex items-start gap-2"
+              class="rounded-[0.875rem] bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 text-sm text-red-600 dark:text-red-400 font-medium flex items-start gap-2"
             >
               <Icon
                 name="lucide:alert-triangle"
@@ -185,12 +187,12 @@
 
           <!-- Form Actions -->
           <div
-            class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-gray-200"
+            class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700"
           >
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-[0.875rem] text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-teal-700 text-white hover:bg-teal-800 active:bg-teal-900 shadow-md hover:shadow-lg active:shadow-sm"
+              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-[0.875rem] text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 active:bg-gray-900 dark:active:bg-gray-300 shadow-md hover:shadow-lg active:shadow-sm"
             >
               <span v-if="isSubmitting" class="flex items-center gap-2">
                 <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />
