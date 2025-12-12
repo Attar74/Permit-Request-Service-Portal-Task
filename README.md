@@ -38,6 +38,7 @@ This project follows a monorepo structure with clear separation of concerns:
 ## 🏛️ Design System
 
 This application follows the **Saudi National Design System (Platforms Code)** guidelines with:
+
 - RTL (Right-to-Left) support for Arabic
 - Responsive mobile-first design
 - Accessible components
@@ -45,6 +46,7 @@ This application follows the **Saudi National Design System (Platforms Code)** g
 ## 🔄 API Gateway Pattern
 
 All frontend API calls go through Nuxt Server Routes, which act as an API Gateway. This ensures:
+
 - Centralized API management
 - Security (backend URLs not exposed to client)
 - Request/response transformation
@@ -53,4 +55,3 @@ All frontend API calls go through Nuxt Server Routes, which act as an API Gatewa
 ## 📝 License
 
 [To be determined]
-
