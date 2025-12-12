@@ -180,7 +180,7 @@
             <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold shadow-md hover:shadow-lg transition-shadow inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
+              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/95 shadow-md hover:shadow-lg active:shadow-sm"
             >
               <span v-if="isSubmitting" class="flex items-center gap-2">
                 <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />
@@ -190,7 +190,7 @@
             </button>
             <NuxtLink
               to="/"
-              class="w-full sm:w-auto h-11 font-semibold border-2 bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 flex items-center justify-center"
+              class="w-full sm:w-auto h-11 font-semibold inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent active:bg-accent/80 active:scale-[0.98]"
             >
               Cancel
             </NuxtLink>
