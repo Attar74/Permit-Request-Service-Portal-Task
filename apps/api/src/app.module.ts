@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PermitApplication } from './permits/entities/permit-application.entity';
 
 @Module({
   imports: [
@@ -21,11 +22,13 @@ import { AppService } from './app.service';
         username: configService.get<string>('DATABASE_USER', 'postgres'),
         password: configService.get<string>('DATABASE_PASSWORD', 'postgres'),
         database: configService.get<string>('DATABASE_NAME', 'permit_service'),
-        autoLoadEntities: true,
+        entities: [PermitApplication],
         synchronize: process.env.NODE_ENV !== 'production', // Auto-sync in dev only
       }),
       inject: [ConfigService],
     }),
+    // Register PermitApplication entity for repository injection
+    TypeOrmModule.forFeature([PermitApplication]),
   ],
   controllers: [AppController],
   providers: [AppService],
