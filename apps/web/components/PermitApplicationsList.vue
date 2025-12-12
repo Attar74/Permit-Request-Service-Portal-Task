@@ -2,7 +2,7 @@
   <div class="space-y-6">
     <!-- Header Section -->
     <div
-      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-border/60"
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border/60"
     >
       <div class="space-y-1">
         <h2 class="text-3xl font-bold tracking-tight text-foreground">
@@ -33,10 +33,8 @@
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
-            viewMode === 'grid'
-              ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
-              : 'text-muted-foreground',
+            'h-10 px-4 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            viewMode === 'grid' ? 'bg-[#e7e7e7] font-semibold' : 'text-black',
           ]"
           @click="viewMode = 'grid'"
           title="Grid View"
@@ -119,7 +117,7 @@
       <div class="overflow-x-auto">
         <div class="relative w-full min-w-full">
           <table class="w-full caption-bottom text-sm">
-            <thead class="[&_tr]:border-b border-border/60 bg-muted/30">
+            <thead class="[&_tr]:border-b bg-muted/30">
               <tr class="border-b transition-colors">
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
@@ -157,7 +155,7 @@
               <tr
                 v-for="(application, index) in props.applications"
                 :key="application.id"
-                class="border-b border-border/40 transition-colors hover:bg-muted/30"
+                class="border-b transition-colors hover:bg-muted/30"
                 :class="{ 'bg-muted/10': index % 2 === 0 }"
               >
                 <td class="p-6 align-middle">
@@ -221,7 +219,7 @@
         class="group rounded-xl border border bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       >
         <!-- Card Header -->
-        <div class="flex flex-col space-y-3 p-6 pb-4 border-b border-border/40">
+        <div class="flex flex-col space-y-3 p-6 pb-4 border-b border/40">
           <div class="flex items-start justify-between gap-3">
             <div class="flex-1 min-w-0">
               <h3

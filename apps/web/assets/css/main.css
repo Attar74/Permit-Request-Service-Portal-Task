@@ -94,6 +94,11 @@
     letter-spacing: -0.01em;
   }
 
+  /* Default border color for all border classes */
+  * {
+    border-color: hsl(var(--border));
+  }
+
   /* Enhanced default typography with better hierarchy */
   h1 {
     @apply text-3xl sm:text-4xl font-bold tracking-tight;

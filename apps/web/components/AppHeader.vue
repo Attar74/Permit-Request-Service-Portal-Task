@@ -92,7 +92,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-10 w-10 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          class="h-10 w-10 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -116,7 +116,7 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-10 px-4 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            class="h-10 px-4 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
@@ -143,7 +143,7 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-56 rounded-lg border bg-white shadow-xl z-50 overflow-hidden backdrop-blur-sm"
+              class="absolute right-0 mt-2 w-56 rounded-lg border border bg-popover shadow-xl z-50 overflow-hidden backdrop-blur-sm"
             >
               <div class="py-1.5">
                 <button
@@ -169,7 +169,7 @@
                     class="h-4 w-4 ml-auto text-primary flex-shrink-0"
                   />
                 </button>
-                <div class="h-px bg-border my-1"></div>
+                <div class="h-px border my-1"></div>
                 <button
                   @click="setLocale('ar')"
                   class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
@@ -211,7 +211,7 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden border-t border-border/40 bg-card/98 backdrop-blur-xl"
+        class="md:hidden border-t border/40 bg-card/98 backdrop-blur-xl"
       >
         <div class="container mx-auto px-4 py-4 space-y-1.5">
           <NuxtLink
