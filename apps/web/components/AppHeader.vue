@@ -19,7 +19,7 @@
             </span>
             <span class="sm:hidden text-base font-bold">Portal</span>
             <span
-              class="hidden sm:inline-block text-[10px] font-normal text-muted-foreground leading-tight"
+              class="hidden sm:inline-block text-xs font-normal text-muted-foreground leading-tight"
             >
               خدمة طلبات التصاريح
             </span>

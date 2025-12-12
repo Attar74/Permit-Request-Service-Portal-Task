@@ -56,6 +56,9 @@ export default {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         arabic: ['var(--font-arabic)', 'system-ui', 'sans-serif'],
       },
+      ringOffsetColor: {
+        background: 'hsl(var(--background))',
+      },
     },
   },
   plugins: [],
