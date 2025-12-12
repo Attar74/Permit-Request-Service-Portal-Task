@@ -152,6 +152,7 @@ Layouts are defined in `app/layouts/`:
 ## Testing the Setup
 
 1. Start the development server:
+
    ```bash
    cd apps/web
    npm run dev
@@ -176,4 +177,3 @@ Layouts are defined in `app/layouts/`:
 git add apps/web/
 git commit -m "phase(2): step(2.1) - Create Nuxt 4 app using app/ directory"
 ```
-

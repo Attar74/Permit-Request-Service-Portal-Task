@@ -18,4 +18,3 @@ export interface CreatePermitApplication {
   applicantEmail: string;
   permitType: string;
 }
-

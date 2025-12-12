@@ -87,6 +87,7 @@ function validateForm(): boolean {
 ```
 
 **Validation Rules**:
+
 - **Applicant Name**: Required, must not be empty
 - **Email**: Required, must match email regex pattern
 - **Permit Type**: Required, must not be empty
@@ -103,6 +104,7 @@ await $fetch('/api/permits', {
 ```
 
 **Flow**:
+
 1. Validate form client-side
 2. If valid, submit to `/api/permits`
 3. On success: redirect to home page
@@ -127,7 +129,7 @@ await $fetch('/api/permits', {
 
 - **Type**: Email input
 - **Required**: Yes
-- **Validation**: 
+- **Validation**:
   - Must not be empty
   - Must match email format (regex: `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`)
 - **Placeholder**: "Enter your email address"
@@ -195,6 +197,7 @@ await $fetch('/api/permits', {
 ## API Integration
 
 The form submits to `/api/permits` which:
+
 1. Routes to Nuxt Server Route (`server/api/permits.post.ts`)
 2. Server route validates and calls NestJS backend
 3. Backend validates with DTOs and creates record
@@ -245,7 +248,7 @@ The form submits to `/api/permits` which:
 ## Accessibility
 
 - **Labels**: All inputs have associated labels
-- **Required Fields**: Marked with asterisk (*)
+- **Required Fields**: Marked with asterisk (\*)
 - **Error Messages**: Associated with form fields
 - **Keyboard Navigation**: Tab order follows form flow
 - **Disabled State**: Clear visual indication
@@ -263,4 +266,3 @@ The form submits to `/api/permits` which:
 git add apps/web/app/pages/apply.vue
 git commit -m "phase(2): step(2.4) - Apply Page with form"
 ```
-

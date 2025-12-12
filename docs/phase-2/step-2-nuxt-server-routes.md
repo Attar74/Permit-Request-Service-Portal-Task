@@ -144,6 +144,7 @@ PostgreSQL Database
 **URL**: `http://localhost:3000/api/permits`
 
 **Request Body**:
+
 ```json
 {
   "applicantName": "Ahmed Ali",
@@ -168,6 +169,7 @@ PostgreSQL Database
 **Error Responses**:
 
 - `400 Bad Request` (missing fields):
+
 ```json
 {
   "statusCode": 400,
@@ -176,6 +178,7 @@ PostgreSQL Database
 ```
 
 - `400 Bad Request` (backend validation error):
+
 ```json
 {
   "statusCode": 400,
@@ -184,6 +187,7 @@ PostgreSQL Database
 ```
 
 - `500 Internal Server Error`:
+
 ```json
 {
   "statusCode": 500,
@@ -203,6 +207,7 @@ const apiBaseUrl = config.apiBaseUrl; // http://localhost:3001
 ```
 
 This value is:
+
 - Server-side only (not exposed to client)
 - Read from `API_BASE_URL` environment variable
 - Defaults to `http://localhost:3001` if not set
@@ -237,11 +242,13 @@ API_BASE_URL=http://localhost:3001
 ### Prerequisites
 
 1. Start PostgreSQL:
+
    ```bash
    docker compose -f docker/docker-compose.yml up -d
    ```
 
 2. Start NestJS backend:
+
    ```bash
    cd apps/api
    npm run start:dev
@@ -256,23 +263,29 @@ API_BASE_URL=http://localhost:3001
 ### Test Scenarios
 
 1. **GET /api/permits** (empty list):
+
    ```bash
    curl http://localhost:3000/api/permits
    ```
+
    Expected: `[]`
 
 2. **POST /api/permits** (create):
+
    ```bash
    curl -X POST http://localhost:3000/api/permits \
      -H "Content-Type: application/json" \
      -d '{"applicantName":"Test","applicantEmail":"test@example.com","permitType":"Test"}'
    ```
+
    Expected: Created permit object
 
 3. **GET /api/permits** (with data):
+
    ```bash
    curl http://localhost:3000/api/permits
    ```
+
    Expected: Array with created permit
 
 4. **POST /api/permits** (validation error):
@@ -294,4 +307,3 @@ API_BASE_URL=http://localhost:3001
 git add apps/web/server/
 git commit -m "phase(2): step(2.2) - Implement Nuxt Server Routes as API Gateway"
 ```
-

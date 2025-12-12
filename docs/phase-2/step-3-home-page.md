@@ -65,10 +65,12 @@ npm run dev
 Uses Nuxt's `useFetch` composable:
 
 ```typescript
-const { data, pending, error } = await useFetch<PermitApplication[]>('/api/permits');
+const { data, pending, error } =
+  await useFetch<PermitApplication[]>('/api/permits');
 ```
 
 **Benefits**:
+
 - Automatic SSR/SSG support
 - Reactive data updates
 - Built-in loading and error states
@@ -126,6 +128,7 @@ Example output: "Dec 12, 2024, 02:30 PM"
 ## API Integration
 
 The page calls `/api/permits` which:
+
 1. Routes to Nuxt Server Route (`server/api/permits.get.ts`)
 2. Server route calls NestJS backend (`http://localhost:3001/permits`)
 3. Backend queries PostgreSQL database
@@ -176,4 +179,3 @@ The page calls `/api/permits` which:
 git add apps/web/app/pages/index.vue
 git commit -m "phase(2): step(2.3) - Home Page listing applications"
 ```
-

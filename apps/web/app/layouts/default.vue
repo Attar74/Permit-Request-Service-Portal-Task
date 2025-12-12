@@ -1,40 +1,32 @@
 <template>
-  <div>
-    <header>
-      <nav>
-        <NuxtLink to="/">Home</NuxtLink>
-        <NuxtLink to="/apply">Apply</NuxtLink>
+  <div :dir="dir" class="min-h-screen bg-background">
+    <header class="border-b">
+      <nav class="container mx-auto flex items-center justify-between px-4 py-4">
+        <NuxtLink to="/" class="text-xl font-bold text-foreground">
+          Permit Request Portal
+        </NuxtLink>
+        <div class="flex items-center gap-4">
+          <NuxtLink
+            to="/"
+            class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Home
+          </NuxtLink>
+          <NuxtLink
+            to="/apply"
+            class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Apply
+          </NuxtLink>
+        </div>
       </nav>
     </header>
-    <main>
+    <main class="container mx-auto px-4 py-8">
       <slot />
     </main>
   </div>
 </template>
 
-<style scoped>
-header {
-  padding: 1rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #2563eb;
-  font-weight: 500;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  padding: 2rem;
-}
-</style>
-
+<script setup lang="ts">
+const { dir } = useRTL();
+</script>
