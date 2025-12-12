@@ -31,10 +31,8 @@ export const useRTL = () => {
       if (savedLocale) {
         setLocale(savedLocale);
       } else {
-        // Detect from browser locale
-        const browserLocale = navigator.language || 'en';
-        const isRTL = browserLocale.startsWith('ar');
-        setLocale(isRTL ? 'ar' : 'en');
+        // Default to English
+        setLocale('en');
       }
     });
 
