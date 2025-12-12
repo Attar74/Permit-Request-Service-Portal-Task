@@ -38,29 +38,19 @@
       <div class="hidden md:flex items-center gap-2">
         <NuxtLink
           to="/"
-          class="relative px-5 py-2.5 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          active-class="!text-primary !bg-primary/10"
+          class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
+          active-class="bg-black text-white font-semibold"
         >
-          <span class="relative z-10 flex items-center gap-2">
-            <Icon name="lucide:home" class="h-4 w-4" />
-            {{ t('Home') }}
-          </span>
-          <span
-            class="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          ></span>
+          <Icon name="lucide:home" class="h-4 w-4" />
+          {{ t('Home') }}
         </NuxtLink>
         <NuxtLink
           to="/apply"
-          class="relative px-5 py-2.5 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          active-class="!text-primary !bg-primary/10"
+          class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
+          active-class="bg-black text-white font-semibold"
         >
-          <span class="relative z-10 flex items-center gap-2">
-            <Icon name="lucide:file-plus" class="h-4 w-4" />
-            {{ t('Apply') }}
-          </span>
-          <span
-            class="absolute inset-0 rounded-lg bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          ></span>
+          <Icon name="lucide:file-plus" class="h-4 w-4" />
+          {{ t('Apply') }}
         </NuxtLink>
       </div>
 
@@ -213,28 +203,24 @@
         v-if="isMobileMenuOpen"
         class="md:hidden border-t border/40 bg-card/98 backdrop-blur-xl"
       >
-        <div class="container mx-auto px-4 py-4 space-y-1.5">
+        <div class="container mx-auto px-4 py-4 space-y-2">
           <NuxtLink
             to="/"
             @click="isMobileMenuOpen = false"
-            class="block px-4 py-3 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            active-class="!text-primary !bg-primary/10"
+            class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
+            active-class="bg-black text-white font-semibold"
           >
-            <span class="flex items-center gap-2">
-              <Icon name="lucide:home" class="h-4 w-4" />
-              {{ t('Home') }}
-            </span>
+            <Icon name="lucide:home" class="h-4 w-4" />
+            {{ t('Home') }}
           </NuxtLink>
           <NuxtLink
             to="/apply"
             @click="isMobileMenuOpen = false"
-            class="block px-4 py-3 text-sm font-semibold text-muted-foreground transition-all hover:text-foreground hover:bg-accent/50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            active-class="!text-primary !bg-primary/10"
+            class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
+            active-class="bg-black text-white font-semibold"
           >
-            <span class="flex items-center gap-2">
-              <Icon name="lucide:file-plus" class="h-4 w-4" />
-              {{ t('Apply') }}
-            </span>
+            <Icon name="lucide:file-plus" class="h-4 w-4" />
+            {{ t('Apply') }}
           </NuxtLink>
         </div>
       </div>
