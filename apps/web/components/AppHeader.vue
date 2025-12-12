@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 dark:supports-[backdrop-filter]:bg-gray-900/95 shadow-md"
+    class="sticky top-0 z-50 w-full bg-white dark:bg-gray-800 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 shadow-md"
   >
     <nav
       class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8"
@@ -23,16 +23,16 @@
             <span
               class="hidden sm:inline-block text-lg font-bold leading-tight text-gray-900 dark:text-gray-100"
             >
-              Permit Request Portal
+              {{ t('Permit Request Portal') }}
             </span>
             <span
               class="sm:hidden text-base font-bold text-gray-900 dark:text-gray-100"
-              >Portal</span
+              >{{ t('Portal') }}</span
             >
             <span
               class="hidden sm:inline-block text-xs font-normal text-gray-500 dark:text-gray-400 leading-tight mt-0.5"
             >
-              خدمة طلبات التصاريح
+              {{ locale === 'ar' ? 'خدمة طلبات التصاريح' : 'Permit Request Service' }}
             </span>
           </div>
         </NuxtLink>
@@ -129,11 +129,11 @@
                 <div class="h-px border"></div>
                 <button
                   @click="setLocale('ar')"
-                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
+                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
                   :class="
                     locale === 'ar'
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-900'
+                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
+                      : 'text-gray-900 dark:text-gray-100'
                   "
                   type="button"
                 >
@@ -161,10 +161,12 @@ import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRTL } from '../composables/useRTL';
 import { useTheme } from '../composables/useTheme';
+import { useTranslations } from '../composables/useTranslations';
 import AppDrawer from './AppDrawer.vue';
 
 const { dir, locale, toggleLocale, setLocale: setRTLocale } = useRTL();
 const { theme, toggleTheme, isDark } = useTheme();
+const { t } = useTranslations();
 const route = useRoute();
 
 const drawerRef = ref<InstanceType<typeof AppDrawer> | null>(null);
@@ -198,23 +200,6 @@ onClickOutside(languageMenuRef, (event) => {
   isLanguageMenuOpen.value = false;
 });
 
-// Simple translation function
-const translations = {
-  en: {
-    'Switch to light mode': 'Switch to light mode',
-    'Switch to dark mode': 'Switch to dark mode',
-    'Switch language': 'Switch language',
-  },
-  ar: {
-    'Switch to light mode': 'التبديل إلى الوضع الفاتح',
-    'Switch to dark mode': 'التبديل إلى الوضع الداكن',
-    'Switch language': 'تبديل اللغة',
-  },
-};
-
-const t = (key: string) => {
-  return translations[locale.value][key as keyof typeof translations.en] || key;
-};
 
 // Close language menu when route changes
 watch(route, () => {

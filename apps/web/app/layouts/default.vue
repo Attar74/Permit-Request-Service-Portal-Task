@@ -5,7 +5,15 @@
       <AppDrawer v-model="drawerOpen" />
       <div
         class="flex-1 transition-all duration-300 ease-in-out min-h-[calc(100vh-5rem)]"
-        :class="drawerOpen ? 'md:ml-64' : 'md:ml-20'"
+        :class="[
+          drawerOpen
+            ? isRTL
+              ? 'md:mr-64'
+              : 'md:ml-64'
+            : isRTL
+              ? 'md:mr-20'
+              : 'md:ml-20',
+        ]"
       >
         <main class="container mx-auto px-4 py-6 sm:py-8">
           <slot />
@@ -21,7 +29,7 @@ import AppDrawer from '../../components/AppDrawer.vue';
 import AppHeader from '../../components/AppHeader.vue';
 import { useRTL } from '../../composables/useRTL';
 
-const { dir } = useRTL();
+const { dir, isRTL } = useRTL();
 const drawerOpen = ref(false); // Closed by default on mobile, will be true on desktop
 
 const drawerRef = ref<InstanceType<typeof AppDrawer> | null>(null);

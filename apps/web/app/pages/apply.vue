@@ -1,11 +1,13 @@
 <template>
   <div class="max-w-2xl mx-auto">
     <div class="mb-6 sm:mb-8">
-      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
-        Apply for a Permit
+      <h1
+        class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+      >
+        {{ t('Apply for a Permit') }}
       </h1>
       <p class="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">
-        Fill out the form below to submit your permit application
+        {{ t('Fill out the form below to submit your permit application') }}
       </p>
     </div>
 
@@ -20,7 +22,7 @@
               for="applicantName"
               class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
-              <span>Applicant Name</span>
+              <span>{{ t('Applicant Name') }}</span>
               <span class="text-red-600 font-bold" aria-label="required"
                 >*</span
               >
@@ -30,7 +32,7 @@
               v-model="form.applicantName"
               type="text"
               :disabled="isSubmitting"
-              placeholder="Enter your full name"
+              :placeholder="t('Enter your full name')"
               :class="[
                 'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
                 'text-sm font-medium text-gray-900 dark:text-gray-100',
@@ -70,7 +72,7 @@
               for="applicantEmail"
               class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
-              <span>Email Address</span>
+              <span>{{ t('Email Address') }}</span>
               <span class="text-red-600 font-bold" aria-label="required"
                 >*</span
               >
@@ -80,7 +82,7 @@
               v-model="form.applicantEmail"
               type="email"
               :disabled="isSubmitting"
-              placeholder="Enter your email address"
+              :placeholder="t('Enter your email address')"
               :class="[
                 'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
                 'text-sm font-medium text-gray-900 dark:text-gray-100',
@@ -120,7 +122,7 @@
               for="permitType"
               class="text-sm font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-1.5"
             >
-              <span>Permit Type</span>
+              <span>{{ t('Permit Type') }}</span>
               <span class="text-red-600 font-bold" aria-label="required"
                 >*</span
               >
@@ -130,7 +132,7 @@
               v-model="form.permitType"
               type="text"
               :disabled="isSubmitting"
-              placeholder="e.g., Construction Permit, Business License"
+              :placeholder="t('e.g., Construction Permit, Business License')"
               :class="[
                 'flex h-11 w-full rounded-[0.875rem] border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2.5',
                 'text-sm font-medium text-gray-900 dark:text-gray-100',
@@ -196,9 +198,9 @@
             >
               <span v-if="isSubmitting" class="flex items-center gap-2">
                 <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />
-                Submitting...
+                {{ t('Submitting...') }}
               </span>
-              <span v-else>Submit Application</span>
+              <span v-else>{{ t('Submit Application') }}</span>
             </button>
           </div>
         </form>
@@ -209,6 +211,9 @@
 
 <script setup lang="ts">
 import type { CreatePermitApplication } from '../../types/permit';
+import { useTranslations } from '../../composables/useTranslations';
+
+const { t } = useTranslations();
 
 const form = reactive<CreatePermitApplication>({
   applicantName: '',
@@ -267,24 +272,24 @@ function validateForm(): boolean {
   // Validate applicant name
   const trimmedName = form.applicantName?.trim() || '';
   if (!trimmedName) {
-    errors.applicantName = 'Applicant name is required';
+    errors.applicantName = t('Applicant name is required');
     isValid = false;
   }
 
   // Validate email
   const trimmedEmail = form.applicantEmail?.trim() || '';
   if (!trimmedEmail) {
-    errors.applicantEmail = 'Email address is required';
+    errors.applicantEmail = t('Email address is required');
     isValid = false;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-    errors.applicantEmail = 'Please enter a valid email address';
+    errors.applicantEmail = t('Please enter a valid email address');
     isValid = false;
   }
 
   // Validate permit type
   const trimmedPermitType = form.permitType?.trim() || '';
   if (!trimmedPermitType) {
-    errors.permitType = 'Permit type is required';
+    errors.permitType = t('Permit type is required');
     isValid = false;
   }
 
@@ -312,7 +317,7 @@ async function handleSubmit() {
     submitError.value =
       error.data?.message ||
       error.message ||
-      'Failed to submit application. Please try again.';
+      t('Failed to submit application. Please try again.');
   } finally {
     isSubmitting.value = false;
   }

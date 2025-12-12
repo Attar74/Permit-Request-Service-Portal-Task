@@ -4,10 +4,10 @@
       <h1
         class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
       >
-        Permit Request Service Portal
+        {{ t('Permit Request Service Portal') }}
       </h1>
       <p class="text-gray-600 dark:text-gray-400 mt-2">
-        View all permit applications below
+        {{ t('View all permit applications below') }}
       </p>
     </div>
 
@@ -22,6 +22,9 @@
 <script setup lang="ts">
 import PermitApplicationsList from '../../components/PermitApplicationsList.vue';
 import type { PermitApplication } from '../../types/permit';
+import { useTranslations } from '../../composables/useTranslations';
+
+const { t } = useTranslations();
 
 const { data, pending, error } =
   await useFetch<PermitApplication[]>('/api/permits');

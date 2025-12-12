@@ -8,44 +8,44 @@
         <h2
           class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
         >
-          Permit Applications
+          {{ t('Permit Applications') }}
         </h2>
         <p class="text-sm text-gray-600 dark:text-gray-400">
           <span class="font-semibold text-gray-900 dark:text-gray-100">{{
             props.applications.length
           }}</span>
-          {{ props.applications.length !== 1 ? 'applications' : 'application' }}
-          found
+          {{ props.applications.length !== 1 ? t('applications') : t('application') }}
+          {{ t('found') }}
         </p>
       </div>
       <div class="flex items-center gap-2">
         <button
           :class="[
-            'h-10 px-4 rounded-[1rem] border border-gray-300 dark:border-gray-700 flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
+            'h-10 px-4 rounded-[1rem] flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'list'
-              ? 'bg-black dark:bg-white text-white dark:text-black font-semibold'
-              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300',
+              ? 'bg-black dark:bg-gray-800 text-white dark:text-white font-semibold shadow-md'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
           ]"
           @click="viewMode = 'list'"
-          title="List View"
+          :title="t('List View')"
           type="button"
         >
           <Icon name="lucide:list" class="h-4 w-4" />
-          <span class="hidden sm:inline text-sm font-medium">List</span>
+          <span class="hidden sm:inline text-sm font-medium">{{ t('List') }}</span>
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-[1rem] border border-gray-300 flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
+            'h-10 px-4 rounded-[1rem] flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'grid'
-              ? 'bg-black text-white font-semibold'
-              : 'bg-white text-gray-700',
+              ? 'bg-black dark:bg-gray-800 text-white dark:text-white font-semibold shadow-md'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
           ]"
           @click="viewMode = 'grid'"
-          title="Grid View"
+          :title="t('Grid View')"
           type="button"
         >
           <Icon name="lucide:layout-grid" class="h-4 w-4" />
-          <span class="hidden sm:inline text-sm font-medium">Grid</span>
+          <span class="hidden sm:inline text-sm font-medium">{{ t('Grid') }}</span>
         </button>
       </div>
     </div>
@@ -65,9 +65,9 @@
         <p
           class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1"
         >
-          Loading applications...
+          {{ t('Loading applications...') }}
         </p>
-        <p class="text-sm">Please wait while we fetch your data</p>
+        <p class="text-sm">{{ t('Please wait while we fetch your data') }}</p>
       </div>
     </div>
 
@@ -80,7 +80,7 @@
         <div class="mb-4 flex justify-center">
           <Icon name="lucide:alert-triangle" class="h-12 w-12" />
         </div>
-        <p class="font-bold text-lg mb-2">Error loading applications</p>
+        <p class="font-bold text-lg mb-2">{{ t('Error loading applications') }}</p>
         <p class="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
           {{ props.error.message }}
         </p>
@@ -100,17 +100,17 @@
           />
         </div>
         <p class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">
-          No permit applications found
+          {{ t('No permit applications found') }}
         </p>
         <p class="text-sm mb-6 max-w-md mx-auto">
-          Get started by submitting your first permit application.
+          {{ t('Get started by submitting your first permit application.') }}
         </p>
         <NuxtLink
           to="/apply"
           class="inline-flex items-center gap-2 px-6 py-3 bg-teal-700 dark:bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-800 dark:hover:bg-teal-700 transition-colors shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >
           <Icon name="lucide:plus" class="h-4 w-4" />
-          Apply for a Permit
+          {{ t('Apply for a Permit') }}
         </NuxtLink>
       </div>
     </div>
@@ -130,32 +130,32 @@
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  ID
+                  {{ t('ID') }}
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  Applicant Name
+                  {{ t('Applicant Name') }}
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  Email
+                  {{ t('Email') }}
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  Permit Type
+                  {{ t('Permit Type') }}
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  Status
+                  {{ t('Status') }}
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
-                  Submitted At
+                  {{ t('Submitted At') }}
                 </th>
               </tr>
             </thead>
@@ -237,7 +237,7 @@
               <h3
                 class="text-lg font-bold leading-tight tracking-tight text-gray-900 dark:text-gray-100 mb-1.5"
               >
-                Application #{{ String(application.id).substring(0, 8) }}
+                {{ t('Application') }} #{{ String(application.id).substring(0, 8) }}
               </h3>
               <p
                 class="text-xs text-gray-600 dark:text-gray-400 font-medium flex items-center gap-1.5"
@@ -270,7 +270,7 @@
               class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5"
             >
               <Icon name="lucide:user" class="h-3.5 w-3.5" />
-              Applicant
+              {{ t('Applicant') }}
             </p>
             <p class="font-semibold text-gray-900 dark:text-gray-100 text-base">
               {{ application.applicantName }}
@@ -282,7 +282,7 @@
               class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5"
             >
               <Icon name="lucide:mail" class="h-3.5 w-3.5" />
-              Email
+              {{ t('Email') }}
             </p>
             <a
               :href="`mailto:${application.applicantEmail}`"
@@ -297,7 +297,7 @@
               class="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider flex items-center gap-1.5"
             >
               <Icon name="lucide:file-text" class="h-3.5 w-3.5" />
-              Permit Type
+              {{ t('Permit Type') }}
             </p>
             <p class="font-semibold text-gray-900 dark:text-gray-100 text-base">
               {{ application.permitType }}
@@ -311,6 +311,7 @@
 
 <script setup lang="ts">
 import type { ApplicationStatus, PermitApplication } from '../types/permit';
+import { useTranslations } from '../composables/useTranslations';
 
 interface Props {
   applications?: PermitApplication[];
@@ -324,6 +325,7 @@ const props = withDefaults(defineProps<Props>(), {
   error: null,
 });
 
+const { t } = useTranslations();
 const viewMode = ref<'grid' | 'list'>('list');
 
 function formatDate(dateString: string): string {
