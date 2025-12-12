@@ -1,7 +1,9 @@
 <template>
   <div class="max-w-2xl mx-auto">
     <div class="mb-6 sm:mb-8">
-      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Apply for a Permit</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
+        Apply for a Permit
+      </h1>
       <p class="text-muted-foreground mt-2 text-sm sm:text-base">
         Fill out the form below to submit your permit application
       </p>
