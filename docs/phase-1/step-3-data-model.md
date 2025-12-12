@@ -70,14 +70,14 @@ docker exec -it permit-service-postgres psql -U postgres -d permit_service
 
 ### Database Table: `permit_applications`
 
-| Column Name          | Type      | Constraints                    | Description                    |
-|---------------------|-----------|--------------------------------|--------------------------------|
-| `id`                | SERIAL    | PRIMARY KEY                    | Auto-incrementing ID           |
-| `applicant_name`    | VARCHAR   | NOT NULL                       | Applicant's full name          |
-| `applicant_email`   | VARCHAR   | NOT NULL                       | Applicant's email address      |
-| `permit_type`       | VARCHAR   | NOT NULL                       | Type of permit requested       |
-| `application_status`| ENUM      | NOT NULL, DEFAULT 'Pending'   | Status: Pending/Approved/Rejected |
-| `submitted_at`      | TIMESTAMP | NOT NULL, AUTO                 | Application submission time    |
+| Column Name          | Type      | Constraints                 | Description                       |
+| -------------------- | --------- | --------------------------- | --------------------------------- |
+| `id`                 | SERIAL    | PRIMARY KEY                 | Auto-incrementing ID              |
+| `applicant_name`     | VARCHAR   | NOT NULL                    | Applicant's full name             |
+| `applicant_email`    | VARCHAR   | NOT NULL                    | Applicant's email address         |
+| `permit_type`        | VARCHAR   | NOT NULL                    | Type of permit requested          |
+| `application_status` | ENUM      | NOT NULL, DEFAULT 'Pending' | Status: Pending/Approved/Rejected |
+| `submitted_at`       | TIMESTAMP | NOT NULL, AUTO              | Application submission time       |
 
 ### ApplicationStatus Enum
 
@@ -128,11 +128,13 @@ In development mode, TypeORM's `synchronize: true` automatically creates/updates
 ## Testing the Data Model
 
 1. Start PostgreSQL:
+
    ```bash
    docker compose -f docker/docker-compose.yml up -d
    ```
 
 2. Start NestJS application:
+
    ```bash
    cd apps/api
    npm run start:dev
@@ -156,4 +158,3 @@ git add apps/api/src/permits/
 git add apps/api/src/app.module.ts
 git commit -m "phase(1): step(1.3) - Implement Permit Application data model"
 ```
-

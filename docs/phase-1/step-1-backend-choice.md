@@ -64,11 +64,13 @@ After evaluating both NestJS and Strapi, **NestJS** was chosen for the following
 ## Why Not Strapi?
 
 While Strapi offers:
+
 - Faster initial setup
 - Admin panel out of the box
 - Content management features
 
 It was not chosen because:
+
 - **Less Control**: More opinionated, less flexibility for custom logic
 - **Assessment Context**: NestJS better demonstrates architectural skills
 - **Learning Curve**: Strapi's admin-driven approach doesn't showcase coding skills as well
@@ -100,4 +102,3 @@ With NestJS, we will implement:
 - Step 1.2: Bootstrap NestJS application
 - Step 1.3: Implement Permit Application data model
 - Step 1.4: Implement Backend API endpoints
-

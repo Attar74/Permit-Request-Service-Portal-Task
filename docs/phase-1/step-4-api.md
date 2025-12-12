@@ -35,6 +35,7 @@ curl http://localhost:3001/permits
 ```
 
 Expected response (empty array initially):
+
 ```json
 []
 ```
@@ -52,6 +53,7 @@ curl -X POST http://localhost:3001/permits \
 ```
 
 Expected response:
+
 ```json
 {
   "id": 1,
@@ -66,6 +68,7 @@ Expected response:
 #### Test Validation
 
 Invalid email:
+
 ```bash
 curl -X POST http://localhost:3001/permits \
   -H "Content-Type: application/json" \
@@ -77,6 +80,7 @@ curl -X POST http://localhost:3001/permits \
 ```
 
 Expected response (400 Bad Request):
+
 ```json
 {
   "statusCode": 400,
@@ -86,6 +90,7 @@ Expected response (400 Bad Request):
 ```
 
 Missing required field:
+
 ```bash
 curl -X POST http://localhost:3001/permits \
   -H "Content-Type: application/json" \
@@ -96,6 +101,7 @@ curl -X POST http://localhost:3001/permits \
 ```
 
 Expected response (400 Bad Request):
+
 ```json
 {
   "statusCode": 400,
@@ -186,6 +192,7 @@ Expected response (400 Bad Request):
 **URL**: `http://localhost:3001/permits`
 
 **Request Body**:
+
 ```json
 {
   "applicantName": "Ahmed Ali",
@@ -195,6 +202,7 @@ Expected response (400 Bad Request):
 ```
 
 **Validation Rules**:
+
 - `applicantName`: Required, must be a string
 - `applicantEmail`: Required, must be a valid email address
 - `permitType`: Required, must be a string
@@ -249,6 +257,7 @@ No new environment variables added in this step.
 ## Error Handling
 
 Validation errors are automatically handled by the global `ValidationPipe`:
+
 - Invalid data returns `400 Bad Request`
 - Error messages are clear and descriptive
 - Multiple validation errors are returned as an array
@@ -286,4 +295,3 @@ git add apps/api/src/permits/
 git add apps/api/src/app.module.ts
 git commit -m "phase(1): step(1.4) - Implement Backend API endpoints"
 ```
-

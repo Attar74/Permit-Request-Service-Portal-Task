@@ -96,6 +96,7 @@ apps/api/
 The application reads configuration from `.env` file in the root directory:
 
 ### Database Configuration
+
 - `DATABASE_HOST`: PostgreSQL host (default: localhost)
 - `DATABASE_PORT`: PostgreSQL port (default: 5432)
 - `DATABASE_USER`: Database user (default: postgres)
@@ -103,12 +104,14 @@ The application reads configuration from `.env` file in the root directory:
 - `DATABASE_NAME`: Database name (default: permit_service)
 
 ### Application Configuration
+
 - `API_PORT`: Backend API port (default: 3001)
 - `NODE_ENV`: Environment mode (development/production)
 
 ## Database Connection
 
 The TypeORM configuration:
+
 - **Type**: PostgreSQL
 - **Connection**: Uses environment variables from `.env`
 - **Auto-load Entities**: Automatically discovers entity files
@@ -119,6 +122,7 @@ The TypeORM configuration:
 ## Validation Pipeline
 
 Global validation pipe is configured to:
+
 1. **Whitelist**: Only properties defined in DTOs are allowed
 2. **Forbid Non-Whitelisted**: Rejects requests with extra properties
 3. **Transform**: Converts plain objects to DTO class instances
@@ -136,11 +140,13 @@ CORS is enabled to allow frontend (Nuxt) to make requests to the API. This will 
 ## Testing the Setup
 
 1. Start PostgreSQL:
+
    ```bash
    docker compose -f docker/docker-compose.yml up -d
    ```
 
 2. Start NestJS:
+
    ```bash
    cd apps/api
    npm run start:dev
@@ -157,4 +163,3 @@ CORS is enabled to allow frontend (Nuxt) to make requests to the API. This will 
 git add apps/api/
 git commit -m "phase(1): step(1.2) - Backend bootstrapping with NestJS"
 ```
-

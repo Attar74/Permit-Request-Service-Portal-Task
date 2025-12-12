@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { PermitApplication } from './entities/permit-application.entity';
 import { CreatePermitApplicationDto } from './dto/create-permit-application.dto';
-import { ApplicationStatus } from './entities/permit-application.entity';
+import {
+  ApplicationStatus,
+  PermitApplication,
+} from './entities/permit-application.entity';
 
 @Injectable()
 export class PermitsService {
@@ -31,4 +33,3 @@ export class PermitsService {
     return this.permitRepository.save(permit);
   }
 }
-

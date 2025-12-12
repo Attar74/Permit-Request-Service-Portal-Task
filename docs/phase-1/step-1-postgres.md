@@ -121,6 +121,7 @@ cp .env.example .env
 ## Health Check
 
 The Docker Compose configuration includes a health check that:
+
 - Runs every 10 seconds
 - Uses `pg_isready` to verify database is accepting connections
 - Retries up to 5 times
@@ -165,4 +166,3 @@ docker compose -f docker/docker-compose.yml up -d
 git add docker/docker-compose.yml .env.example docs/phase-1/step-1-postgres.md
 git commit -m "phase(1): step(1.1) - Provision PostgreSQL for local dev"
 ```
-

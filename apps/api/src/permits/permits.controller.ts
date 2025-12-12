@@ -1,14 +1,14 @@
 import {
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
   HttpCode,
   HttpStatus,
+  Post,
 } from '@nestjs/common';
-import { PermitsService } from './permits.service';
 import { CreatePermitApplicationDto } from './dto/create-permit-application.dto';
 import { PermitApplication } from './entities/permit-application.entity';
+import { PermitsService } from './permits.service';
 
 @Controller('permits')
 export class PermitsController {
@@ -27,4 +27,3 @@ export class PermitsController {
     return this.permitsService.create(createPermitDto);
   }
 }
-

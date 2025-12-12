@@ -13,4 +13,3 @@ export class CreatePermitApplicationDto {
   @IsString({ message: 'Permit type must be a string' })
   permitType: string;
 }
-

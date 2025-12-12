@@ -1,8 +1,8 @@
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 export enum ApplicationStatus {
@@ -36,4 +36,3 @@ export class PermitApplication {
   @CreateDateColumn({ name: 'submitted_at', type: 'timestamp' })
   submittedAt: Date;
 }
-

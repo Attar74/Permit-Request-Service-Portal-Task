@@ -8,4 +8,3 @@ export class PermitApplicationResponseDto {
   applicationStatus: ApplicationStatus;
   submittedAt: Date;
 }
-

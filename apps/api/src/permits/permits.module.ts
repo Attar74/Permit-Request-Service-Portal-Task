@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { PermitApplication } from './entities/permit-application.entity';
 import { PermitsController } from './permits.controller';
 import { PermitsService } from './permits.service';
-import { PermitApplication } from './entities/permit-application.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PermitApplication])],
@@ -11,4 +11,3 @@ import { PermitApplication } from './entities/permit-application.entity';
   exports: [PermitsService],
 })
 export class PermitsModule {}
-
