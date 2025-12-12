@@ -218,7 +218,7 @@
       <div
         v-for="application in props.applications"
         :key="application.id"
-        class="group rounded-xl border border bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+        class="group rounded-xl border bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       >
         <!-- Card Header -->
         <div class="flex flex-col space-y-3 p-6 pb-4 border-b border/40">
