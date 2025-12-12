@@ -19,7 +19,7 @@
       <div class="flex items-center gap-2">
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-xl border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'list'
               ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
               : 'text-muted-foreground',
@@ -34,7 +34,9 @@
         <button
           :class="[
             'h-10 px-4 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
-            viewMode === 'grid' ? 'bg-[#e7e7e7] font-semibold' : 'text-black',
+            viewMode === 'grid'
+              ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
+              : 'text-muted-foreground',
           ]"
           @click="viewMode = 'grid'"
           title="Grid View"
