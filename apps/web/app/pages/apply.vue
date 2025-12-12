@@ -210,8 +210,8 @@
 </template>
 
 <script setup lang="ts">
-import type { CreatePermitApplication } from '../../types/permit';
 import { useTranslations } from '../../composables/useTranslations';
+import type { CreatePermitApplication } from '../../types/permit';
 
 const { t } = useTranslations();
 

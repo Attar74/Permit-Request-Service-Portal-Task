@@ -32,7 +32,11 @@
             <span
               class="hidden sm:inline-block text-xs font-normal text-gray-500 dark:text-gray-400 leading-tight mt-0.5"
             >
-              {{ locale === 'ar' ? 'خدمة طلبات التصاريح' : 'Permit Request Service' }}
+              {{
+                locale === 'ar'
+                  ? 'خدمة طلبات التصاريح'
+                  : 'Permit Request Service'
+              }}
             </span>
           </div>
         </NuxtLink>
@@ -77,97 +81,33 @@
           />
         </button>
 
-        <!-- Language Toggle Menu -->
-        <div class="relative">
-          <button
-            ref="languageButtonRef"
-            @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="gap-2 h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            type="button"
-            :aria-label="t('Switch language')"
-            :aria-expanded="isLanguageMenuOpen"
-          >
-            <span class="text-lg leading-none">{{
-              locale === 'en' ? '🇬🇧' : '🇸🇦'
-            }}</span>
-          </button>
-
-          <!-- Language Dropdown Menu -->
-          <Transition
-            enter-active-class="transition-all duration-200 ease-out"
-            enter-from-class="opacity-0 scale-95 -translate-y-2"
-            enter-to-class="opacity-100 scale-100 translate-y-0"
-            leave-active-class="transition-all duration-150 ease-in"
-            leave-from-class="opacity-100 scale-100 translate-y-0"
-            leave-to-class="opacity-0 scale-95 -translate-y-2"
-          >
-            <div
-              v-if="isLanguageMenuOpen"
-              ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-56 rounded-lg bg-white dark:bg-gray-800 shadow-xl z-50 overflow-hidden backdrop-blur-sm"
-            >
-              <div>
-                <button
-                  @click="setLocale('en')"
-                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
-                  :class="
-                    locale === 'en'
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
-                      : 'text-gray-900 dark:text-gray-100'
-                  "
-                  type="button"
-                >
-                  <span class="text-xl leading-none">🇬🇧</span>
-                  <div class="flex flex-col flex-1">
-                    <span class="font-semibold text-sm">English</span>
-                    <span
-                      class="text-xs text-gray-500 dark:text-gray-400 mt-0.5"
-                      >الإنجليزية</span
-                    >
-                  </div>
-                </button>
-                <div class="h-px border"></div>
-                <button
-                  @click="setLocale('ar')"
-                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
-                  :class="
-                    locale === 'ar'
-                      ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
-                      : 'text-gray-900 dark:text-gray-100'
-                  "
-                  type="button"
-                >
-                  <span class="text-xl leading-none">🇸🇦</span>
-                  <div class="flex flex-col flex-1">
-                    <span class="font-semibold text-sm">العربية</span>
-                    <span
-                      class="text-xs text-gray-500 dark:text-gray-400 mt-0.5"
-                      >Arabic</span
-                    >
-                  </div>
-                </button>
-              </div>
-            </div>
-          </Transition>
-        </div>
+        <!-- Language Toggle -->
+        <button
+          @click="toggleLocale"
+          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          type="button"
+          :aria-label="t('Switch language')"
+          :title="t('Switch language')"
+        >
+          <span class="text-lg leading-none">{{
+            locale === 'en' ? '🇬🇧' : '🇸🇦'
+          }}</span>
+        </button>
       </div>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core';
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 import { useRTL } from '../composables/useRTL';
 import { useTheme } from '../composables/useTheme';
 import { useTranslations } from '../composables/useTranslations';
 import AppDrawer from './AppDrawer.vue';
 
-const { dir, locale, toggleLocale, setLocale: setRTLocale } = useRTL();
+const { dir, locale, toggleLocale } = useRTL();
 const { theme, toggleTheme, isDark } = useTheme();
 const { t } = useTranslations();
-const route = useRoute();
 
 const drawerRef = ref<InstanceType<typeof AppDrawer> | null>(null);
 
@@ -178,31 +118,4 @@ const toggleMobileDrawer = () => {
     window.dispatchEvent(event);
   }
 };
-
-const isLanguageMenuOpen = ref<boolean>(false);
-const languageMenuRef = ref<HTMLElement | null>(null);
-const languageButtonRef = ref<HTMLElement | null>(null);
-
-const setLocale = (newLocale: 'en' | 'ar') => {
-  setRTLocale(newLocale);
-  isLanguageMenuOpen.value = false;
-};
-
-// Close language menu when clicking outside
-onClickOutside(languageMenuRef, (event) => {
-  // Don't close if clicking the button itself
-  if (
-    languageButtonRef.value &&
-    languageButtonRef.value.contains(event.target as Node)
-  ) {
-    return;
-  }
-  isLanguageMenuOpen.value = false;
-});
-
-
-// Close language menu when route changes
-watch(route, () => {
-  isLanguageMenuOpen.value = false;
-});
 </script>

@@ -72,7 +72,8 @@ const translations = {
     List: 'List',
     Grid: 'Grid',
     'Loading applications...': 'Loading applications...',
-    'Please wait while we fetch your data': 'Please wait while we fetch your data',
+    'Please wait while we fetch your data':
+      'Please wait while we fetch your data',
     'Error loading applications': 'Error loading applications',
     'No permit applications found': 'No permit applications found',
     'Get started by submitting your first permit application.':
@@ -101,6 +102,9 @@ const translations = {
     'Submit Application': 'Submit Application',
     'Failed to submit application. Please try again.':
       'Failed to submit application. Please try again.',
+    Pending: 'Pending',
+    Approved: 'Approved',
+    Rejected: 'Rejected',
   },
   ar: {
     Home: 'الرئيسية',
@@ -153,6 +157,9 @@ const translations = {
     'Submit Application': 'إرسال الطلب',
     'Failed to submit application. Please try again.':
       'فشل إرسال الطلب. يرجى المحاولة مرة أخرى.',
+    Pending: 'قيد المراجعة',
+    Approved: 'تم الموافقة عليه',
+    Rejected: 'تم رفضه',
   },
 };
 
@@ -165,4 +172,3 @@ export const useTranslations = () => {
 
   return { t };
 };
-

@@ -21,8 +21,8 @@
 
 <script setup lang="ts">
 import PermitApplicationsList from '../../components/PermitApplicationsList.vue';
-import type { PermitApplication } from '../../types/permit';
 import { useTranslations } from '../../composables/useTranslations';
+import type { PermitApplication } from '../../types/permit';
 
 const { t } = useTranslations();
 

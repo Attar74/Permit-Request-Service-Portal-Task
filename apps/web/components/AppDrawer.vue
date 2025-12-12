@@ -25,9 +25,7 @@
         @click="toggleDrawer"
         :class="[
           'absolute top-1/2 -translate-y-1/2 h-10 w-10 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md z-50',
-          isRTL
-            ? 'left-0 -translate-x-1/2'
-            : 'right-0 translate-x-1/2',
+          isRTL ? 'left-0 -translate-x-1/2' : 'right-0 translate-x-1/2',
         ]"
         type="button"
         :aria-label="isOpen ? t('Close drawer') : t('Open drawer')"
@@ -57,7 +55,13 @@
               ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
             isOpen ? 'px-4' : 'px-0',
-            isRTL ? (isOpen ? 'justify-end' : 'justify-center') : (isOpen ? 'justify-start' : 'justify-center'),
+            isRTL
+              ? isOpen
+                ? 'justify-start'
+                : 'justify-center'
+              : isOpen
+                ? 'justify-start'
+                : 'justify-center',
           ]"
         >
           <Icon
@@ -86,7 +90,13 @@
               ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
             isOpen ? 'px-4' : 'px-0',
-            isRTL ? (isOpen ? 'justify-end' : 'justify-center') : (isOpen ? 'justify-start' : 'justify-center'),
+            isRTL
+              ? isOpen
+                ? 'justify-start'
+                : 'justify-center'
+              : isOpen
+                ? 'justify-start'
+                : 'justify-center',
           ]"
         >
           <Icon
@@ -181,7 +191,6 @@ const handleNavigation = (path: string) => {
     closeDrawer();
   }
 };
-
 
 // Close drawer on mobile when route changes
 watch(route, () => {

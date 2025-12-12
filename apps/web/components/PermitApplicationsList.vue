@@ -14,7 +14,11 @@
           <span class="font-semibold text-gray-900 dark:text-gray-100">{{
             props.applications.length
           }}</span>
-          {{ props.applications.length !== 1 ? t('applications') : t('application') }}
+          {{
+            props.applications.length !== 1
+              ? t('applications')
+              : t('application')
+          }}
           {{ t('found') }}
         </p>
       </div>
@@ -31,7 +35,9 @@
           type="button"
         >
           <Icon name="lucide:list" class="h-4 w-4" />
-          <span class="hidden sm:inline text-sm font-medium">{{ t('List') }}</span>
+          <span class="hidden sm:inline text-sm font-medium">{{
+            t('List')
+          }}</span>
         </button>
         <button
           :class="[
@@ -45,7 +51,9 @@
           type="button"
         >
           <Icon name="lucide:layout-grid" class="h-4 w-4" />
-          <span class="hidden sm:inline text-sm font-medium">{{ t('Grid') }}</span>
+          <span class="hidden sm:inline text-sm font-medium">{{
+            t('Grid')
+          }}</span>
         </button>
       </div>
     </div>
@@ -80,7 +88,9 @@
         <div class="mb-4 flex justify-center">
           <Icon name="lucide:alert-triangle" class="h-12 w-12" />
         </div>
-        <p class="font-bold text-lg mb-2">{{ t('Error loading applications') }}</p>
+        <p class="font-bold text-lg mb-2">
+          {{ t('Error loading applications') }}
+        </p>
         <p class="text-sm text-gray-600 dark:text-gray-400 max-w-md mx-auto">
           {{ props.error.message }}
         </p>
@@ -129,31 +139,49 @@
               >
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('ID') }}
                 </th>
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('Applicant Name') }}
                 </th>
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('Email') }}
                 </th>
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('Permit Type') }}
                 </th>
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('Status') }}
                 </th>
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
+                  :class="{
+                    'text-right': isRTL,
+                  }"
                 >
                   {{ t('Submitted At') }}
                 </th>
@@ -204,7 +232,7 @@
                       :name="getStatusIcon(application.applicationStatus)"
                       class="h-3.5 w-3.5"
                     />
-                    {{ application.applicationStatus }}
+                    {{ t(`${application.applicationStatus}`) }}
                   </span>
                 </td>
                 <td class="p-6 align-middle">
@@ -237,7 +265,9 @@
               <h3
                 class="text-lg font-bold leading-tight tracking-tight text-gray-900 dark:text-gray-100 mb-1.5"
               >
-                {{ t('Application') }} #{{ String(application.id).substring(0, 8) }}
+                {{ t('Application') }} #{{
+                  String(application.id).substring(0, 8)
+                }}
               </h3>
               <p
                 class="text-xs text-gray-600 dark:text-gray-400 font-medium flex items-center gap-1.5"
@@ -258,7 +288,7 @@
                 :name="getStatusIcon(application.applicationStatus)"
                 class="h-3.5 w-3.5"
               />
-              {{ application.applicationStatus }}
+              {{ t(`${application.applicationStatus}`) }}
             </span>
           </div>
         </div>
@@ -310,8 +340,9 @@
 </template>
 
 <script setup lang="ts">
-import type { ApplicationStatus, PermitApplication } from '../types/permit';
+import { useRTL } from '../composables/useRTL';
 import { useTranslations } from '../composables/useTranslations';
+import type { ApplicationStatus, PermitApplication } from '../types/permit';
 
 interface Props {
   applications?: PermitApplication[];
@@ -327,10 +358,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const { t } = useTranslations();
 const viewMode = ref<'grid' | 'list'>('list');
+const { isRTL } = useRTL();
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toLocaleString('en-US', {
+  return date.toLocaleString(isRTL.value ? 'ar-SA' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
