@@ -19,7 +19,7 @@
       <div class="flex items-center gap-2">
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
             viewMode === 'list'
               ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
               : 'text-muted-foreground',
@@ -33,7 +33,7 @@
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
             viewMode === 'grid'
               ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
               : 'text-muted-foreground',
@@ -51,7 +51,7 @@
     <!-- Loading State -->
     <div
       v-if="props.pending"
-      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border border bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -86,7 +86,7 @@
     <!-- Empty State -->
     <div
       v-else-if="props.applications.length === 0"
-      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border border bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -114,7 +114,7 @@
     <!-- List View -->
     <div
       v-else-if="viewMode === 'list'"
-      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md overflow-hidden"
+      class="rounded-xl border border bg-card text-card-foreground shadow-md overflow-hidden"
     >
       <div class="overflow-x-auto">
         <div class="relative w-full min-w-full">
@@ -218,7 +218,7 @@
       <div
         v-for="application in props.applications"
         :key="application.id"
-        class="group rounded-xl border border-muted bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+        class="group rounded-xl border border bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       >
         <!-- Card Header -->
         <div class="flex flex-col space-y-3 p-6 pb-4 border-b border-border/40">

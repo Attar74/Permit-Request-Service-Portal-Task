@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b border-border/40 bg-card/98 backdrop-blur-xl supports-[backdrop-filter]:bg-card/95 shadow-sm"
+    class="sticky top-0 z-50 w-full border-b bg-card/98 backdrop-blur-xl supports-[backdrop-filter]:bg-card/95 shadow-sm"
   >
     <nav
       class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8"
@@ -70,7 +70,7 @@
         <button
           v-if="!isMobileMenuOpen"
           @click="isMobileMenuOpen = true"
-          class="md:hidden h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
+          class="md:hidden h-10 w-10 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Open menu')"
         >
@@ -79,7 +79,7 @@
         <button
           v-else
           @click="isMobileMenuOpen = false"
-          class="md:hidden h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
+          class="md:hidden h-10 w-10 rounded-lg border border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Close menu')"
         >
@@ -92,7 +92,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          class="h-10 w-10 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -116,7 +116,7 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            class="h-10 px-4 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
@@ -143,7 +143,7 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-56 rounded-lg border border-muted bg-popover shadow-xl z-50 overflow-hidden backdrop-blur-sm"
+              class="absolute right-0 mt-2 w-56 rounded-lg border bg-white shadow-xl z-50 overflow-hidden backdrop-blur-sm"
             >
               <div class="py-1.5">
                 <button
