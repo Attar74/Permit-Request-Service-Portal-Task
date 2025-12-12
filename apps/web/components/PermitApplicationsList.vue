@@ -21,7 +21,7 @@
           :class="[
             'h-10 px-4 rounded-xl border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'list'
-              ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
+              ? 'bg-black text-white font-semibold'
               : 'text-muted-foreground',
           ]"
           @click="viewMode = 'list'"
@@ -33,9 +33,9 @@
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-lg border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-xl border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'grid'
-              ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
+              ? 'bg-black text-white font-semibold'
               : 'text-muted-foreground',
           ]"
           @click="viewMode = 'grid'"
