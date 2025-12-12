@@ -169,7 +169,7 @@
           >
             <div
               v-if="submitError"
-              class="rounded-lg bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive font-medium flex items-start gap-2"
+              class="rounded-md bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive font-medium flex items-start gap-2"
             >
               <Icon
                 name="lucide:alert-triangle"
