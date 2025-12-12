@@ -153,6 +153,7 @@ The application will be available at `http://localhost:3000`
 ### 1. View Applications
 
 Visit `http://localhost:3000` in your browser. You should see:
+
 - A list of permit applications (if seeded)
 - Status badges (Pending, Approved, Rejected)
 - Application details in a table (desktop) or cards (mobile)
@@ -418,6 +419,7 @@ phase(X): step(Y) - <short description>
 ```
 
 Examples:
+
 - `phase(0): step(0.1) - Create monorepo structure and baseline docs`
 - `phase(1): step(1.4) - Implement Backend API endpoints`
 
