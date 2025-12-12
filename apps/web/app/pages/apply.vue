@@ -9,88 +9,200 @@
       </p>
     </div>
 
-    <Card>
-      <CardContent class="pt-6">
+    <div
+      class="rounded-lg border-2 border-border bg-card text-card-foreground shadow-lg"
+    >
+      <div class="p-8 sm:p-10">
         <form @submit.prevent="handleSubmit" class="space-y-6">
-          <div class="space-y-2">
-            <Label for="applicantName">
-              Applicant Name <span class="text-destructive">*</span>
-            </Label>
-            <Input
+          <!-- Applicant Name Field -->
+          <div class="space-y-2.5">
+            <label
+              for="applicantName"
+              class="text-sm font-semibold text-foreground flex items-center gap-1"
+            >
+              Applicant Name
+              <span class="text-destructive font-bold">*</span>
+            </label>
+            <input
               id="applicantName"
               v-model="form.applicantName"
               type="text"
-              required
               :disabled="isSubmitting"
               placeholder="Enter your full name"
+              :class="[
+                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'ring-offset-background placeholder:text-muted-foreground/60',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'focus-visible:border-ring focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'transition-all duration-200',
+                'hover:border-input/80',
+                errors.applicantName
+                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
+                  : 'border-input',
+              ]"
             />
-            <p v-if="errors.applicantName" class="text-sm text-destructive">
-              {{ errors.applicantName }}
-            </p>
+            <Transition
+              enter-active-class="transition-all duration-200"
+              enter-from-class="opacity-0 -translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition-all duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-1"
+            >
+              <p
+                v-if="errors.applicantName"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+              >
+                <Icon name="lucide:alert-circle" class="h-4 w-4" />
+                {{ errors.applicantName }}
+              </p>
+            </Transition>
           </div>
 
-          <div class="space-y-2">
-            <Label for="applicantEmail">
-              Email Address <span class="text-destructive">*</span>
-            </Label>
-            <Input
+          <!-- Email Address Field -->
+          <div class="space-y-2.5">
+            <label
+              for="applicantEmail"
+              class="text-sm font-semibold text-foreground flex items-center gap-1"
+            >
+              Email Address
+              <span class="text-destructive font-bold">*</span>
+            </label>
+            <input
               id="applicantEmail"
               v-model="form.applicantEmail"
               type="email"
-              required
               :disabled="isSubmitting"
               placeholder="Enter your email address"
+              :class="[
+                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'ring-offset-background placeholder:text-muted-foreground/60',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'focus-visible:border-ring focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'transition-all duration-200',
+                'hover:border-input/80',
+                errors.applicantEmail
+                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
+                  : 'border-input',
+              ]"
             />
-            <p v-if="errors.applicantEmail" class="text-sm text-destructive">
-              {{ errors.applicantEmail }}
-            </p>
+            <Transition
+              enter-active-class="transition-all duration-200"
+              enter-from-class="opacity-0 -translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition-all duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-1"
+            >
+              <p
+                v-if="errors.applicantEmail"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+              >
+                <Icon name="lucide:alert-circle" class="h-4 w-4" />
+                {{ errors.applicantEmail }}
+              </p>
+            </Transition>
           </div>
 
-          <div class="space-y-2">
-            <Label for="permitType">
-              Permit Type <span class="text-destructive">*</span>
-            </Label>
-            <Input
+          <!-- Permit Type Field -->
+          <div class="space-y-2.5">
+            <label
+              for="permitType"
+              class="text-sm font-semibold text-foreground flex items-center gap-1"
+            >
+              Permit Type
+              <span class="text-destructive font-bold">*</span>
+            </label>
+            <input
               id="permitType"
               v-model="form.permitType"
               type="text"
-              required
               :disabled="isSubmitting"
               placeholder="e.g., Construction Permit, Business License"
+              :class="[
+                'flex h-11 w-full rounded-lg border bg-background px-4 py-2.5 text-sm font-medium text-foreground',
+                'ring-offset-background placeholder:text-muted-foreground/60',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                'focus-visible:border-ring focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'transition-all duration-200',
+                'hover:border-input/80',
+                errors.permitType
+                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
+                  : 'border-input',
+              ]"
             />
-            <p v-if="errors.permitType" class="text-sm text-destructive">
-              {{ errors.permitType }}
-            </p>
+            <Transition
+              enter-active-class="transition-all duration-200"
+              enter-from-class="opacity-0 -translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition-all duration-150"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-1"
+            >
+              <p
+                v-if="errors.permitType"
+                class="text-sm text-destructive font-medium flex items-center gap-1.5 mt-1"
+              >
+                <Icon name="lucide:alert-circle" class="h-4 w-4" />
+                {{ errors.permitType }}
+              </p>
+            </Transition>
           </div>
 
-          <div
-            v-if="submitError"
-            class="rounded-md bg-destructive/10 p-4 text-sm text-destructive"
+          <!-- Submit Error Message -->
+          <Transition
+            enter-active-class="transition-all duration-200"
+            enter-from-class="opacity-0 -translate-y-1"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition-all duration-150"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 -translate-y-1"
           >
-            {{ submitError }}
-          </div>
+            <div
+              v-if="submitError"
+              class="rounded-lg bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive font-medium flex items-start gap-2"
+            >
+              <Icon
+                name="lucide:alert-triangle"
+                class="h-5 w-5 mt-0.5 flex-shrink-0"
+              />
+              <span>{{ submitError }}</span>
+            </div>
+          </Transition>
 
-          <div class="flex items-center gap-4">
-            <Button
+          <!-- Form Actions -->
+          <div
+            class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
+          >
+            <button
               type="submit"
               :disabled="isSubmitting"
-              class="w-full sm:w-auto"
+              class="w-full sm:w-auto sm:min-w-[160px] h-11 font-semibold shadow-md hover:shadow-lg transition-shadow inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <span v-if="isSubmitting">Submitting...</span>
+              <span v-if="isSubmitting" class="flex items-center gap-2">
+                <Icon name="lucide:loader-2" class="h-4 w-4 animate-spin" />
+                Submitting...
+              </span>
               <span v-else>Submit Application</span>
-            </Button>
-            <Button variant="outline" as-child>
-              <NuxtLink to="/">Cancel</NuxtLink>
-            </Button>
+            </button>
+            <NuxtLink
+              to="/"
+              class="w-full sm:w-auto h-11 font-semibold border-2 bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 flex items-center justify-center"
+            >
+              Cancel
+            </NuxtLink>
           </div>
         </form>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { CreatePermitApplication } from '~/types/permit';
+import type { CreatePermitApplication } from '../../types/permit';
 
 const form = reactive<CreatePermitApplication>({
   applicantName: '',
@@ -106,28 +218,66 @@ const submitError = ref<string | null>(null);
 
 const router = useRouter();
 
+// Clear errors when user starts typing (only if error exists)
+watch(
+  () => form.applicantName,
+  (newValue) => {
+    console.log('applicantName changed:', newValue);
+    if (errors.applicantName && newValue?.trim()) {
+      errors.applicantName = undefined;
+    }
+  }
+);
+
+watch(
+  () => form.applicantEmail,
+  (newValue) => {
+    if (errors.applicantEmail && newValue?.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(newValue)) {
+        errors.applicantEmail = undefined;
+      }
+    }
+  }
+);
+
+watch(
+  () => form.permitType,
+  (newValue) => {
+    if (errors.permitType && newValue?.trim()) {
+      errors.permitType = undefined;
+    }
+  }
+);
+
 function validateForm(): boolean {
   // Clear previous errors
-  errors.applicantName = undefined;
-  errors.applicantEmail = undefined;
-  errors.permitType = undefined;
+  Object.keys(errors).forEach((key) => {
+    errors[key as keyof CreatePermitApplication] = undefined;
+  });
 
   let isValid = true;
 
-  if (!form.applicantName.trim()) {
+  // Validate applicant name
+  const trimmedName = form.applicantName?.trim() || '';
+  if (!trimmedName) {
     errors.applicantName = 'Applicant name is required';
     isValid = false;
   }
 
-  if (!form.applicantEmail.trim()) {
+  // Validate email
+  const trimmedEmail = form.applicantEmail?.trim() || '';
+  if (!trimmedEmail) {
     errors.applicantEmail = 'Email address is required';
     isValid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.applicantEmail)) {
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
     errors.applicantEmail = 'Please enter a valid email address';
     isValid = false;
   }
 
-  if (!form.permitType.trim()) {
+  // Validate permit type
+  const trimmedPermitType = form.permitType?.trim() || '';
+  if (!trimmedPermitType) {
     errors.permitType = 'Permit type is required';
     isValid = false;
   }
@@ -147,7 +297,7 @@ async function handleSubmit() {
   try {
     await $fetch('/api/permits', {
       method: 'POST',
-      body: form,
+      body: { ...form },
     });
 
     // Success - redirect to home page
