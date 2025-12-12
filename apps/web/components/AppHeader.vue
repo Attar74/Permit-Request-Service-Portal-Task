@@ -47,7 +47,7 @@
         <!-- Mobile Drawer Toggle -->
         <button
           @click="toggleMobileDrawer"
-          class="md:hidden h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
+          class="md:hidden h-10 w-10 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm rounded-full"
           type="button"
           :aria-label="t('Open menu')"
         >
@@ -62,7 +62,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-full"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -84,7 +84,7 @@
         <!-- Language Toggle -->
         <button
           @click="toggleLocale"
-          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-full"
           type="button"
           :aria-label="t('Switch language')"
           :title="t('Switch language')"

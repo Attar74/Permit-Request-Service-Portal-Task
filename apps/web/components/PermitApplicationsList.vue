@@ -357,8 +357,27 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const { t } = useTranslations();
-const viewMode = ref<'grid' | 'list'>('list');
 const { isRTL } = useRTL();
+
+// Initialize view mode from localStorage or default to 'list'
+const getInitialViewMode = (): 'grid' | 'list' => {
+  if (process.client) {
+    const saved = localStorage.getItem('permit-view-mode');
+    if (saved === 'grid' || saved === 'list') {
+      return saved;
+    }
+  }
+  return 'list';
+};
+
+const viewMode = ref<'grid' | 'list'>(getInitialViewMode());
+
+// Persist view mode to localStorage when it changes
+watch(viewMode, (newMode) => {
+  if (process.client) {
+    localStorage.setItem('permit-view-mode', newMode);
+  }
+});
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
