@@ -1,13 +1,17 @@
 <template>
   <div class="space-y-6">
     <!-- Header Section -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-border/60">
+    <div
+      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-border/60"
+    >
       <div class="space-y-1">
         <h2 class="text-3xl font-bold tracking-tight text-foreground">
           Permit Applications
         </h2>
         <p class="text-sm text-muted-foreground">
-          <span class="font-semibold text-foreground">{{ props.applications.length }}</span>
+          <span class="font-semibold text-foreground">{{
+            props.applications.length
+          }}</span>
           {{ props.applications.length !== 1 ? 'applications' : 'application' }}
           found
         </p>
@@ -15,7 +19,7 @@
       <div class="flex items-center gap-2">
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
             viewMode === 'list'
               ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
               : 'text-muted-foreground',
@@ -29,7 +33,7 @@
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
+            'h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm hover:shadow-md active:scale-95',
             viewMode === 'grid'
               ? 'bg-primary/10 text-primary border-primary/20 font-semibold'
               : 'text-muted-foreground',
@@ -47,7 +51,7 @@
     <!-- Loading State -->
     <div
       v-if="props.pending"
-      class="rounded-xl border border-border bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -82,7 +86,7 @@
     <!-- Empty State -->
     <div
       v-else-if="props.applications.length === 0"
-      class="rounded-xl border border-border bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -110,7 +114,7 @@
     <!-- List View -->
     <div
       v-else-if="viewMode === 'list'"
-      class="rounded-xl border border-border bg-card text-card-foreground shadow-md overflow-hidden"
+      class="rounded-xl border border-muted bg-card text-card-foreground shadow-md overflow-hidden"
     >
       <div class="overflow-x-auto">
         <div class="relative w-full min-w-full">
@@ -157,7 +161,9 @@
                 :class="{ 'bg-muted/10': index % 2 === 0 }"
               >
                 <td class="p-6 align-middle">
-                  <span class="font-mono text-xs font-semibold text-muted-foreground">
+                  <span
+                    class="font-mono text-xs font-semibold text-muted-foreground"
+                  >
                     #{{ String(application.id).substring(0, 8) }}
                   </span>
                 </td>
@@ -208,14 +214,11 @@
     </div>
 
     <!-- Grid View -->
-    <div
-      v-else
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-    >
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
         v-for="application in props.applications"
         :key="application.id"
-        class="group rounded-xl border border-border bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+        class="group rounded-xl border border-muted bg-card text-card-foreground shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       >
         <!-- Card Header -->
         <div class="flex flex-col space-y-3 p-6 pb-4 border-b border-border/40">
@@ -226,7 +229,9 @@
               >
                 Application #{{ String(application.id).substring(0, 8) }}
               </h3>
-              <p class="text-xs text-muted-foreground font-medium flex items-center gap-1.5">
+              <p
+                class="text-xs text-muted-foreground font-medium flex items-center gap-1.5"
+              >
                 <Icon name="lucide:calendar" class="h-3.5 w-3.5" />
                 {{ formatDate(application.submittedAt) }}
               </p>

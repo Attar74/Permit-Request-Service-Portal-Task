@@ -70,7 +70,7 @@
         <button
           v-if="!isMobileMenuOpen"
           @click="isMobileMenuOpen = true"
-          class="md:hidden h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
+          class="md:hidden h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Open menu')"
         >
@@ -79,7 +79,7 @@
         <button
           v-else
           @click="isMobileMenuOpen = false"
-          class="md:hidden h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
+          class="md:hidden h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-sm"
           type="button"
           :aria-label="t('Close menu')"
         >
@@ -92,7 +92,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-10 w-10 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          class="h-10 w-10 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -116,12 +116,14 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-10 px-4 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            class="h-10 px-4 rounded-lg border border-muted bg-card hover:bg-accent hover:text-accent-foreground text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
           >
-            <span class="text-lg leading-none">{{ locale === 'en' ? '🇬🇧' : '🇸🇦' }}</span>
+            <span class="text-lg leading-none">{{
+              locale === 'en' ? '🇬🇧' : '🇸🇦'
+            }}</span>
             <Icon
               name="lucide:chevron-down"
               class="h-4 w-4 transition-transform duration-200"
@@ -141,7 +143,7 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-popover shadow-xl z-50 overflow-hidden backdrop-blur-sm"
+              class="absolute right-0 mt-2 w-56 rounded-lg border border-muted bg-popover shadow-xl z-50 overflow-hidden backdrop-blur-sm"
             >
               <div class="py-1.5">
                 <button
