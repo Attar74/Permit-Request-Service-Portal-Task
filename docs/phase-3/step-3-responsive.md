@@ -17,6 +17,7 @@ Enhanced responsive design across all pages and components. Implemented mobile-f
 ### Test Responsive Design
 
 1. Start development server:
+
    ```bash
    cd apps/web
    npm run dev
@@ -96,6 +97,7 @@ xl:  1280px  /* Extra large devices */
 ### Home Page (Index)
 
 **Mobile View (< 768px)**:
+
 - Card-based layout instead of table
 - Each application in its own card
 - Key-value pairs for better readability
@@ -103,23 +105,27 @@ xl:  1280px  /* Extra large devices */
 - Stacked information
 
 **Tablet View (768px - 1024px)**:
+
 - Table view with some columns hidden
 - Email column hidden on smaller tablets
 - Date column hidden on medium tablets
 
 **Desktop View (> 1024px)**:
+
 - Full table with all columns visible
 - Optimal spacing and readability
 
 ### Apply Page
 
 **Mobile View**:
+
 - Full-width form inputs
 - Stacked buttons (full-width)
 - Reduced padding
 - Larger touch targets
 
 **Desktop View**:
+
 - Max-width container (max-w-2xl)
 - Horizontal button layout
 - Optimal form width
@@ -127,12 +133,14 @@ xl:  1280px  /* Extra large devices */
 ### Navigation
 
 **Mobile View**:
+
 - Smaller logo text
 - Reduced gap between nav items
 - Larger touch targets with padding
 - Hover states for better feedback
 
 **Desktop View**:
+
 - Larger logo
 - More spacing
 - Standard hover effects
@@ -217,6 +225,7 @@ No new environment variables added in this step.
 ## Browser Testing
 
 Test on:
+
 - **Chrome DevTools**: Device emulation
 - **Firefox Responsive Design Mode**
 - **Safari Responsive Design Mode**
@@ -240,4 +249,3 @@ Test on:
 git add apps/web/app/
 git commit -m "phase(3): step(3.3) - Responsive layout"
 ```
-

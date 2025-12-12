@@ -5,49 +5,53 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## A) Tech Stack
 
 ### A.1 Nuxt 4.x Used
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/package.json` line 18: `"nuxt": "^4.0.0"`
-- **Verification**: 
+- **Verification**:
   ```bash
   cd apps/web && cat package.json | grep nuxt
   ```
   Should show: `"nuxt": "^4.0.0"`
 
 ### A.2 Backend is NestJS OR Strapi
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/package.json` shows NestJS dependencies:
     - `@nestjs/common`, `@nestjs/core`, `@nestjs/platform-express`
     - `@nestjs/typeorm`, `@nestjs/config`
   - `apps/api/src/main.ts` exists (NestJS entry point)
   - `apps/api/src/app.module.ts` exists (NestJS module structure)
-- **Verification**: 
+- **Verification**:
   ```bash
   cd apps/api && cat package.json | grep @nestjs
   ```
   Should show multiple `@nestjs/*` packages
 
 ### A.3 PostgreSQL Used
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `docker/docker-compose.yml` line 5: `image: postgres:16-alpine`
   - `apps/api/src/app.module.ts` configures TypeORM with PostgreSQL
   - `.env.example` contains PostgreSQL connection variables
-- **Verification**: 
+- **Verification**:
   ```bash
   cat docker/docker-compose.yml | grep postgres
   ```
   Should show: `image: postgres:16-alpine`
 
 ### A.4 Saudi National Design System Guidelines Used
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `README.md` line 225: "follows the **Saudi National Design System (SDGA)** guidelines"
   - `docs/phase-3/step-1-design-system.md` documents design system integration
   - Components use Tailwind CSS with design system patterns
   - `apps/web/tailwind.config.js` contains design system configuration
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -r "Saudi National Design System" README.md docs/
   ```
@@ -58,51 +62,56 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## B) Data Model (Permit Application)
 
 ### B.1 applicant_name (required)
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/src/permits/entities/permit-application.entity.ts` line 19: `applicantName: string`
   - `apps/api/src/permits/dto/create-permit-application.dto.ts` line 4-6: `@IsNotEmpty()` validation
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -A 2 "applicantName" apps/api/src/permits/entities/permit-application.entity.ts
   ```
 
 ### B.2 applicant_email (required, email)
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/src/permits/entities/permit-application.entity.ts` line 22: `applicantEmail: string`
   - `apps/api/src/permits/dto/create-permit-application.dto.ts` line 8-9: `@IsNotEmpty()` and `@IsEmail()` validation
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -A 2 "applicantEmail" apps/api/src/permits/dto/create-permit-application.dto.ts
   ```
   Should show `@IsEmail()` decorator
 
 ### B.3 permit_type (required)
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/src/permits/entities/permit-application.entity.ts` line 25: `permitType: string`
   - `apps/api/src/permits/dto/create-permit-application.dto.ts` line 12-13: `@IsNotEmpty()` validation
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -A 2 "permitType" apps/api/src/permits/dto/create-permit-application.dto.ts
   ```
 
 ### B.4 application_status enum: Pending/Approved/Rejected, default Pending
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/src/permits/entities/permit-application.entity.ts` lines 8-12: `ApplicationStatus` enum with `PENDING`, `APPROVED`, `REJECTED`
   - Line 32: `default: ApplicationStatus.PENDING`
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -A 5 "ApplicationStatus" apps/api/src/permits/entities/permit-application.entity.ts
   ```
 
 ### B.5 submitted_at auto timestamp
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/api/src/permits/entities/permit-application.entity.ts` line 36: `@CreateDateColumn({ name: 'submitted_at', type: 'timestamp' })`
-- **Verification**: 
+- **Verification**:
   ```bash
   grep "submitted_at" apps/api/src/permits/entities/permit-application.entity.ts
   ```
@@ -113,36 +122,39 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## C) Functional Requirements (Nuxt Frontend)
 
 ### C.1 Home page / lists all permits
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/app/pages/index.vue` exists and uses `PermitApplicationsList` component
   - `apps/web/app/pages/index.vue` line 29: `await useFetch<PermitApplication[]>('/api/permits')`
   - `apps/web/components/PermitApplicationsList.vue` displays applications in list/grid view
-- **Verification**: 
+- **Verification**:
   ```bash
   # Start dev server and visit http://localhost:3000
   # Should see list of permit applications
   ```
 
 ### C.2 Apply page /apply submits new permit
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/app/pages/apply.vue` exists with form
   - `apps/web/app/pages/apply.vue` line 306: `await $fetch('/api/permits', { method: 'POST' })`
   - Form has fields: applicantName, applicantEmail, permitType
-- **Verification**: 
+- **Verification**:
   ```bash
   # Start dev server and visit http://localhost:3000/apply
   # Fill form and submit - should redirect to home page
   ```
 
 ### C.3 Status is visually distinguished on Home page
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/components/PermitApplicationsList.vue` lines 195-208: Status badges with color coding
   - `getBadgeClasses()` function returns different colors for pending/approved/rejected
   - Badges use icons and colored backgrounds
-- **Verification**: 
+- **Verification**:
   ```bash
   # View home page - status badges should have different colors:
   # Pending: yellow, Approved: green, Rejected: red
@@ -153,13 +165,14 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## D) Architectural Requirements
 
 ### D.1 All frontend calls proxied via Nuxt Server Routes
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/server/api/permits.get.ts` exists (GET endpoint)
   - `apps/web/server/api/permits.post.ts` exists (POST endpoint)
   - `apps/web/app/pages/index.vue` line 29: calls `/api/permits` (not direct backend)
   - `apps/web/app/pages/apply.vue` line 306: calls `/api/permits` (not direct backend)
-- **Verification**: 
+- **Verification**:
   ```bash
   # Check that no frontend code calls http://localhost:3001 directly
   grep -r "localhost:3001" apps/web/app/ apps/web/components/
@@ -167,12 +180,13 @@ This document audits the repository against the Task PDF requirements. Each requ
   Should return no results (or only in server routes)
 
 ### D.2 Server routes exist and communicate with backend
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/server/api/permits.get.ts` line 9: `fetch(\`${apiBaseUrl}/permits\`)`
   - `apps/web/server/api/permits.post.ts` line 23: `fetch(\`${apiBaseUrl}/permits\`, { method: 'POST' })`
   - Both routes use `useRuntimeConfig()` to get `apiBaseUrl`
-- **Verification**: 
+- **Verification**:
   ```bash
   cat apps/web/server/api/permits.get.ts | grep fetch
   cat apps/web/server/api/permits.post.ts | grep fetch
@@ -184,26 +198,28 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## E) UI/UX Requirements
 
 ### E.1 RTL support demonstrated
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/composables/useRTL.ts` exists with RTL detection and management
   - `apps/web/app/layouts/default.vue` line 2: `:dir="dir"` attribute
   - `docs/phase-3/step-2-rtl.md` documents RTL implementation
   - Components use RTL-aware classes
-- **Verification**: 
+- **Verification**:
   ```bash
   # In browser console: document.documentElement.setAttribute('dir', 'rtl')
   # Layout should flip to right-to-left
   ```
 
 ### E.2 Responsive layout demonstrated
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `apps/web/components/PermitApplicationsList.vue` has grid/list views with responsive breakpoints
   - `apps/web/app/pages/apply.vue` uses responsive classes (`sm:`, `md:`, `lg:`)
   - `docs/phase-3/step-3-responsive.md` documents responsive design
   - Mobile-first approach with Tailwind breakpoints
-- **Verification**: 
+- **Verification**:
   ```bash
   # Open DevTools, toggle device toolbar
   # Test at 375px (mobile), 768px (tablet), 1280px (desktop)
@@ -211,13 +227,14 @@ This document audits the repository against the Task PDF requirements. Each requ
   ```
 
 ### E.3 UI uses Saudi Design System style (components, spacing, accessibility)
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `README.md` line 225: "follows the **Saudi National Design System (SDGA)** guidelines"
   - `apps/web/tailwind.config.js` contains design system configuration
   - Components use consistent spacing, colors, and typography
   - Accessibility: focus states, ARIA labels, semantic HTML
-- **Verification**: 
+- **Verification**:
   ```bash
   # Check components for:
   # - Consistent spacing (Tailwind classes)
@@ -230,35 +247,38 @@ This document audits the repository against the Task PDF requirements. Each requ
 ## F) Deliverables
 
 ### F.1 Single git repo includes all components
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - Monorepo structure with `apps/web`, `apps/api`, `docs/`, `docker/`
   - All code in single repository
-- **Verification**: 
+- **Verification**:
   ```bash
   ls -la
   ```
   Should show: `apps/`, `docs/`, `docker/`, `README.md`
 
 ### F.2 Root README has setup steps for entire stack
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `README.md` exists with comprehensive setup instructions
   - Lines 43-149: "Quick Start" section with 7 steps
   - Includes: clone, env setup, PostgreSQL, dependencies, seed, backend, frontend
-- **Verification**: 
+- **Verification**:
   ```bash
   grep -A 5 "Quick Start" README.md
   ```
   Should show setup steps
 
 ### F.3 Presentation notes exist (5–10 min explanation)
+
 - **Status**: ✅ **PASS**
-- **Evidence**: 
+- **Evidence**:
   - `docs/PRESENTATION_NOTES.md` exists
   - Line 4: "**Duration**: 5-10 minutes"
   - Contains sections: Overview, Architecture, Data Flow, Design System, Highlights
-- **Verification**: 
+- **Verification**:
   ```bash
   head -10 docs/PRESENTATION_NOTES.md
   ```
@@ -279,4 +299,3 @@ All requirements from the Task PDF are satisfied. The repository is complete and
 ## How to Verify All Requirements
 
 See `docs/VERIFICATION_STEPS.md` for detailed verification commands.
-

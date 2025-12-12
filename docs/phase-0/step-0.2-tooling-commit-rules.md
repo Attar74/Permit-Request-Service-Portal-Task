@@ -138,4 +138,3 @@ phase(X): step(Y) - <short description>
 git add .
 git commit -m "phase(0): step(0.2) - Add tooling and commit rules"
 ```
-

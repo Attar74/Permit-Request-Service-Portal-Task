@@ -50,7 +50,19 @@ type TranslationKey =
   | 'Failed to submit application. Please try again.'
   | 'Pending'
   | 'Approved'
-  | 'Rejected';
+  | 'Rejected'
+  | 'Showing'
+  | 'to'
+  | 'of'
+  | 'results'
+  | 'Previous'
+  | 'Next'
+  | 'Previous page'
+  | 'Next page'
+  | 'Go to page'
+  | 'Close'
+  | 'Application submitted successfully'
+  | 'Your permit application has been submitted successfully';
 
 const translations = {
   en: {
@@ -108,6 +120,19 @@ const translations = {
     Pending: 'Pending',
     Approved: 'Approved',
     Rejected: 'Rejected',
+    Showing: 'Showing',
+    to: 'to',
+    of: 'of',
+    results: 'results',
+    Previous: 'Previous',
+    Next: 'Next',
+    'Previous page': 'Previous page',
+    'Next page': 'Next page',
+    'Go to page': 'Go to page',
+    Close: 'Close',
+    'Application submitted successfully': 'Application submitted successfully',
+    'Your permit application has been submitted successfully':
+      'Your permit application has been submitted successfully',
   },
   ar: {
     Home: 'الرئيسية',
@@ -163,6 +188,19 @@ const translations = {
     Pending: 'قيد المراجعة',
     Approved: 'تم الموافقة عليه',
     Rejected: 'تم رفضه',
+    Showing: 'عرض',
+    to: 'إلى',
+    of: 'من',
+    results: 'نتيجة',
+    Previous: 'السابق',
+    Next: 'التالي',
+    'Previous page': 'الصفحة السابقة',
+    'Next page': 'الصفحة التالية',
+    'Go to page': 'انتقل إلى الصفحة',
+    Close: 'إغلاق',
+    'Application submitted successfully': 'تم إرسال الطلب بنجاح',
+    'Your permit application has been submitted successfully':
+      'تم إرسال طلب التصريح الخاص بك بنجاح',
   },
 };
 

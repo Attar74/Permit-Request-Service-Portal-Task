@@ -211,9 +211,11 @@
 
 <script setup lang="ts">
 import { useTranslations } from '../../composables/useTranslations';
+import { useToast } from '../../composables/useToast';
 import type { CreatePermitApplication } from '../../types/permit';
 
 const { t } = useTranslations();
+const { success, error: showError } = useToast();
 
 const form = reactive<CreatePermitApplication>({
   applicantName: '',
@@ -311,13 +313,28 @@ async function handleSubmit() {
       body: { ...form },
     });
 
-    // Success - redirect to home page
-    await router.push('/');
+    // Show success toast
+    success(t('Your permit application has been submitted successfully'));
+
+    // Reset form
+    form.applicantName = '';
+    form.applicantEmail = '';
+    form.permitType = '';
+    Object.keys(errors).forEach((key) => {
+      errors[key as keyof CreatePermitApplication] = undefined;
+    });
+
+    // Redirect to home page after a short delay
+    setTimeout(async () => {
+      await router.push('/');
+    }, 1500);
   } catch (error: any) {
-    submitError.value =
+    const errorMessage =
       error.data?.message ||
       error.message ||
       t('Failed to submit application. Please try again.');
+    submitError.value = errorMessage;
+    showError(errorMessage);
   } finally {
     isSubmitting.value = false;
   }

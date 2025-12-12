@@ -18,3 +18,11 @@ export interface CreatePermitApplication {
   applicantEmail: string;
   permitType: string;
 }
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  pageNumber: number;
+  size: number;
+  totalPages: number;
+}

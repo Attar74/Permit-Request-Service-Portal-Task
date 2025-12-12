@@ -44,6 +44,7 @@ npm run seed
 To clear existing data and re-seed:
 
 1. **Option 1: Reset database (removes all data)**
+
    ```bash
    docker compose -f docker/docker-compose.yml down -v
    docker compose -f docker/docker-compose.yml up -d
@@ -182,11 +183,13 @@ const samplePermits: Partial<PermitApplication>[] = [
 After seeding, verify data:
 
 1. **Via API**:
+
    ```bash
    curl http://localhost:3001/permits
    ```
 
 2. **Via Database**:
+
    ```bash
    docker exec -it permit-service-postgres psql -U postgres -d permit_service -c "SELECT * FROM permit_applications;"
    ```
@@ -228,4 +231,3 @@ After seeding, verify data:
 git add apps/api/src/permits/permits.seed.ts apps/api/src/scripts/seed.ts apps/api/package.json
 git commit -m "phase(4): step(4.1) - Add seed/dev data"
 ```
-

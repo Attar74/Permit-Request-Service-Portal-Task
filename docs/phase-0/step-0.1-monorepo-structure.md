@@ -7,6 +7,7 @@ Created the initial monorepo structure and baseline documentation for the Permit
 ## Why It Was Done
 
 A well-organized monorepo structure provides:
+
 - Clear separation between frontend and backend
 - Centralized documentation
 - Easier dependency management
@@ -23,6 +24,7 @@ tree -L 2 -a
 ## Key Files/Paths Created
 
 ### Directory Structure
+
 ```
 .
 ├── apps/
@@ -76,4 +78,3 @@ None added in this step. Environment variables will be added in Phase 1.
 git add .
 git commit -m "phase(0): step(0.1) - Create monorepo structure and baseline docs"
 ```
-

@@ -129,6 +129,7 @@ Phases must be executed **strictly in order**:
 ### One Step = One Commit
 
 Each numbered step must result in:
+
 - A single, meaningful commit
 - Clean git status
 - Complete documentation
@@ -158,7 +159,7 @@ Do not skip steps or combine multiple steps into one commit unless explicitly al
 ## Questions?
 
 If you have questions about these guidelines, please:
+
 1. Check existing documentation in `docs/`
 2. Review similar commits in git history
 3. Consult the architecture documentation
-

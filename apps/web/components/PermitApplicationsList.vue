@@ -12,10 +12,10 @@
         </h2>
         <p class="text-sm text-gray-600 dark:text-gray-400">
           <span class="font-semibold text-gray-900 dark:text-gray-100">{{
-            props.applications.length
+            props.pagination?.total ?? props.applications.length
           }}</span>
           {{
-            props.applications.length !== 1
+            (props.pagination?.total ?? props.applications.length) !== 1
               ? t('applications')
               : t('application')
           }}
@@ -336,10 +336,22 @@
         </div>
       </div>
     </div>
+
+    <!-- Pagination -->
+    <Pagination
+      v-if="props.pagination"
+      :current-page="props.pagination.currentPage"
+      :total-pages="props.pagination.totalPages"
+      :total="props.pagination.total"
+      :size="props.pagination.size"
+      @update:currentPage="handlePageChange"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue';
+import Pagination from './Pagination.vue';
 import { useRTL } from '../composables/useRTL';
 import { useTranslations } from '../composables/useTranslations';
 import type { ApplicationStatus, PermitApplication } from '../types/permit';
@@ -348,7 +360,17 @@ interface Props {
   applications?: PermitApplication[];
   pending?: boolean;
   error?: Error | null;
+  pagination?: {
+    currentPage: number;
+    totalPages: number;
+    total: number;
+    size: number;
+  } | null;
 }
+
+const emit = defineEmits<{
+  'update:currentPage': [page: number];
+}>();
 
 const props = withDefaults(defineProps<Props>(), {
   applications: () => [],
@@ -417,5 +439,9 @@ function getBadgeClasses(variant: 'pending' | 'approved' | 'rejected'): string {
       'border-red-500/30 bg-red-500/10 text-red-700 dark:bg-red-500/20 dark:text-red-400 dark:border-red-500/40',
   };
   return classes[variant] || classes.pending;
+}
+
+function handlePageChange(page: number) {
+  emit('update:currentPage', page);
 }
 </script>

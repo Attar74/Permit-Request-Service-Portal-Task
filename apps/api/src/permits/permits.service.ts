@@ -22,6 +22,35 @@ export class PermitsService {
     });
   }
 
+  async findAllPaginated(
+    pageNumber: number = 1,
+    size: number = 6,
+  ): Promise<{
+    data: PermitApplication[];
+    total: number;
+    pageNumber: number;
+    size: number;
+    totalPages: number;
+  }> {
+    const [data, total] = await this.permitRepository.findAndCount({
+      order: {
+        submittedAt: 'DESC',
+      },
+      skip: (pageNumber - 1) * size,
+      take: size,
+    });
+
+    const totalPages = Math.ceil(total / size);
+
+    return {
+      data,
+      total,
+      pageNumber,
+      size,
+      totalPages,
+    };
+  }
+
   async create(
     createPermitDto: CreatePermitApplicationDto,
   ): Promise<PermitApplication> {

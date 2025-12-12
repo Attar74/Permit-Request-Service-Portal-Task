@@ -1,5 +1,8 @@
 import { DataSource } from 'typeorm';
-import { PermitApplication, ApplicationStatus } from './entities/permit-application.entity';
+import {
+  PermitApplication,
+  ApplicationStatus,
+} from './entities/permit-application.entity';
 
 export async function seedPermits(dataSource: DataSource): Promise<void> {
   const repository = dataSource.getRepository(PermitApplication);
@@ -49,4 +52,3 @@ export async function seedPermits(dataSource: DataSource): Promise<void> {
 
   console.log(`✅ Seeded ${permits.length} permit applications`);
 }
-

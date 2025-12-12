@@ -12,22 +12,67 @@
     </div>
 
     <PermitApplicationsList
-      :applications="data || []"
+      :applications="applications"
       :pending="pending"
       :error="error"
+      :pagination="pagination"
+      @update:currentPage="handlePageChange"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref, computed, watch } from 'vue';
 import PermitApplicationsList from '../../components/PermitApplicationsList.vue';
 import { useTranslations } from '../../composables/useTranslations';
-import type { PermitApplication } from '../../types/permit';
+import type {
+  PermitApplication,
+  PaginatedResponse,
+} from '../../types/permit';
 
 const { t } = useTranslations();
 
-const { data, pending, error } =
-  await useFetch<PermitApplication[]>('/api/permits');
+const currentPage = ref(1);
+const size = 6;
 
-console.log('data', data.value);
+// Fetch paginated data
+const { data, pending, error, refresh } = await useFetch<
+  PaginatedResponse<PermitApplication>
+>('/api/permits', {
+  query: computed(() => ({
+    pageNumber: currentPage.value,
+    size: size,
+  })),
+});
+
+// Extract applications and pagination info
+const applications = computed(() => {
+  if (!data.value) return [];
+  if (Array.isArray(data.value)) {
+    // Fallback for non-paginated response
+    return data.value;
+  }
+  return data.value.data || [];
+});
+
+const pagination = computed(() => {
+  if (!data.value || Array.isArray(data.value)) {
+    return null;
+  }
+  return {
+    currentPage: data.value.pageNumber,
+    totalPages: data.value.totalPages,
+    total: data.value.total,
+    size: data.value.size,
+  };
+});
+
+const handlePageChange = async (page: number) => {
+  currentPage.value = page;
+  await refresh();
+  // Scroll to top on page change
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
 </script>

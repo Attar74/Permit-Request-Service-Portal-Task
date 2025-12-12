@@ -20,6 +20,7 @@
         </main>
       </div>
     </div>
+    <ToastContainer />
   </div>
 </template>
 
@@ -27,6 +28,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import AppDrawer from '../../components/AppDrawer.vue';
 import AppHeader from '../../components/AppHeader.vue';
+import ToastContainer from '../../components/ToastContainer.vue';
 import { useRTL } from '../../composables/useRTL';
 
 const { dir, isRTL } = useRTL();
