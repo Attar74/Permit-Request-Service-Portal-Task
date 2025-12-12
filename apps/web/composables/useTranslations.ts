@@ -47,7 +47,10 @@ type TranslationKey =
   | 'Permit type is required'
   | 'Submitting...'
   | 'Submit Application'
-  | 'Failed to submit application. Please try again.';
+  | 'Failed to submit application. Please try again.'
+  | 'Pending'
+  | 'Approved'
+  | 'Rejected';
 
 const translations = {
   en: {
