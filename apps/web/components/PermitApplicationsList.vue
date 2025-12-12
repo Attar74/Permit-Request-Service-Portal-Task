@@ -33,10 +33,10 @@
         </button>
         <button
           :class="[
-            'h-10 px-4 rounded-xl border bg-card hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
+            'h-10 px-4 rounded-[1rem] border border-gray-300 bg-white hover:bg-gray-100 hover:text-gray-900 flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95',
             viewMode === 'grid'
               ? 'bg-black text-white font-semibold'
-              : 'text-muted-foreground',
+              : 'text-gray-700',
           ]"
           @click="viewMode = 'grid'"
           title="Grid View"
@@ -90,10 +90,7 @@
     >
       <div class="text-center text-gray-600">
         <div class="mb-4 flex justify-center">
-          <Icon
-            name="lucide:file-text"
-            class="h-12 w-12 text-gray-400"
-          />
+          <Icon name="lucide:file-text" class="h-12 w-12 text-gray-400" />
         </div>
         <p class="font-bold text-lg mb-2 text-gray-900">
           No permit applications found
@@ -127,27 +124,27 @@
                   ID
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
                 >
                   Applicant Name
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
                 >
                   Email
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
                 >
                   Permit Type
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
                 >
                   Status
                 </th>
                 <th
-                  class="h-14 px-6 text-left align-middle font-bold text-foreground text-xs uppercase tracking-wider"
+                  class="h-14 px-6 text-left align-middle font-bold text-gray-900 text-xs uppercase tracking-wider"
                 >
                   Submitted At
                 </th>
@@ -161,9 +158,7 @@
                 :class="{ 'bg-gray-50/50': index % 2 === 0 }"
               >
                 <td class="p-6 align-middle">
-                  <span
-                    class="font-mono text-xs font-semibold text-gray-600"
-                  >
+                  <span class="font-mono text-xs font-semibold text-gray-600">
                     #{{ String(application.id).substring(0, 8) }}
                   </span>
                 </td>

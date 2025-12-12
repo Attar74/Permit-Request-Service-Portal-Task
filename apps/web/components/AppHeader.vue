@@ -53,7 +53,7 @@
           @click="navigateTo('/apply')"
           type="button"
           :class="[
-            'h-10 px-4 rounded-xl border flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium',
+            'h-10 px-4 rounded-[1rem] border border-gray-300 bg-white flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium',
             route.path === '/apply' ? 'bg-black text-white font-semibold' : '',
           ]"
         >
@@ -157,9 +157,7 @@
                   <span class="text-xl leading-none">🇬🇧</span>
                   <div class="flex flex-col flex-1">
                     <span class="font-semibold text-sm">English</span>
-                    <span class="text-xs text-gray-500 mt-0.5"
-                      >الإنجليزية</span
-                    >
+                    <span class="text-xs text-gray-500 mt-0.5">الإنجليزية</span>
                   </div>
                   <Icon
                     v-if="locale === 'en'"
@@ -170,20 +168,18 @@
                 <div class="h-px border my-1"></div>
                 <button
                   @click="setLocale('ar')"
-                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+                  class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
                   :class="
                     locale === 'ar'
-                      ? 'bg-accent text-accent-foreground'
-                      : 'text-foreground'
+                      ? 'bg-gray-100 text-gray-900'
+                      : 'text-gray-900'
                   "
                   type="button"
                 >
                   <span class="text-xl leading-none">🇸🇦</span>
                   <div class="flex flex-col flex-1">
                     <span class="font-semibold text-sm">العربية</span>
-                    <span class="text-xs text-gray-500 mt-0.5"
-                      >Arabic</span
-                    >
+                    <span class="text-xs text-gray-500 mt-0.5">Arabic</span>
                   </div>
                   <Icon
                     v-if="locale === 'ar'"

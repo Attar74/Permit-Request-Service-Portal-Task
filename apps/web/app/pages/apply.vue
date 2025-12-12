@@ -80,17 +80,17 @@
               :disabled="isSubmitting"
               placeholder="Enter your email address"
               :class="[
-                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
-                'text-sm font-medium text-foreground',
-                'ring-offset-background placeholder:text-muted-foreground/60',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                'focus-visible:border-ring focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
+                'text-sm font-medium text-gray-900',
+                'ring-offset-white placeholder:text-gray-400',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+                'focus-visible:border-blue-500 focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
                 'transition-all duration-200',
-                'hover:border-input/80',
+                'hover:border-gray-400',
                 errors.applicantEmail
-                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
-                  : 'border-input',
+                  ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
+                  : '',
               ]"
             />
             <Transition
@@ -130,17 +130,17 @@
               :disabled="isSubmitting"
               placeholder="e.g., Construction Permit, Business License"
               :class="[
-                'flex h-11 w-full rounded-md border bg-background px-4 py-2.5',
-                'text-sm font-medium text-foreground',
-                'ring-offset-background placeholder:text-muted-foreground/60',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                'focus-visible:border-ring focus-visible:shadow-sm',
-                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/50',
+                'flex h-11 w-full rounded-[0.875rem] border border-gray-300 bg-white px-4 py-2.5',
+                'text-sm font-medium text-gray-900',
+                'ring-offset-white placeholder:text-gray-400',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+                'focus-visible:border-blue-500 focus-visible:shadow-sm',
+                'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-100',
                 'transition-all duration-200',
-                'hover:border-input/80',
+                'hover:border-gray-400',
                 errors.permitType
-                  ? 'border-destructive focus-visible:ring-destructive focus-visible:border-destructive'
-                  : 'border-input',
+                  ? 'border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500'
+                  : '',
               ]"
             />
             <Transition
