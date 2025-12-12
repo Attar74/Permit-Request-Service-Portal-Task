@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 dark:supports-[backdrop-filter]:bg-gray-900/95 shadow-md"
+    class="sticky top-0 z-50 w-full bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 dark:supports-[backdrop-filter]:bg-gray-900/95 shadow-md"
   >
     <nav
       class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8"
@@ -58,7 +58,7 @@
         <!-- Theme Toggle -->
         <button
           @click="toggleTheme"
-          class="h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          class="h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           :title="isDark ? t('Switch to light mode') : t('Switch to dark mode')"
           type="button"
           :aria-label="
@@ -82,7 +82,7 @@
           <button
             ref="languageButtonRef"
             @click="isLanguageMenuOpen = !isLanguageMenuOpen"
-            class="h-10 px-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            class="gap-2 h-10 w-10 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             type="button"
             :aria-label="t('Switch language')"
             :aria-expanded="isLanguageMenuOpen"
@@ -90,11 +90,6 @@
             <span class="text-lg leading-none">{{
               locale === 'en' ? '🇬🇧' : '🇸🇦'
             }}</span>
-            <Icon
-              name="lucide:chevron-down"
-              class="h-4 w-4 transition-transform duration-200 dark:text-gray-100"
-              :class="{ 'rotate-180': isLanguageMenuOpen }"
-            />
           </button>
 
           <!-- Language Dropdown Menu -->
@@ -109,9 +104,9 @@
             <div
               v-if="isLanguageMenuOpen"
               ref="languageMenuRef"
-              class="absolute right-0 mt-2 w-56 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-xl z-50 overflow-hidden backdrop-blur-sm"
+              class="absolute right-0 mt-2 w-56 rounded-lg bg-white dark:bg-gray-800 shadow-xl z-50 overflow-hidden backdrop-blur-sm"
             >
-              <div class="py-1.5">
+              <div>
                 <button
                   @click="setLocale('en')"
                   class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
@@ -130,13 +125,8 @@
                       >الإنجليزية</span
                     >
                   </div>
-                  <Icon
-                    v-if="locale === 'en'"
-                    name="lucide:check"
-                    class="h-4 w-4 ml-auto text-teal-700 dark:text-teal-400 flex-shrink-0"
-                  />
                 </button>
-                <div class="h-px border my-1"></div>
+                <div class="h-px border"></div>
                 <button
                   @click="setLocale('ar')"
                   class="w-full px-4 py-3 text-sm font-medium text-left transition-colors flex items-center gap-3 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
@@ -155,11 +145,6 @@
                       >Arabic</span
                     >
                   </div>
-                  <Icon
-                    v-if="locale === 'ar'"
-                    name="lucide:check"
-                    class="h-4 w-4 ml-auto text-teal-700 dark:text-teal-400 flex-shrink-0"
-                  />
                 </button>
               </div>
             </div>

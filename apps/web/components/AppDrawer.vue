@@ -11,22 +11,23 @@
     <div
       class="h-full border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg flex flex-col"
     >
-      <!-- Header -->
-      <div
-        class="h-20 border-b border-gray-200 dark:border-gray-700"
-      ></div>
-
       <!-- Toggle Button (Absolute Position) -->
       <button
         @click="toggleDrawer"
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md z-50"
+        :class="[
+          'absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-10 px-4 rounded-[1rem] border border-gray-300 dark:border-gray-700 flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 z-50',
+          isOpen
+            ? 'bg-black dark:bg-white text-white dark:text-black font-semibold'
+            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300',
+        ]"
         type="button"
         :aria-label="isOpen ? 'Close drawer' : 'Open drawer'"
       >
         <Icon
           :name="isOpen ? 'lucide:chevron-left' : 'lucide:chevron-right'"
-          class="h-5 w-5 text-gray-700 dark:text-gray-300"
+          class="h-4 w-4"
         />
+        <span v-if="isOpen" class="text-sm font-medium">Close</span>
       </button>
 
       <!-- Navigation Links -->
@@ -35,7 +36,7 @@
           @click="handleNavigation('/')"
           type="button"
           :class="[
-            'w-full h-12 rounded-lg flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+            'w-full h-12 flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-[1rem]',
             route.path === '/'
               ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
@@ -63,7 +64,7 @@
           @click="handleNavigation('/apply')"
           type="button"
           :class="[
-            'w-full h-12 rounded-lg flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+            'w-full h-12 flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-[1rem]',
             route.path === '/apply'
               ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',

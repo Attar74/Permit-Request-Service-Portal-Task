@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="mb-8 border-b border-[#e0e0e0] pb-4">
-      <h1 class="text-3xl font-bold tracking-tight">
+      <h1
+        class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+      >
         Permit Request Service Portal
       </h1>
       <p class="text-gray-600 dark:text-gray-400 mt-2">
