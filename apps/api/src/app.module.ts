@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PermitApplication } from './permits/entities/permit-application.entity';
+import { PermitsModule } from './permits/permits.module';
 
 @Module({
   imports: [
@@ -27,8 +28,8 @@ import { PermitApplication } from './permits/entities/permit-application.entity'
       }),
       inject: [ConfigService],
     }),
-    // Register PermitApplication entity for repository injection
-    TypeOrmModule.forFeature([PermitApplication]),
+    // Permits module
+    PermitsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
