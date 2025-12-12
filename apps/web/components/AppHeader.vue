@@ -41,6 +41,15 @@
 
       <!-- Right Side Actions -->
       <div class="flex items-center gap-3">
+        <!-- Mobile Drawer Toggle -->
+        <button
+          @click="toggleMobileDrawer"
+          class="md:hidden h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
+          type="button"
+          :aria-label="t('Open menu')"
+        >
+          <Icon name="lucide:menu" class="h-5 w-5 dark:text-gray-100" />
+        </button>
 
         <!-- Divider (Desktop) -->
         <div
@@ -169,10 +178,21 @@ import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRTL } from '../composables/useRTL';
 import { useTheme } from '../composables/useTheme';
+import AppDrawer from './AppDrawer.vue';
 
 const { dir, locale, toggleLocale, setLocale: setRTLocale } = useRTL();
 const { theme, toggleTheme, isDark } = useTheme();
 const route = useRoute();
+
+const drawerRef = ref<InstanceType<typeof AppDrawer> | null>(null);
+
+const toggleMobileDrawer = () => {
+  // Emit event to parent to toggle drawer
+  if (typeof window !== 'undefined') {
+    const event = new CustomEvent('toggle-drawer');
+    window.dispatchEvent(event);
+  }
+};
 
 const isLanguageMenuOpen = ref<boolean>(false);
 const languageMenuRef = ref<HTMLElement | null>(null);

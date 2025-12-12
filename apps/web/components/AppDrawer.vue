@@ -1,7 +1,11 @@
 <template>
   <div
     class="fixed left-0 top-0 z-40 h-screen transition-all duration-300 ease-in-out"
-    :class="isOpen ? 'w-64' : 'w-20'"
+    :class="[
+      isOpen ? 'w-64' : 'w-20',
+      'md:translate-x-0',
+      isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
+    ]"
   >
     <!-- Drawer Content -->
     <div
@@ -27,13 +31,26 @@
           </div>
         </div>
         <button
+          v-if="isOpen"
           @click="toggleDrawer"
           class="ml-auto h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
           type="button"
-          :aria-label="isOpen ? 'Close drawer' : 'Open drawer'"
+          :aria-label="'Close drawer'"
         >
           <Icon
-            :name="isOpen ? 'lucide:chevron-left' : 'lucide:chevron-right'"
+            name="lucide:chevron-left"
+            class="h-5 w-5 text-gray-700 dark:text-gray-300"
+          />
+        </button>
+        <button
+          v-else
+          @click="toggleDrawer"
+          class="h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
+          type="button"
+          :aria-label="'Open drawer'"
+        >
+          <Icon
+            name="lucide:menu"
             class="h-5 w-5 text-gray-700 dark:text-gray-300"
           />
         </button>
@@ -138,7 +155,9 @@ const emit = defineEmits<{
   'update:modelValue': [value: boolean];
 }>();
 
-const isOpen = ref<boolean>(props.modelValue);
+const isOpen = ref<boolean>(
+  props.modelValue ?? (typeof window !== 'undefined' && window.innerWidth >= 768)
+);
 
 // Sync with v-model
 watch(
