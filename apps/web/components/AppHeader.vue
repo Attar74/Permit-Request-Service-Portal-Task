@@ -32,7 +32,7 @@
         <NuxtLink
           to="/"
           class="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md group"
-          active-class="text-foreground bg-accent"
+          active-class="!text-primary !bg-primary/10 font-semibold"
         >
           <span class="relative z-10">{{ t('Home') }}</span>
           <span
@@ -42,7 +42,7 @@
         <NuxtLink
           to="/apply"
           class="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md group"
-          active-class="text-foreground bg-accent"
+          active-class="!text-primary !bg-primary/10 font-semibold"
         >
           <span class="relative z-10">{{ t('Apply') }}</span>
           <span
@@ -201,7 +201,7 @@
             to="/"
             @click="isMobileMenuOpen = false"
             class="block px-4 py-3 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md"
-            active-class="text-foreground bg-accent"
+            active-class="!text-primary !bg-primary/10 font-semibold"
           >
             {{ t('Home') }}
           </NuxtLink>
@@ -209,7 +209,7 @@
             to="/apply"
             @click="isMobileMenuOpen = false"
             class="block px-4 py-3 text-sm font-medium text-muted-foreground transition-all hover:text-foreground hover:bg-accent rounded-md"
-            active-class="text-foreground bg-accent"
+            active-class="!text-primary !bg-primary/10 font-semibold"
           >
             {{ t('Apply') }}
           </NuxtLink>
