@@ -6,12 +6,15 @@ export const useRTL = () => {
     dir.value = rtl ? 'rtl' : 'ltr';
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('dir', dir.value);
+      document.documentElement.setAttribute('lang', locale.value);
     }
   };
 
   const setLocale = (newLocale: string) => {
     locale.value = newLocale;
-    const isRTL = newLocale.startsWith('ar') || newLocale.startsWith('he');
+    // RTL languages: Arabic, Hebrew, Persian, Urdu, etc.
+    const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'yi'];
+    const isRTL = rtlLanguages.some((lang) => newLocale.startsWith(lang));
     setRTL(isRTL);
   };
 
@@ -21,7 +24,14 @@ export const useRTL = () => {
     setLocale(browserLocale);
 
     // Can also be set manually or from user preferences
-    // setLocale('ar'); // For Arabic
+    // Example: setLocale('ar'); // For Arabic
+  });
+
+  // Watch for locale changes
+  watch(locale, (newLocale) => {
+    const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'yi'];
+    const isRTL = rtlLanguages.some((lang) => newLocale.startsWith(lang));
+    setRTL(isRTL);
   });
 
   return {
@@ -29,6 +39,7 @@ export const useRTL = () => {
     locale: readonly(locale),
     setRTL,
     setLocale,
+    isRTL: computed(() => dir.value === 'rtl'),
   };
 };
 
