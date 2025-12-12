@@ -11,42 +11,23 @@
     <div
       class="h-full border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg flex flex-col"
     >
-      <!-- Header with Toggle Button -->
+      <!-- Header -->
       <div
-        class="flex items-center justify-between h-20 px-4 border-b border-gray-200 dark:border-gray-700"
+        class="h-20 border-b border-gray-200 dark:border-gray-700"
+      ></div>
+
+      <!-- Toggle Button (Absolute Position) -->
+      <button
+        @click="toggleDrawer"
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-md z-50"
+        type="button"
+        :aria-label="isOpen ? 'Close drawer' : 'Open drawer'"
       >
-        <div v-if="isOpen" class="flex items-center gap-3">
-          <div
-            class="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400"
-          >
-            <Icon name="lucide:file-check-2" class="h-6 w-6" />
-          </div>
-        </div>
-        <button
-          v-if="isOpen"
-          @click="toggleDrawer"
-          class="ml-auto h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
-          type="button"
-          :aria-label="'Close drawer'"
-        >
-          <Icon
-            name="lucide:chevron-left"
-            class="h-5 w-5 text-gray-700 dark:text-gray-300"
-          />
-        </button>
-        <button
-          v-else
-          @click="toggleDrawer"
-          class="h-10 w-10 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 shadow-sm"
-          type="button"
-          :aria-label="'Open drawer'"
-        >
-          <Icon
-            name="lucide:menu"
-            class="h-5 w-5 text-gray-700 dark:text-gray-300"
-          />
-        </button>
-      </div>
+        <Icon
+          :name="isOpen ? 'lucide:chevron-left' : 'lucide:chevron-right'"
+          class="h-5 w-5 text-gray-700 dark:text-gray-300"
+        />
+      </button>
 
       <!-- Navigation Links -->
       <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
