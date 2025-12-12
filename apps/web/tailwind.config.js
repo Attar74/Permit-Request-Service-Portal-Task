@@ -11,12 +11,23 @@ export default {
   ],
   safelist: [
     // Ensure commonly used classes are always generated
+    {
+      pattern: /^(rounded-(xl|lg|md|sm)|bg-(card|black|accent|primary|background|muted)|text-(card-foreground|white|accent-foreground|muted-foreground|primary-foreground|foreground)|border(-b-4)?|shadow-(md|xl|sm)|hover:(shadow-xl|bg-accent|text-accent-foreground))$/,
+    },
+    // Specific classes with opacity
+    'bg-card/98',
+    'bg-card/95',
+    'border/40',
+    'border/60',
+    // Common utility classes
     'rounded-xl',
+    'rounded-lg',
     'bg-card',
     'text-card-foreground',
     'border',
     'shadow-md',
     'shadow-xl',
+    'shadow-sm',
     'hover:shadow-xl',
     'bg-black',
     'text-white',
