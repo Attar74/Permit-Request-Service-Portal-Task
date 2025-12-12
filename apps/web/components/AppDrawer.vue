@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed left-0 top-0 z-40 h-screen transition-all duration-300 ease-in-out"
+    class="fixed left-0 top-20 z-40 h-[calc(100vh-5rem)] transition-all duration-300 ease-in-out"
     :class="[
       isOpen ? 'w-64' : 'w-20',
       'md:translate-x-0',
@@ -20,14 +20,6 @@
             class="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400"
           >
             <Icon name="lucide:file-check-2" class="h-6 w-6" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-sm font-bold text-gray-900 dark:text-gray-100">
-              Portal
-            </span>
-            <span class="text-xs text-gray-500 dark:text-gray-400">
-              خدمة التصاريح
-            </span>
           </div>
         </div>
         <button
@@ -64,8 +56,8 @@
           :class="[
             'w-full h-12 rounded-lg flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
             route.path === '/'
-              ? 'bg-black dark:bg-white text-white dark:text-black font-semibold shadow-md'
-              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
+              ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
             isOpen ? 'px-4 justify-start' : 'px-0 justify-center',
           ]"
         >
@@ -74,7 +66,7 @@
             class="h-5 w-5 flex-shrink-0"
             :class="
               route.path === '/'
-                ? 'text-white dark:text-black'
+                ? 'text-white dark:text-white'
                 : 'text-gray-700 dark:text-gray-300'
             "
           />
@@ -92,8 +84,8 @@
           :class="[
             'w-full h-12 rounded-lg flex items-center gap-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
             route.path === '/apply'
-              ? 'bg-black dark:bg-white text-white dark:text-black font-semibold shadow-md'
-              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
+              ? 'bg-black dark:bg-black/20 text-white dark:text-white font-semibold shadow-md'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/20',
             isOpen ? 'px-4 justify-start' : 'px-0 justify-center',
           ]"
         >
@@ -102,7 +94,7 @@
             class="h-5 w-5 flex-shrink-0"
             :class="
               route.path === '/apply'
-                ? 'text-white dark:text-black'
+                ? 'text-white dark:text-white'
                 : 'text-gray-700 dark:text-gray-300'
             "
           />
@@ -128,7 +120,7 @@
   >
     <div
       v-if="isOpen"
-      class="fixed inset-0 bg-black/50 z-30 md:hidden"
+      class="fixed inset-0 bg-black/50 z-30 md:hidden top-20"
       @click="closeDrawer"
     ></div>
   </Transition>
@@ -156,7 +148,8 @@ const emit = defineEmits<{
 }>();
 
 const isOpen = ref<boolean>(
-  props.modelValue ?? (typeof window !== 'undefined' && window.innerWidth >= 768)
+  props.modelValue ??
+    (typeof window !== 'undefined' && window.innerWidth >= 768)
 );
 
 // Sync with v-model
@@ -216,4 +209,3 @@ defineExpose({
   isOpen,
 });
 </script>
-

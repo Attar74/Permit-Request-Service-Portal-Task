@@ -1,22 +1,24 @@
 <template>
   <div :dir="dir" class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <AppDrawer v-model="drawerOpen" />
-    <div
-      class="transition-all duration-300 ease-in-out"
-      :class="drawerOpen ? 'md:ml-64' : 'md:ml-20'"
-    >
-      <AppHeader />
-      <main class="container mx-auto px-4 py-6 sm:py-8">
-        <slot />
-      </main>
+    <AppHeader />
+    <div class="flex">
+      <AppDrawer v-model="drawerOpen" />
+      <div
+        class="flex-1 transition-all duration-300 ease-in-out min-h-[calc(100vh-5rem)]"
+        :class="drawerOpen ? 'md:ml-64' : 'md:ml-20'"
+      >
+        <main class="container mx-auto px-4 py-6 sm:py-8">
+          <slot />
+        </main>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import AppHeader from '../../components/AppHeader.vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import AppDrawer from '../../components/AppDrawer.vue';
+import AppHeader from '../../components/AppHeader.vue';
 import { useRTL } from '../../composables/useRTL';
 
 const { dir } = useRTL();
@@ -33,7 +35,7 @@ onMounted(() => {
   if (typeof window !== 'undefined') {
     // Set initial state: open on desktop, closed on mobile
     drawerOpen.value = window.innerWidth >= 768;
-    
+
     window.addEventListener('toggle-drawer', toggleDrawer);
   }
 });

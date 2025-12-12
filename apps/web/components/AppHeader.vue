@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 dark:supports-[backdrop-filter]:bg-gray-900/95 shadow-sm"
+    class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl supports-[backdrop-filter]:bg-white/95 dark:supports-[backdrop-filter]:bg-gray-900/95 shadow-md"
   >
     <nav
       class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8"
@@ -37,7 +37,6 @@
           </div>
         </NuxtLink>
       </div>
-
 
       <!-- Right Side Actions -->
       <div class="flex items-center gap-3">
@@ -168,7 +167,6 @@
         </div>
       </div>
     </nav>
-
   </header>
 </template>
 
