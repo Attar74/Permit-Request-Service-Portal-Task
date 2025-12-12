@@ -39,7 +39,7 @@
         <NuxtLink
           to="/"
           class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-          active-class="bg-black text-white font-semibold"
+          active-class="bg-black text-white font-semibold border-b-4 border-white"
         >
           <Icon name="lucide:home" class="h-4 w-4" />
           {{ t('Home') }}
@@ -47,7 +47,7 @@
         <NuxtLink
           to="/apply"
           class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-          active-class="bg-black text-white font-semibold"
+          active-class="bg-black text-white font-semibold border-b-4 border-white"
         >
           <Icon name="lucide:file-plus" class="h-4 w-4" />
           {{ t('Apply') }}
@@ -208,7 +208,7 @@
             to="/"
             @click="isMobileMenuOpen = false"
             class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-            active-class="bg-black text-white font-semibold"
+            active-class="bg-black text-white font-semibold border-b-4 border-white"
           >
             <Icon name="lucide:home" class="h-4 w-4" />
             {{ t('Home') }}
@@ -217,7 +217,7 @@
             to="/apply"
             @click="isMobileMenuOpen = false"
             class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-            active-class="bg-black text-white font-semibold"
+            active-class="bg-black text-white font-semibold border-b-4 border-white"
           >
             <Icon name="lucide:file-plus" class="h-4 w-4" />
             {{ t('Apply') }}
