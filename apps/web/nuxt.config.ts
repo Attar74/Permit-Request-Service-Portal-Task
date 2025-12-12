@@ -11,5 +11,11 @@ export default defineNuxtConfig({
       // Add public runtime config here if needed
     },
   },
-  css: ['~/assets/css/main.css'],
+  tailwindcss: {
+    cssPath: '~/assets/css/main.css',
+    exposeConfig: false,
+  },
+  imports: {
+    dirs: ['composables'],
+  },
 });

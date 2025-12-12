@@ -8,17 +8,20 @@
 ## 1. Project Overview (1 minute)
 
 ### What We Built
+
 - **Full-stack permit request management system**
 - **Monorepo architecture** with clear separation
 - **Production-ready** with best practices
 
 ### Technology Stack
+
 - **Frontend**: Nuxt 4, Vue 3, TypeScript, Tailwind CSS, shadcn-vue
 - **Backend**: NestJS, TypeORM, PostgreSQL
 - **Design**: Saudi National Design System (SDGA) compliant
 - **Infrastructure**: Docker, Docker Compose
 
 ### Key Features
+
 - ✅ Modern UI with shadcn-vue components
 - ✅ Full RTL support for Arabic
 - ✅ Responsive design (mobile-first)
@@ -31,15 +34,18 @@
 ## 2. Architecture Decisions (2 minutes)
 
 ### Monorepo Structure
+
 **Decision**: Single repository with multiple apps
 
 **Why**:
+
 - **Shared types**: TypeScript types shared between frontend and backend
 - **Consistent tooling**: Single Prettier, ESLint configuration
 - **Easier development**: All code in one place
 - **Version control**: Single git history
 
 **Structure**:
+
 ```
 apps/
   ├── web/     # Nuxt 4 frontend
@@ -51,6 +57,7 @@ apps/
 **Decision**: Chose NestJS over Strapi
 
 **Why NestJS**:
+
 1. **Architecture**: Modular, scalable, enterprise-ready
 2. **Type Safety**: Full TypeScript support
 3. **Validation**: Built-in DTO validation with class-validator
@@ -59,6 +66,7 @@ apps/
 6. **Interview Value**: Demonstrates architectural skills
 
 **What We Built**:
+
 - RESTful API with controllers, services, DTOs
 - TypeORM for database operations
 - Global validation pipes
@@ -70,6 +78,7 @@ apps/
 **Decision**: All frontend calls go through Nuxt Server Routes
 
 **Why**:
+
 1. **Security**: Backend URLs never exposed to client
 2. **Centralization**: Single point for API management
 3. **Transformation**: Easy request/response transformation
@@ -77,11 +86,13 @@ apps/
 5. **Flexibility**: Can switch backends without frontend changes
 
 **Flow**:
+
 ```
 Frontend → Nuxt Server Route → NestJS Backend → PostgreSQL
 ```
 
 **Example**:
+
 - Frontend calls: `/api/permits`
 - Server Route calls: `http://localhost:3001/permits` (server-side only)
 - Client never sees backend URL
@@ -126,6 +137,7 @@ Frontend → Nuxt Server Route → NestJS Backend → PostgreSQL
 ### Saudi National Design System (SDGA)
 
 **Integration**:
+
 - **Components**: shadcn-vue component library
 - **Styling**: Tailwind CSS with custom design tokens
 - **Colors**: Saudi Green/Blue primary color
@@ -133,6 +145,7 @@ Frontend → Nuxt Server Route → NestJS Backend → PostgreSQL
 - **Spacing**: Consistent spacing scale
 
 **Why shadcn-vue**:
+
 - **Quality**: High-quality, accessible components
 - **Customizable**: Easy to customize with Tailwind
 - **Type-safe**: Full TypeScript support
@@ -141,24 +154,28 @@ Frontend → Nuxt Server Route → NestJS Backend → PostgreSQL
 ### RTL Support
 
 **Implementation**:
+
 - **Automatic Detection**: Detects RTL from browser locale
 - **Composable**: `useRTL()` manages direction
 - **CSS Adjustments**: Logical properties, text alignment
 - **Font Support**: Arabic fonts (Cairo, Tajawal)
 
 **Languages Supported**:
+
 - Arabic (ar)
 - Hebrew (he)
 - Persian (fa)
 - Urdu (ur)
 
 **How It Works**:
+
 ```typescript
 const { dir, setLocale } = useRTL();
 setLocale('ar'); // Automatically sets dir="rtl"
 ```
 
 **CSS Adjustments**:
+
 - Text alignment flips
 - Margins/padding use logical properties
 - Icons and navigation flip
@@ -167,17 +184,20 @@ setLocale('ar'); // Automatically sets dir="rtl"
 ### Responsive Design
 
 **Mobile-First Approach**:
+
 - **Mobile** (< 640px): Card layouts, stacked forms
 - **Tablet** (640px - 1024px): Optimized tables
 - **Desktop** (> 1024px): Full table with all columns
 
 **Breakpoints**:
+
 - `sm`: 640px
 - `md`: 768px
 - `lg`: 1024px
 - `xl`: 1280px
 
 **Examples**:
+
 - Home page: Table on desktop, cards on mobile
 - Forms: Full-width on mobile, constrained on desktop
 - Navigation: Stacked on mobile, horizontal on desktop
@@ -187,6 +207,7 @@ setLocale('ar'); // Automatically sets dir="rtl"
 ## 5. Key Highlights (1 minute)
 
 ### Code Quality
+
 - **TypeScript**: Full type safety
 - **Validation**: Client and server-side
 - **Error Handling**: Consistent error responses
@@ -194,6 +215,7 @@ setLocale('ar'); // Automatically sets dir="rtl"
 - **Documentation**: Every step documented
 
 ### Developer Experience
+
 - **Quick Start**: 7-step setup process
 - **Seed Data**: Sample data for testing
 - **Hot Reload**: Both frontend and backend
@@ -201,6 +223,7 @@ setLocale('ar'); // Automatically sets dir="rtl"
 - **Comprehensive Docs**: Phase-by-phase documentation
 
 ### Production Readiness
+
 - **Environment Variables**: Proper configuration
 - **Docker**: Easy database setup
 - **Error Handling**: Graceful error handling
@@ -208,6 +231,7 @@ setLocale('ar'); // Automatically sets dir="rtl"
 - **Performance**: Optimized queries, lazy loading
 
 ### Best Practices
+
 - **Separation of Concerns**: Clear module boundaries
 - **DRY**: Reusable components and utilities
 - **SOLID Principles**: Applied in NestJS architecture
@@ -271,6 +295,7 @@ A: Environment variables, Docker setup, error handling, validation, security pat
 ## 8. Closing (30 seconds)
 
 ### Summary
+
 - **Complete Implementation**: All requirements met
 - **Best Practices**: Modern stack, clean code, proper architecture
 - **Documentation**: Comprehensive, step-by-step
@@ -278,6 +303,7 @@ A: Environment variables, Docker setup, error handling, validation, security pat
 - **Production Ready**: Proper error handling, validation, security
 
 ### Next Steps (if applicable)
+
 - Add unit tests
 - Add e2e tests
 - Deploy to production
@@ -285,6 +311,7 @@ A: Environment variables, Docker setup, error handling, validation, security pat
 - Add more features
 
 ### Thank You
+
 Questions welcome!
 
 ---
@@ -292,16 +319,19 @@ Questions welcome!
 ## Quick Reference
 
 ### Architecture
+
 - Monorepo with apps/web and apps/api
 - API Gateway pattern (Nuxt Server Routes)
 - Type-safe end-to-end
 
 ### Tech Stack
+
 - Frontend: Nuxt 4, Vue 3, TypeScript, Tailwind, shadcn-vue
 - Backend: NestJS, TypeORM, PostgreSQL
 - Design: Saudi National Design System
 
 ### Key Features
+
 - RTL support
 - Responsive design
 - Type safety
@@ -311,4 +341,3 @@ Questions welcome!
 ---
 
 **Total Time**: ~8-10 minutes (adjustable based on questions)
-
