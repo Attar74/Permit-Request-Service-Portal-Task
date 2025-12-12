@@ -125,23 +125,26 @@ import { useRTL } from '../composables/useRTL';
 const route = useRoute();
 const { locale } = useRTL();
 
-const props = defineProps<{
-  modelValue?: boolean;
-}>();
+const props = withDefaults(
+  defineProps<{
+    modelValue?: boolean;
+  }>(),
+  {
+    modelValue: true,
+  }
+);
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean];
 }>();
 
-const isOpen = ref<boolean>(props.modelValue ?? true);
+const isOpen = ref<boolean>(props.modelValue);
 
 // Sync with v-model
 watch(
   () => props.modelValue,
   (newValue) => {
-    if (newValue !== undefined) {
-      isOpen.value = newValue;
-    }
+    isOpen.value = newValue;
   }
 );
 
@@ -160,7 +163,7 @@ const closeDrawer = () => {
 const handleNavigation = (path: string) => {
   navigateTo(path);
   // Close drawer on mobile after navigation
-  if (window.innerWidth < 768) {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
     closeDrawer();
   }
 };
@@ -183,7 +186,7 @@ const t = (key: string) => {
 
 // Close drawer on mobile when route changes
 watch(route, () => {
-  if (window.innerWidth < 768) {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
     closeDrawer();
   }
 });
