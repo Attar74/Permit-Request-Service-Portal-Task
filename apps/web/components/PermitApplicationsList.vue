@@ -5,7 +5,9 @@
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-gray-200 dark:border-gray-700"
     >
       <div class="space-y-1">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+        <h2
+          class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+        >
           Permit Applications
         </h2>
         <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -60,7 +62,9 @@
             class="h-12 w-12 animate-spin text-teal-700 dark:text-teal-400"
           />
         </div>
-        <p class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1">
+        <p
+          class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1"
+        >
           Loading applications...
         </p>
         <p class="text-sm">Please wait while we fetch your data</p>
@@ -90,7 +94,10 @@
     >
       <div class="text-center text-gray-600 dark:text-gray-400">
         <div class="mb-4 flex justify-center">
-          <Icon name="lucide:file-text" class="h-12 w-12 text-gray-400 dark:text-gray-500" />
+          <Icon
+            name="lucide:file-text"
+            class="h-12 w-12 text-gray-400 dark:text-gray-500"
+          />
         </div>
         <p class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">
           No permit applications found
@@ -117,7 +124,9 @@
         <div class="relative w-full min-w-full">
           <table class="w-full caption-bottom text-sm">
             <thead class="[&_tr]:border-b bg-gray-50 dark:bg-gray-800">
-              <tr class="border-b border-gray-200 dark:border-gray-700 transition-colors">
+              <tr
+                class="border-b border-gray-200 dark:border-gray-700 transition-colors"
+              >
                 <th
                   class="h-14 px-6 text-left align-middle font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wider"
                 >
@@ -155,7 +164,9 @@
                 v-for="(application, index) in props.applications"
                 :key="application.id"
                 class="border-b border-gray-200 dark:border-gray-700 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50"
-                :class="{ 'bg-gray-50/50 dark:bg-gray-800/30': index % 2 === 0 }"
+                :class="{
+                  'bg-gray-50/50 dark:bg-gray-800/30': index % 2 === 0,
+                }"
               >
                 <td class="p-6 align-middle">
                   <span class="font-mono text-xs font-semibold text-gray-600">
@@ -197,7 +208,9 @@
                   </span>
                 </td>
                 <td class="p-6 align-middle">
-                  <span class="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                  <span
+                    class="text-sm text-gray-600 dark:text-gray-400 font-medium"
+                  >
                     {{ formatDate(application.submittedAt) }}
                   </span>
                 </td>
@@ -216,7 +229,9 @@
         class="group rounded-[1rem] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       >
         <!-- Card Header -->
-        <div class="flex flex-col space-y-3 p-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+        <div
+          class="flex flex-col space-y-3 p-6 pb-4 border-b border-gray-200 dark:border-gray-700"
+        >
           <div class="flex items-start justify-between gap-3">
             <div class="flex-1 min-w-0">
               <h3
