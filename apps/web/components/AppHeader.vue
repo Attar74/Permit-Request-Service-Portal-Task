@@ -36,22 +36,28 @@
 
       <!-- Navigation Links (Desktop) -->
       <div class="hidden md:flex items-center gap-2">
-        <NuxtLink
-          to="/"
-          class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-          active-class="bg-black text-white font-semibold border-b-4 border-white"
+        <button
+          @click="navigateTo('/')"
+          type="button"
+          :class="[
+            'h-10 px-4 rounded-xl border flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium',
+            route.path === '/' ? 'bg-black text-white font-semibold border-b-4 border-white' : '',
+          ]"
         >
           <Icon name="lucide:home" class="h-4 w-4" />
           {{ t('Home') }}
-        </NuxtLink>
-        <NuxtLink
-          to="/apply"
-          class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-          active-class="bg-black text-white font-semibold border-b-4 border-white"
+        </button>
+        <button
+          @click="navigateTo('/apply')"
+          type="button"
+          :class="[
+            'h-10 px-4 rounded-xl border flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium',
+            route.path === '/apply' ? 'bg-black text-white font-semibold border-b-4 border-white' : '',
+          ]"
         >
           <Icon name="lucide:file-plus" class="h-4 w-4" />
           {{ t('Apply') }}
-        </NuxtLink>
+        </button>
       </div>
 
       <!-- Right Side Actions -->
@@ -204,24 +210,28 @@
         class="md:hidden border-t border/40 bg-card/98 backdrop-blur-xl"
       >
         <div class="container mx-auto px-4 py-4 space-y-2">
-          <NuxtLink
-            to="/"
-            @click="isMobileMenuOpen = false"
-            class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-            active-class="bg-black text-white font-semibold border-b-4 border-white"
+          <button
+            @click="handleNavigation('/')"
+            type="button"
+            :class="[
+              'h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium w-full',
+              route.path === '/' ? 'bg-black text-white font-semibold border-b-4 border-white' : '',
+            ]"
           >
             <Icon name="lucide:home" class="h-4 w-4" />
             {{ t('Home') }}
-          </NuxtLink>
-          <NuxtLink
-            to="/apply"
-            @click="isMobileMenuOpen = false"
-            class="h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium"
-            active-class="bg-black text-white font-semibold border-b-4 border-white"
+          </button>
+          <button
+            @click="handleNavigation('/apply')"
+            type="button"
+            :class="[
+              'h-10 px-4 rounded-xl border bg-card flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shadow-md hover:shadow-xl active:scale-95 text-sm font-medium w-full',
+              route.path === '/apply' ? 'bg-black text-white font-semibold border-b-4 border-white' : '',
+            ]"
           >
             <Icon name="lucide:file-plus" class="h-4 w-4" />
             {{ t('Apply') }}
-          </NuxtLink>
+          </button>
         </div>
       </div>
     </Transition>
@@ -237,6 +247,7 @@ import { useTheme } from '../composables/useTheme';
 
 const { dir, locale, toggleLocale, setLocale: setRTLocale } = useRTL();
 const { theme, toggleTheme, isDark } = useTheme();
+const route = useRoute();
 
 const isMobileMenuOpen = ref<boolean>(false);
 const isLanguageMenuOpen = ref<boolean>(false);
@@ -246,6 +257,11 @@ const languageButtonRef = ref<HTMLElement | null>(null);
 const setLocale = (newLocale: 'en' | 'ar') => {
   setRTLocale(newLocale);
   isLanguageMenuOpen.value = false;
+};
+
+const handleNavigation = (path: string) => {
+  isMobileMenuOpen.value = false;
+  navigateTo(path);
 };
 
 // Close language menu when clicking outside
@@ -287,7 +303,6 @@ const t = (key: string) => {
 };
 
 // Close mobile menu and language menu when route changes
-const route = useRoute();
 watch(route, () => {
   isMobileMenuOpen.value = false;
   isLanguageMenuOpen.value = false;
