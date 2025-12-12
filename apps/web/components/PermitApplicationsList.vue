@@ -51,7 +51,7 @@
     <!-- Loading State -->
     <div
       v-if="props.pending"
-      class="rounded-xl border border bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -70,7 +70,7 @@
     <!-- Error State -->
     <div
       v-else-if="props.error"
-      class="rounded-xl border border-destructive/20 bg-destructive/5 text-card-foreground shadow-md py-16"
+      class="rounded-xl border-destructive/20 bg-destructive/5 text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-destructive">
         <div class="mb-4 flex justify-center">
@@ -86,7 +86,7 @@
     <!-- Empty State -->
     <div
       v-else-if="props.applications.length === 0"
-      class="rounded-xl border border bg-card text-card-foreground shadow-md py-16"
+      class="rounded-xl border bg-card text-card-foreground shadow-md py-16"
     >
       <div class="text-center text-muted-foreground">
         <div class="mb-4 flex justify-center">
@@ -114,7 +114,7 @@
     <!-- List View -->
     <div
       v-else-if="viewMode === 'list'"
-      class="rounded-xl border border bg-card text-card-foreground shadow-md overflow-hidden"
+      class="rounded-xl border bg-card text-card-foreground shadow-md overflow-hidden"
     >
       <div class="overflow-x-auto">
         <div class="relative w-full min-w-full">
